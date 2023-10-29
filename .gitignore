@@ -1,0 +1,23 @@
+.vscode/**
+out/**
+
+# Latex Garbage
+**.log
+**.aux
+**.bbl
+**.bcf
+**.blg
+**.fdb_latexmk
+**.fls
+**.out
+**.synctex.gz
+**.toc
+**.lof
+**.lot
+**.idx
+**.locode
+**.lof
+**.pdf
+**.run.xml
+**.synctex(busy)
+_minted-**

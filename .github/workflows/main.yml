@@ -1,0 +1,20 @@
+name: Create bachelor-thesis-pdf
+
+on: [push]
+
+jobs:
+  build_thesis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🐙 Set up Git repository
+        uses: actions/checkout@v3
+      - name: 👀 Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: thesis/main.tex
+          latexmk_shell_escape: true
+      - name: 🗃️ Create bachelor pdf
+        uses: actions/upload-artifact@v3
+        with:
+          name: PT_Praca_Dyplomowa_230025
+          path: PT_Praca_Dyplomowa_230025.pdf
