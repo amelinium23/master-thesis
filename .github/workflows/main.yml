@@ -17,5 +17,6 @@ jobs:
       - name: 🗃️ Create bachelor pdf
         uses: actions/upload-artifact@v3
         with:
+          working_directory: ./thesis
           name: PT_Praca_Dyplomowa_230025
           path: PT_Praca_Dyplomowa_230025.pdf
