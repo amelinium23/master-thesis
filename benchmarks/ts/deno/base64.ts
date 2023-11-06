@@ -1,5 +1,3 @@
-"use strict";
-
 import * as mod from "https://deno.land/std@0.110.0/node/util.ts";
 import { Buffer } from "https://deno.land/std@0.177.0/node/buffer.ts";
 
