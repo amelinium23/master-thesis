@@ -12,7 +12,7 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           working_directory: ./thesis
-          root_file: thesis/PT_Praca_Dyplomowa_230025.tex
+          root_file: PT_Praca_Dyplomowa_230025.tex
           latexmk_shell_escape: true
       - name: 🗃️ Create bachelor pdf
         uses: actions/upload-artifact@v3
