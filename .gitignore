@@ -1,6 +1,8 @@
 .vscode/**
 out/**
 
+**/node_modules/**
+
 # Latex Garbage
 **.log
 **.aux
