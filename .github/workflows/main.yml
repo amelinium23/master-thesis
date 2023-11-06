@@ -11,6 +11,7 @@ jobs:
       - name: 👀 Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
+          working_directory: ./thesis
           root_file: thesis/main.tex
           latexmk_shell_escape: true
       - name: 🗃️ Create bachelor pdf
