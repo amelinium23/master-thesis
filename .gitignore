@@ -1,6 +1,8 @@
 .vscode/**
 out/**
 
+**.db
+
 **/node_modules/**
 
 # Latex Garbage
