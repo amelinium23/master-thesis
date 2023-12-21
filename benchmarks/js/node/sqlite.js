@@ -59,7 +59,7 @@ const getUserFromDatabase = async (db) => {
 
 const createConnection = async () => {
 	try {
-		return await open({ filename: "./database.db", driver: sqlite3.Database });
+		return await open({ filename: "./node.db", driver: sqlite3.Database });
 	} catch (err) {
 		throw err;
 	}
@@ -70,12 +70,12 @@ const createConnection = async () => {
  *
  * @param {number} numOfIterations
  * @param {number} numOfRecords
- * @returns {{time: number, users: typeof createFakeUser()[]}}
+ * @returns {Promise<{time: number, users: typeof createFakeUser()[]}>}
  */
 const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 	const conn = await createConnection();
-	dropTable(conn);
-	createTable(conn);
+	await dropTable(conn);
+	await createTable(conn);
 	const startTime = performance.now();
 
 	for (let i = 0; i < numOfIterations; i++) {

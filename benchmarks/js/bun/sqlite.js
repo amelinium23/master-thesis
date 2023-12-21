@@ -51,7 +51,15 @@ const getUserFromDatabase = async (db) => {
 
 const createConnection = async () => {
 	try {
-		return await open({ filename: "./database.db", driver: sqlite3.Database });
+		return await open({ filename: "./deno.db", driver: sqlite3.Database });
+	} catch (err) {
+		throw err;
+	}
+};
+
+const dropTable = async (db) => {
+	try {
+		return db.exec("DROP TABLE IF EXISTS Users");
 	} catch (err) {
 		throw err;
 	}
@@ -62,11 +70,12 @@ const createConnection = async () => {
  *
  * @param {number} numOfIterations
  * @param {number} numOfRecords
- * @returns {{time: number, users: typeof createFakeUser()[]}}
+ * @returns {Promise<{time: number, users: typeof createFakeUser()[]}>}
  */
 const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 	const conn = await createConnection();
-	createTable(conn);
+	await dropTable(conn);
+	await createTable(conn);
 	const startTime = performance.now();
 
 	for (let i = 0; i < numOfIterations; i++) {
@@ -77,11 +86,10 @@ const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 
 	const endTime = performance.now();
 
-	conn.close();
 	return { time: endTime - startTime, users: await getUserFromDatabase(conn) };
 };
 
-(async () => {
+await (async () => {
 	const result = await performSqliteBenchmark(100, 100);
 	console.log("Result: \n", result);
 })();

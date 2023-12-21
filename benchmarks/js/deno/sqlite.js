@@ -1,4 +1,4 @@
-import { DB } from "https://deno.land/x/sqlite/mod.ts";
+import { DB } from "https://deno.land/x/sqlite@v3.8/mod.ts";
 import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
 
 const createFakeUser = () => {
@@ -58,17 +58,31 @@ const createConnection = async () => {
 	}
 };
 
+const mapUser = (values) => {
+	if (values.length > 7) return {};
+
+	return {
+		firstName: values[0],
+		lastName: values[1],
+		gender: values[2],
+		bio: values[3],
+		jobArea: values[4],
+		jobTitle: values[5],
+		jobType: values[6],
+	};
+};
+
 /**
  * Perform benchmark for creating users for n-time of iterations and m-times of users
  *
  * @param {number} numOfIterations
  * @param {number} numOfRecords
- * @returns {{time: number, users: typeof createFakeUser()[]}}
+ * @returns {Promise<{time: number, users: typeof createFakeUser()[]}>}
  */
 const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 	const conn = await createConnection();
-	dropTable(conn);
-	createTable(conn);
+	await dropTable(conn);
+	await createTable(conn);
 	const startTime = performance.now();
 
 	for (let i = 0; i < numOfIterations; i++) {
@@ -79,11 +93,12 @@ const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 
 	const endTime = performance.now();
 	const users = await getUserFromDatabase(conn);
+	const mappedUsers = users.map(mapUser);
 
-	return { time: endTime - startTime, users };
+	return { time: endTime - startTime, users: mappedUsers };
 };
 
 (async () => {
 	const result = await performSqliteBenchmark(100, 100);
-	console.log("Result: \n", result);
+	console.log("Result: \n", result.time);
 })();

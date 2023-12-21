@@ -13,7 +13,7 @@
 		"deno:sorting": "deno run ./deno/sorting.js",
 		"node:sorting": "node ./node/sorting.js",
 		"node:createData": "node ./node/sqlite.js",
-		"deno:createData": "deno run ./deno/sqlite.js --alow-write=. --allow-read=.",
+		"deno:createData": "deno run ./deno/sqlite.js --alow-write=. ./deno/sqlite.js --allow-read=. ./deno/sqlite.js",
 		"bun:createData": "bun run ./bun/sqlite.js"
 	},
 	"devDependencies": {
