@@ -57,12 +57,30 @@ const createConnection = async () => {
 	}
 };
 
-(async () => {
+/**
+ * Perform benchmark for creating users for n-time of iterations and m-times of users
+ *
+ * @param {number} numOfIterations
+ * @param {number} numOfRecords
+ * @returns {{time: number, users: typeof createFakeUser()[]}}
+ */
+const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 	const conn = await createConnection();
-	await createTable(conn);
-	const user = createFakeUser();
-	const res = await insertUser(conn, user);
-	const users = await getUserFromDatabase(conn);
-	console.log(users);
-	console.log(res);
+	createTable(conn);
+	const startTime = performance.now();
+
+	for (let i = 0; i < numOfIterations; i++) {
+		for (let j = 0; j < numOfRecords; j++) {
+			await insertUser(conn, createFakeUser());
+		}
+	}
+
+	const endTime = performance.now();
+
+	conn.close();
+	return { time: endTime - startTime, users: await getUserFromDatabase(conn) };
+};
+
+(async () => {
+	console.log(performSqliteBenchmark(100, 100));
 })();
