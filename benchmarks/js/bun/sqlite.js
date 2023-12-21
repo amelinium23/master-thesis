@@ -1,6 +1,6 @@
+import { Database } from "bun:sqlite";
+
 const { faker } = require("@faker-js/faker");
-const { open } = require("sqlite");
-const sqlite3 = require("sqlite3");
 
 const createFakeUser = () => {
 	return {
@@ -16,9 +16,11 @@ const createFakeUser = () => {
 
 const createTable = async (db) => {
 	try {
-		return await db.exec(
-			"CREATE TABLE IF NOT EXISTS Users (firstName TEXT, lastName TEXT, gender TEXT, bio TEXT, jobArea TEXT, jobTitle TEXT, jobType TEXT)"
-		);
+		return db
+			.query(
+				"CREATE TABLE IF NOT EXISTS Users (firstName TEXT, lastName TEXT, gender TEXT, bio TEXT, jobArea TEXT, jobTitle TEXT, jobType TEXT)"
+			)
+			.run();
 	} catch (err) {
 		throw err;
 	}
@@ -26,16 +28,17 @@ const createTable = async (db) => {
 
 const insertUser = async (db, user) => {
 	try {
-		return db.run(
-			"INSERT INTO Users VALUES (?, ?, ?, ?, ?, ?, ?)",
-			user.firstName,
-			user.lastName,
-			user.gender,
-			user.bio,
-			user.jobArea,
-			user.jobTitle,
-			user.jobType
-		);
+		return db
+			.query("INSERT INTO Users VALUES ($firstName, $lastName, $gender, $bio, $jobArea, $jobTitle, $jobType)")
+			.run({
+				$firstName: user.firstName,
+				$lastName: user.lastName,
+				$gender: user.gender,
+				$bio: user.bio,
+				$jobArea: user.jobArea,
+				$jobTitle: user.jobTitle,
+				$jobType: user.jobType,
+			});
 	} catch (err) {
 		throw err;
 	}
@@ -43,7 +46,7 @@ const insertUser = async (db, user) => {
 
 const getUserFromDatabase = async (db) => {
 	try {
-		return db.all("SELECT * FROM Users");
+		return db.query("SELECT * FROM Users").all();
 	} catch (e) {
 		throw e;
 	}
@@ -51,7 +54,7 @@ const getUserFromDatabase = async (db) => {
 
 const createConnection = async () => {
 	try {
-		return await open({ filename: "./deno.db", driver: sqlite3.Database });
+		return new Database("./bun.db");
 	} catch (err) {
 		throw err;
 	}
@@ -59,7 +62,7 @@ const createConnection = async () => {
 
 const dropTable = async (db) => {
 	try {
-		return db.exec("DROP TABLE IF EXISTS Users");
+		return db.query("DROP TABLE IF EXISTS Users").run();
 	} catch (err) {
 		throw err;
 	}
