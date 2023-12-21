@@ -24,14 +24,6 @@ const createTable = async (db) => {
 	}
 };
 
-const dropTable = async (db) => {
-	try {
-		return db.exec("DROP TABLE IF EXISTS Users");
-	} catch (err) {
-		throw err;
-	}
-};
-
 const insertUser = async (db, user) => {
 	try {
 		return db.run(
@@ -74,7 +66,6 @@ const createConnection = async () => {
  */
 const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 	const conn = await createConnection();
-	dropTable(conn);
 	createTable(conn);
 	const startTime = performance.now();
 
@@ -86,10 +77,11 @@ const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 
 	const endTime = performance.now();
 
+	conn.close();
 	return { time: endTime - startTime, users: await getUserFromDatabase(conn) };
 };
 
 (async () => {
 	const result = await performSqliteBenchmark(100, 100);
-	console.log(result.time);
+	console.log("Result: \n", result);
 })();

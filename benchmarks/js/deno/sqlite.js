@@ -1,22 +1,21 @@
-const { faker } = require("@faker-js/faker");
-const { open } = require("sqlite");
-const sqlite3 = require("sqlite3");
+import { DB } from "https://deno.land/x/sqlite/mod.ts";
+import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
 
 const createFakeUser = () => {
 	return {
-		firstName: faker.person.firstName(),
-		lastName: faker.person.lastName(),
-		gender: faker.person.gender(),
-		bio: faker.person.bio(),
-		jobArea: faker.person.jobArea(),
-		jobTitle: faker.person.jobTitle(),
-		jobType: faker.person.jobType(),
+		firstName: faker.name.firstName(),
+		lastName: faker.name.lastName(),
+		gender: faker.name.gender(),
+		bio: faker.lorem.sentence(),
+		jobArea: faker.name.jobArea(),
+		jobTitle: faker.name.jobTitle(),
+		jobType: faker.name.jobType(),
 	};
 };
 
 const createTable = async (db) => {
 	try {
-		return await db.exec(
+		return db.execute(
 			"CREATE TABLE IF NOT EXISTS Users (firstName TEXT, lastName TEXT, gender TEXT, bio TEXT, jobArea TEXT, jobTitle TEXT, jobType TEXT)"
 		);
 	} catch (err) {
@@ -26,7 +25,7 @@ const createTable = async (db) => {
 
 const dropTable = async (db) => {
 	try {
-		return db.exec("DROP TABLE IF EXISTS Users");
+		return db.execute("DROP TABLE IF EXISTS Users");
 	} catch (err) {
 		throw err;
 	}
@@ -34,15 +33,9 @@ const dropTable = async (db) => {
 
 const insertUser = async (db, user) => {
 	try {
-		return db.run(
-			"INSERT INTO Users VALUES (?, ?, ?, ?, ?, ?, ?)",
-			user.firstName,
-			user.lastName,
-			user.gender,
-			user.bio,
-			user.jobArea,
-			user.jobTitle,
-			user.jobType
+		return db.query(
+			"INSERT INTO Users (firstName, lastName, gender, bio, jobArea, jobTitle, jobType) VALUES (?, ?, ?, ?, ?, ?, ?)",
+			[user.firstName, user.lastName, user.gender, user.bio, user.jobArea, user.jobTitle, user.jobType]
 		);
 	} catch (err) {
 		throw err;
@@ -51,7 +44,7 @@ const insertUser = async (db, user) => {
 
 const getUserFromDatabase = async (db) => {
 	try {
-		return db.all("SELECT * FROM Users");
+		return db.query("SELECT firstName, lastName, gender, bio, jobArea, jobTitle, jobType FROM Users");
 	} catch (e) {
 		throw e;
 	}
@@ -59,7 +52,7 @@ const getUserFromDatabase = async (db) => {
 
 const createConnection = async () => {
 	try {
-		return await open({ filename: "./database.db", driver: sqlite3.Database });
+		return new DB("deno.db");
 	} catch (err) {
 		throw err;
 	}
@@ -85,11 +78,12 @@ const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 	}
 
 	const endTime = performance.now();
+	const users = await getUserFromDatabase(conn);
 
-	return { time: endTime - startTime, users: await getUserFromDatabase(conn) };
+	return { time: endTime - startTime, users };
 };
 
 (async () => {
 	const result = await performSqliteBenchmark(100, 100);
-	console.log(result.time);
+	console.log("Result: \n", result);
 })();

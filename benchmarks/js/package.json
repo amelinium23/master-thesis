@@ -12,7 +12,9 @@
 		"bun:sorting": "bun run ./bun/sorting.js",
 		"deno:sorting": "deno run ./deno/sorting.js",
 		"node:sorting": "node ./node/sorting.js",
-		"node:createData": "node ./node/sqlite.js"
+		"node:createData": "node ./node/sqlite.js",
+		"deno:createData": "deno run ./deno/sqlite.js --alow-write=. --allow-read=.",
+		"bun:createData": "bun run ./bun/sqlite.js"
 	},
 	"devDependencies": {
 		"@faker-js/faker": "^8.3.1"
