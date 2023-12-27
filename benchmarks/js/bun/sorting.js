@@ -116,8 +116,8 @@ const radixSortBenchmark = (numOfSamples, sizeOfArray) => {
 	const radixSortResults = radixSortBenchmark(numOfSamples, sizeOfArray);
 	console.log("BubbleSort: \n");
 	console.log(bubbleSortResults);
-	// console.log("QuickSort: \n");
-	// console.log(quickSortResults);
-	// console.log("RadixSort: \n");
-	// console.log(radixSortResults);
+	console.log("QuickSort: \n");
+	console.log(quickSortResults);
+	console.log("RadixSort: \n");
+	console.log(radixSortResults);
 })();

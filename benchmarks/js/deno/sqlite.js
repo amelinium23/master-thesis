@@ -72,13 +72,6 @@ const mapUser = (values) => {
 	};
 };
 
-/**
- * Perform benchmark for creating users for n-time of iterations and m-times of users
- *
- * @param {number} numOfIterations
- * @param {number} numOfRecords
- * @returns {Promise<{time: number, users: typeof createFakeUser()[]}>}
- */
 const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 	const conn = await createConnection();
 	await dropTable(conn);
