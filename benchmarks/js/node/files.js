@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const { faker } = require("@faker-js/faker");
+const { faker, en } = require("@faker-js/faker");
 
 const createFile = async (fileName, numberOfParagraphs) => {
 	return await fs.writeFile(fileName, faker.lorem.paragraphs(numberOfParagraphs), (err) => console.error(err));
@@ -19,6 +19,30 @@ const createBatchOfFiles = async (numberOfFiles, startFileName, numberOfParagrap
 	return fileNames;
 };
 
+const parseContent = (data, result, startTime) => {
+	const endTime = performance.now();
+	result.push({ data: data.toString(), time: endTime - startTime });
+	return data.toString("utf8");
+};
+
+const readFiles = async (fileNames) => {
+	const resultOfWriting = [];
+	const startTime = performance.now();
+
+	for (const fileName of fileNames) {
+		const startTime = performance.now();
+		fs.readFile(fileName, (err, data) => {
+			if (err) throw err;
+			parseContent(data, resultOfWriting, startTime);
+		});
+	}
+	const endTime = performance.now();
+
+	return { results: resultOfWriting, time: endTime - startTime };
+};
+
 (async () => {
-	console.log(await createBatchOfFiles(10, "lorem", 20));
+	const fileNames = await createBatchOfFiles(10, "lorem", 100);
+	const result = await readFiles(fileNames);
+	console.log(result);
 })();
