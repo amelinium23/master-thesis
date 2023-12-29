@@ -19,10 +19,9 @@ const createBatchOfFiles = async (numberOfFiles, startFileName, numberOfParagrap
 	return fileNames;
 };
 
-const parseContent = (data, result, startTime) => {
+const parseContent = async (data, result, startTime) => {
 	const endTime = performance.now();
 	result.push({ data: data.toString(), time: endTime - startTime });
-	return data.toString("utf8");
 };
 
 const readFiles = async (fileNames) => {
@@ -31,10 +30,12 @@ const readFiles = async (fileNames) => {
 
 	for (const fileName of fileNames) {
 		const startTime = performance.now();
-		fs.readFile(fileName, (err, data) => {
-			if (err) throw err;
-			parseContent(data, resultOfWriting, startTime);
-		});
+		try {
+			const lines = fs.readFile(fileName, (err, data) => !err && parseContent(data, resultOfWriting, startTime));
+			console.log(lines);
+		} catch (err) {
+			console.error(err);
+		}
 	}
 	const endTime = performance.now();
 
