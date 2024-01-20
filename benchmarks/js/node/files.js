@@ -1,19 +1,24 @@
 const fs = require("fs");
 const path = require("path");
-const { faker, en } = require("@faker-js/faker");
+const { faker } = require("@faker-js/faker");
 
-const createFile = async (fileName, numberOfParagraphs) => {
-    return await fs.writeFile(fileName, faker.lorem.paragraphs(numberOfParagraphs), (err) => console.error(err));
+const createFile = (fileName, numberOfParagraphs) => {
+    return fs.writeFileSync(fileName, faker.lorem.paragraphs(numberOfParagraphs), (err) => {});
 };
 
-const createBatchOfFiles = async (numberOfFiles, startFileName, numberOfParagraphs = 20) => {
+const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 20, directory = "tmp") => {
+    const startTime = performance.now();
     const fileNames = [];
+    if (!fs.existsSync(path.join(__dirname, directory).toString())) {
+        fs.mkdirSync(path.join(__dirname, directory));
+    }
     for (let i = 0; i < numberOfFiles; i++) {
-        const fileName = path.join(__dirname, `${startFileName}-${i + 1}.txt`).toString();
-        await createFile(fileName, numberOfParagraphs);
+        const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`).toString();
+        createFile(fileName, numberOfParagraphs);
         fileNames.push(fileName);
     }
-    return fileNames;
+    const endTime = performance.now();
+    return { fileNames: fileNames, time: endTime - startTime };
 };
 
 const readFiles = (fileNames) => {
@@ -22,14 +27,13 @@ const readFiles = (fileNames) => {
 
     for (const fileName of fileNames) {
         try {
-            const textFileName = fileName
+            const realFileName = fileName
                 .split("/")
-                .filter((p) => p)
+                .filter((s) => s)
                 .reverse()[0];
-            const lines = fs.readFileSync(path.join(__dirname, `tmp/${textFileName}`));
+            const lines = fs.readFileSync(path.join(__dirname, "tmp", realFileName).toString(), { encoding: "utf-8" });
             const content = lines.toString();
-            console.log("🚀 ~ readFiles ~ content:", content);
-            console.log(lines);
+            resultOfWriting.push(content);
         } catch (err) {
             console.error(err);
         }
@@ -39,8 +43,16 @@ const readFiles = (fileNames) => {
     return { results: resultOfWriting, time: endTime - startTime };
 };
 
-(async () => {
-    const fileNames = await createBatchOfFiles(10, "lorem", 100);
-    const result = readFiles(fileNames);
-    console.log(result);
+const removeFiles = (directory = "tmp") => {
+    fs.rmSync(path.join(__dirname, directory), { recursive: true, force: true });
+};
+
+(() => {
+    const startTime = performance.now();
+    const fileNames = createBatchOfFiles(10, "lorem", 100);
+    const result = readFiles(fileNames.fileNames);
+    const endTime = performance.now();
+    console.log(endTime - startTime);
+    console.log("🚀 ~ result:", result);
+    removeFiles();
 })();
