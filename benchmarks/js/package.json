@@ -1,27 +1,29 @@
 {
-	"name": "benchmarks-node",
-	"version": "1.0.0",
-	"description": "Benchmarks for master thesis",
-	"main": "index.js",
-	"author": "Piotr Tomczak",
-	"license": "ISC",
-	"scripts": {
-		"bun:base64": "bun run ./bun/base64.js",
-		"deno:base64": "deno run ./deno/base64.js",
-		"node:base64": "node ./node/base64.js",
-		"bun:sorting": "bun run ./bun/sorting.js",
-		"deno:sorting": "deno run ./deno/sorting.js",
-		"node:sorting": "node ./node/sorting.js",
-		"node:createData": "node ./node/sqlite.js",
-		"deno:createData": "deno run ./deno/sqlite.js --alow-write=. ./deno/sqlite.js --allow-read=. ./deno/sqlite.js",
-		"bun:createData": "bun run ./bun/sqlite.js",
-		"node:fileWrite": "node ./node/files.js"
-	},
-	"devDependencies": {
-		"@faker-js/faker": "^8.3.1"
-	},
-	"dependencies": {
-		"sqlite": "^5.1.1",
-		"sqlite3": "^5.1.6"
-	}
+    "name": "benchmarks-node",
+    "version": "1.0.0",
+    "description": "Benchmarks for master thesis",
+    "main": "index.js",
+    "author": "Piotr Tomczak",
+    "license": "ISC",
+    "scripts": {
+        "bun:base64": "bun run ./bun/base64.js",
+        "deno:base64": "deno run ./deno/base64.js",
+        "node:base64": "node ./node/base64.js",
+        "bun:sorting": "bun run ./bun/sorting.js",
+        "deno:sorting": "deno run ./deno/sorting.js",
+        "node:sorting": "node ./node/sorting.js",
+        "node:createData": "node ./node/sqlite.js",
+        "deno:createData": "deno run ./deno/sqlite.js --alow-write=. ./deno/sqlite.js --allow-read=. ./deno/sqlite.js",
+        "bun:createData": "bun run ./bun/sqlite.js",
+        "node:fileWrite": "node ./node/files.js",
+        "deno:fileWrite": "deno run ./deno/files.js",
+        "bun:fileWrite": "bun run ./bun/files.js"
+    },
+    "devDependencies": {
+        "@faker-js/faker": "^8.3.1"
+    },
+    "dependencies": {
+        "sqlite": "^5.1.1",
+        "sqlite3": "^5.1.6"
+    }
 }
