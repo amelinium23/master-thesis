@@ -9,12 +9,16 @@
 		"node:base64": "ts-node ./node/base64.ts",
 		"bun:sorting": "bun run ./bun/sorting.ts",
 		"deno:sorting": "deno run ./deno/sorting.ts",
-		"node:sorting": "ts-node ./node/base64.ts"
+		"node:sorting": "ts-node ./node/base64.ts",
+		"node:fileWrite": "ts-node ./node/files.ts",
+		"deno:fileWrite": "deno run ./deno/files.ts",
+		"bun:fileWrite": "bun run ./bun/files.ts"
 	},
 	"author": "Piotr Tomczak",
 	"license": "ISC",
 	"devDependencies": {
 		"@faker-js/faker": "^8.3.1",
+		"@types/faker": "^6.6.9",
 		"@types/node": "^20.10.5",
 		"bun-types": "^1.0.9",
 		"sqlite": "^5.1.1",
