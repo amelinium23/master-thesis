@@ -17,7 +17,10 @@
         "bun:createData": "bun run ./bun/sqlite.js",
         "node:fileWrite": "node ./node/files.js",
         "deno:fileWrite": "deno run ./deno/files.js",
-        "bun:fileWrite": "bun run ./bun/files.js"
+        "bun:fileWrite": "bun run ./bun/files.js",
+        "node:server": "node ./node/server.js --watch",
+        "deno:server": "deno run --allow-net --watch ./deno/server.js",
+        "bun:server": "bun run ./bun/server.js"
     },
     "devDependencies": {
         "@faker-js/faker": "^8.3.1"
