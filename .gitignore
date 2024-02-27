@@ -25,3 +25,6 @@ out/**
 **.run.xml
 **.synctex(busy)
 _minted-**
+**.equ
+**.lol
+**.nlo
