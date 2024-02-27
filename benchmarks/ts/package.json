@@ -12,7 +12,10 @@
 		"node:sorting": "ts-node ./node/base64.ts",
 		"node:fileWrite": "ts-node ./node/files.ts",
 		"deno:fileWrite": "deno run ./deno/files.ts",
-		"bun:fileWrite": "bun run ./bun/files.ts"
+		"bun:fileWrite": "bun run ./bun/files.ts",
+		"node:server": "ts-node ./node/server.ts --watch",
+		"deno:server": "deno run --allow-net --watch ./deno/server.ts",
+		"bun:server": "bun run ./bun/server.ts"
 	},
 	"author": "Piotr Tomczak",
 	"license": "ISC",

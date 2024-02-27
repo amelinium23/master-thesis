@@ -17,8 +17,8 @@ Bun.serve({
     port: 3000,
     fetch(req) {
         const url = new URL(req.url);
-        if (url.pathname === "/") return Response("Home Page!");
-        if (url.pathname === "/users") return Response(JSON.stringify(createFakeUser()));
-        return Response("404");
+        if (url.pathname === "/") return new Response("Home Page!");
+        if (url.pathname === "/users") return new Response(JSON.stringify(createFakeUser()));
+        return new Response("404");
     },
 });

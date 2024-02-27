@@ -21,7 +21,7 @@ const createFakeUser = () => {
 const server = http.createServer((req, res) => {
     const { pathname } = url.parse(req.url);
 
-    if (pathname.includes("user")) {
+    if (pathname && pathname.includes("user")) {
         res.statusCode = 200;
         res.setHeader("Content-type", "text/plain");
         res.end(JSON.stringify(createFakeUser()));
