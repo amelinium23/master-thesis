@@ -47,12 +47,42 @@ const removeFiles = (directory = "tmp") => {
     fs.rmSync(path.join(__dirname, directory), { recursive: true, force: true });
 };
 
-(() => {
+const performFilesBenchmark = (numberOfFiles, numberOfParagraphs, numberOfIterations) => {
+    const result = [];
     const startTime = performance.now();
-    const fileNames = createBatchOfFiles(10, "lorem", 100);
-    const result = readFiles(fileNames.fileNames);
+
+    for (let i = 0; i < numberOfIterations; i++) {
+        const { fileNames, time } = createBatchOfFiles(numberOfFiles, "lorem", numberOfParagraphs);
+        const resultReadFiles = readFiles(fileNames);
+        result.push({
+            fileNames,
+            timeToCreateFiles: time,
+            resultsReading: resultReadFiles.results,
+            timeOfReading: resultReadFiles.time,
+        });
+    }
     const endTime = performance.now();
-    console.log(endTime - startTime);
-    console.log("🚀 ~ result:", result);
     removeFiles();
+
+    return { result, timeToEnd: endTime - startTime };
+};
+
+(() => {
+    if (process.argv.length < 6) {
+        process.exit(1);
+    }
+
+    const numberOfIterations = process.argv.at(3);
+    const numberOfFiles = process.argv.at(4);
+    const numberOfParagraphs = process.argv.at(5);
+
+    if (!numberOfFiles || !numberOfParagraphs || !numberOfIterations) {
+        process.exit(1);
+    }
+
+    const result = performFilesBenchmark();
+
+    fs.writeFileSync(path.join(__dirname, "resultFiles.json"), JSON.stringify(result));
+
+    process.exit(0);
 })();

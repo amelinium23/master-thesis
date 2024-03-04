@@ -1,5 +1,5 @@
-"use strict";
-
+const fs = require("fs");
+const path = require("path");
 const util = require("util");
 
 const STR_SIZE = 131072;
@@ -25,6 +25,8 @@ const startEncoding = (buffer, str2) => {
             timeEncoding
         )
     );
+
+    return { encodedString, timeEncoding };
 };
 
 const startDecoding = (str2, str3) => {
@@ -45,18 +47,43 @@ const startDecoding = (str2, str3) => {
             timeDecoded
         )
     );
+
+    return { timeDecoded, decodedString };
 };
 
-function main() {
+const performBase64Benchmark = (numberOfIterations) => {
+    const resultOfEncoding = [];
+    const resultOfDecoding = [];
     const buffer = Buffer.from("a".repeat(STR_SIZE));
     const str2 = buffer.toString("base64");
     const str3 = Buffer.from(str2, "base64");
 
     notify(`Node.js\t\nPID: ${process.pid}`);
 
-    startEncoding(buffer, str2);
+    for (let i = 0; i < numberOfIterations; i++) {
+        const result = startEncoding(buffer, str2);
+        resultOfEncoding.push(result);
+    }
 
-    startDecoding(str2, str3);
-}
+    for (let i = 0; i < numberOfIterations; i++) {
+        const result = startDecoding(str2, str3);
+        resultOfDecoding.push(result);
+    }
 
-(() => main())();
+    return { resultOfDecoding, resultOfEncoding };
+};
+
+(() => {
+    if (process.argv.length < 3) {
+        process.exit(1);
+    }
+
+    const numberOfIterations = Number(process.argv.at(2));
+
+    const { resultOfDecoding, resultOfEncoding } = performBase64Benchmark(numberOfIterations);
+
+    fs.writeFileSync(path.join(__dirname, "encodedResult.json"), JSON.stringify(resultOfEncoding));
+    fs.writeFileSync(path.join(__dirname, "decodedResult.json"), JSON.stringify(resultOfDecoding));
+
+    process.exit(0);
+})();

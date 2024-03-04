@@ -1,18 +1,20 @@
-const bubbleSort = (arr) => {
-    if (arr.length <= 1) return arr;
-    const n = arr.length;
+const fs = require("fs");
+const path = require("path");
 
-    for (let i = 0; i < arr.length - 1; i++) {
-        for (let j = 0; j < arr.length - n - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                const temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
+const bubbleSort = (arr) => {
+    const cArr = [...arr];
+    if (cArr.length <= 1) return cArr;
+    const n = cArr.length;
+    for (let i = 0; i < n - 1; i++) {
+        for (let j = 0; j < n - i - 1; j++) {
+            if (cArr[j] > cArr[j + 1]) {
+                const temp = cArr[j];
+                cArr[j] = cArr[j + 1];
+                cArr[j + 1] = temp;
             }
         }
     }
-
-    return arr;
+    return cArr;
 };
 
 const quickSort = (arr) => {
@@ -71,52 +73,98 @@ const radixSort = (arr) => {
 };
 
 const generateRandomArray = (size) => {
-    return Array.from(new Set(Array.from({ length: size }, () => Math.floor(Math.random() * size))));
+    const arr = [];
+    while (arr.length < size) {
+        const r = Math.floor(Math.random() * size * 0.5);
+        if (arr.indexOf(r) === -1) arr.push(r);
+    }
+    return arr;
 };
 
-const bubbleSortBenchmark = (numOfSamples, sizeOfArray) => {
+const bubbleSortBenchmark = (numberOfSamples, sizeOfArray) => {
     const results = [];
-    for (let i = 0; i < numOfSamples; i++) {
+    for (let i = 0; i < numberOfSamples; i++) {
         const arr = generateRandomArray(sizeOfArray);
         const start = performance.now();
         const sortingResult = bubbleSort(arr);
         const end = performance.now();
-        results.push([end - start, sortingResult]);
+        results.push({ time: end - start, result: sortingResult });
     }
     return results;
 };
 
-const quickSortBenchmark = (numOfSamples, sizeOfArray) => {
+const quickSortBenchmark = (numberOfSamples, sizeOfArray) => {
     const results = [];
-    for (let i = 0; i < numOfSamples; i++) {
+    for (let i = 0; i < numberOfSamples; i++) {
         const arr = generateRandomArray(sizeOfArray);
         const start = performance.now();
         const sortingResult = quickSort(arr);
         const end = performance.now();
-        results.push([end - start, sortingResult]);
+        results.push({ time: end - start, result: sortingResult });
     }
     return results;
 };
 
-const radixSortBenchmark = (numOfSamples, sizeOfArray) => {
+const radixSortBenchmark = (numberOfSamples, sizeOfArray) => {
     const results = [];
-    for (let i = 0; i < numOfSamples; i++) {
+    for (let i = 0; i < numberOfSamples; i++) {
         const arr = generateRandomArray(sizeOfArray);
         const start = performance.now();
         const sortingResult = radixSort(arr);
         const end = performance.now();
-        results.push([end - start, sortingResult]);
+        results.push({ time: end - start, result: sortingResult });
     }
+
     return results;
 };
 
+const performSortingBenchmark = (type, numberOfSamples, sizeOfArray, numberOfIterations) => {
+    const result = [];
+
+    const startTime = performance.now();
+
+    switch (type) {
+        case "bubble":
+            for (let i = 0; i < numberOfIterations; i++) {
+                const bubbleSortResult = bubbleSortBenchmark(numberOfSamples, sizeOfArray);
+                result.push(bubbleSortResult);
+            }
+            return { result, time: performance.now() - startTime };
+        case "radix":
+            for (let i = 0; i < numberOfIterations; i++) {
+                const bubbleSortResult = radixSortBenchmark(numberOfSamples, sizeOfArray);
+                result.push(bubbleSortResult);
+            }
+            return { result, time: performance.now() - startTime };
+        case "quick":
+            for (let i = 0; i < numberOfIterations; i++) {
+                const bubbleSortResult = quickSortBenchmark(numberOfSamples, sizeOfArray);
+                result.push(bubbleSortResult);
+            }
+            return { result, time: performance.now() - startTime };
+
+        default:
+            throw Error(`[Sorting] Type of ${type} is not defined!`);
+    }
+};
+
 (() => {
-    const numOfSamples = 10;
-    const sizeOfArray = 1000;
-    const bubbleSortResults = bubbleSortBenchmark(numOfSamples, sizeOfArray);
-    const quickSortResults = quickSortBenchmark(numOfSamples, sizeOfArray);
-    const radixSortResults = radixSortBenchmark(numOfSamples, sizeOfArray);
-    console.log(bubbleSortResults);
-    console.log(quickSortResults);
-    console.log(radixSortResults);
+    if (process.argv.length < 7) {
+        process.exit(1);
+    }
+
+    const sortingType = process.argv.at(2);
+    const numberOfSamples = Number(process.argv.at(3));
+    const numberOfIterations = Number(process.argv.at(4));
+    const arraySize = Number(process.argv.at(5));
+
+    if (!sortingType || !numberOfSamples || !numberOfIterations || !arraySize) {
+        process.exit(1);
+    }
+
+    const result = performSortingBenchmark(sortingType, numberOfSamples, arraySize, numberOfIterations);
+
+    fs.writeFileSync(path.join(__dirname, "sortingResult.json"), JSON.stringify(result));
+
+    process.exit(0);
 })();
