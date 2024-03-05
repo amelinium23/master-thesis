@@ -116,7 +116,6 @@ const performBenchmarkFs = (numberOfFiles, numOfParagraphs, filePrefix = "lorem"
     const result = readFiles(fileNames.fileNames);
     const endTime = performance.now();
     console.log("[Benchmark] Time to complete: ", endTime - startTime);
-    // console.log("[Benchmark] Result: ", result);
     removeFiles();
 };
 

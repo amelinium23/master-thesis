@@ -14,11 +14,11 @@ const createFile = (fileName, numberOfParagraphs) => {
 const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 20, directory = "tmp") => {
     const startTime = performance.now();
     const fileNames = [];
-    if (!existsSync(path.join(__dirname, directory).toString())) {
+    if (!existsSync(path.join(__dirname, directory).toString(), { isDirectory: true })) {
         Deno.mkdirSync(path.join(__dirname, directory));
     }
     for (let i = 0; i < numberOfFiles; i++) {
-        const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`).toString();
+        const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`);
         createFile(fileName, numberOfParagraphs);
         fileNames.push(fileName);
     }
@@ -46,15 +46,48 @@ const readFiles = (fileNames) => {
 };
 
 const removeFiles = (directory = "tmp") => {
-    Deno.removeSync(path.join(__dirname, directory), { recursive: true, force: true });
+    if (existsSync(path.join(__dirname, directory)))
+        Deno.removeSync(path.join(__dirname, directory), { recursive: true, force: true });
+};
+
+const performFilesBenchmark = (numberOfFiles, numberOfParagraphs, numberOfIterations) => {
+    const result = [];
+    const startTime = performance.now();
+
+    for (let i = 0; i < numberOfIterations; i++) {
+        const { fileNames, time } = createBatchOfFiles(numberOfFiles, "lorem", numberOfParagraphs);
+        const resultReadFiles = readFiles(fileNames);
+        result.push({
+            fileNames,
+            timeToCreateFiles: time,
+            resultsReading: resultReadFiles.results,
+            timeOfReading: resultReadFiles.time,
+        });
+    }
+    const endTime = performance.now();
+    removeFiles();
+
+    return { result, timeToEnd: endTime - startTime };
 };
 
 (() => {
-    const startTime = performance.now();
-    const fileNames = createBatchOfFiles(10, "lorem", 100);
-    const result = readFiles(fileNames.fileNames);
-    const endTime = performance.now();
-    console.log(endTime - startTime);
-    console.log("🚀 ~ result:", result);
-    removeFiles();
+    if (Deno.args < 3) {
+        Deno.exit(1);
+    }
+
+    const numberOfIterations = Number(Deno.args.at(0));
+    const numberOfFiles = Number(Deno.args.at(1));
+    const numberOfParagraphs = Number(Deno.args.at(2));
+
+    if (!numberOfFiles || !numberOfParagraphs || !numberOfIterations) {
+        Deno.exit(1);
+    }
+
+    const result = performFilesBenchmark(numberOfFiles, numberOfParagraphs, numberOfIterations);
+    const encoder = new TextEncoder();
+    const encodedResult = encoder.encode(JSON.stringify(result));
+
+    Deno.writeFileSync(`${__dirname}/denoFiles.json`, encodedResult);
+
+    Deno.exit(0);
 })();

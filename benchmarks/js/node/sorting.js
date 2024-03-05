@@ -21,8 +21,8 @@ const quickSort = (arr) => {
     if (arr.length <= 1) return arr;
     const pivot = arr[0];
 
-    let leftArr = [];
-    let rightArr = [];
+    const leftArr = [];
+    const rightArr = [];
 
     for (let i = 1; i < arr.length; i++) {
         arr[i] < pivot ? leftArr.push(arr[i]) : rightArr.push(arr[i]);
@@ -32,12 +32,12 @@ const quickSort = (arr) => {
 };
 
 const countingSortNegative = (arr, place) => {
-    let min = Math.min(...arr);
-    let max = Math.max(...arr);
-    let range = max - min + 1;
+    const min = Math.min(...arr);
+    const max = Math.max(...arr);
+    const range = max - min + 1;
     const n = arr.length;
-    let count = new Array(range).fill(0);
-    let output = new Array(arr.length).fill(0);
+    const count = new Array(range).fill(0);
+    const output = new Array(arr.length).fill(0);
 
     //Store the frequency
     for (let i = 0; i < n; i++) {
@@ -65,7 +65,6 @@ const countingSortNegative = (arr, place) => {
 
 const radixSort = (arr) => {
     const max = Math.max(...arr);
-
     for (let i = 1; Math.floor(max / i) > 0; i *= 10) {
         countingSortNegative(arr, i);
     }
