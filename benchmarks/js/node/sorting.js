@@ -163,7 +163,7 @@ const performSortingBenchmark = (type, numberOfSamples, sizeOfArray, numberOfIte
 
     const result = performSortingBenchmark(sortingType, numberOfSamples, arraySize, numberOfIterations);
 
-    fs.writeFileSync(path.join(__dirname, "sortingResult.json"), JSON.stringify(result));
+    fs.writeFileSync(path.join(__dirname, "nodeSortingResult.json"), JSON.stringify(result));
 
     process.exit(0);
 })();
