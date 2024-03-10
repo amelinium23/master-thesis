@@ -72,9 +72,9 @@ const performFilesBenchmark = (numberOfFiles, numberOfParagraphs, numberOfIterat
         process.exit(1);
     }
 
-    const numberOfIterations = process.argv.at(3);
-    const numberOfFiles = process.argv.at(4);
-    const numberOfParagraphs = process.argv.at(5);
+    const numberOfIterations = Number(process.argv.at(3));
+    const numberOfFiles = Number(process.argv.at(4));
+    const numberOfParagraphs = Number(process.argv.at(5));
 
     if (!numberOfFiles || !numberOfParagraphs || !numberOfIterations) {
         process.exit(1);
