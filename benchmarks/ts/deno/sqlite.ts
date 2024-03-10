@@ -1,6 +1,10 @@
 import { DB } from "https://deno.land/x/sqlite@v3.8/mod.ts";
 import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
-import { User } from "../types";
+import { fromMeta } from "https://deno.land/x/dirname_deno@v0.3.0/src/file_info.ts";
+import { User } from "../types/user.ts";
+import { Row } from "https://deno.land/x/sqlite@v3.8/src/query.ts";
+
+const { __dirname } = fromMeta(import.meta);
 
 const createFakeUser = () => {
 	return {
@@ -14,7 +18,7 @@ const createFakeUser = () => {
 	};
 };
 
-const createTable = async (db: DB) => {
+const createTable = (db: DB) => {
 	try {
 		return db.execute(
 			"CREATE TABLE IF NOT EXISTS Users (firstName TEXT, lastName TEXT, gender TEXT, bio TEXT, jobArea TEXT, jobTitle TEXT, jobType TEXT)"
@@ -24,7 +28,7 @@ const createTable = async (db: DB) => {
 	}
 };
 
-const dropTable = async (db: DB) => {
+const dropTable = (db: DB) => {
 	try {
 		return db.execute("DROP TABLE IF EXISTS Users");
 	} catch (err) {
@@ -32,7 +36,7 @@ const dropTable = async (db: DB) => {
 	}
 };
 
-const insertUser = async (db: DB, user: User) => {
+const insertUser = (db: DB, user: User) => {
 	try {
 		return db.query(
 			"INSERT INTO Users (firstName, lastName, gender, bio, jobArea, jobTitle, jobType) VALUES (?, ?, ?, ?, ?, ?, ?)",
@@ -43,7 +47,7 @@ const insertUser = async (db: DB, user: User) => {
 	}
 };
 
-const getUserFromDatabase = async (db: DB) => {
+const getUserFromDatabase = (db: DB) => {
 	try {
 		return db.query("SELECT firstName, lastName, gender, bio, jobArea, jobTitle, jobType FROM Users");
 	} catch (e) {
@@ -51,7 +55,7 @@ const getUserFromDatabase = async (db: DB) => {
 	}
 };
 
-const createConnection = async () => {
+const createConnection = () => {
 	try {
 		return new DB("deno.db");
 	} catch (err) {
@@ -59,7 +63,7 @@ const createConnection = async () => {
 	}
 };
 
-const mapUser = (values: string[]) => {
+const mapUser = (values: Row) => {
 	if (values.length > 7) return {};
 
 	return {
@@ -73,26 +77,49 @@ const mapUser = (values: string[]) => {
 	};
 };
 
-const performSqliteBenchmark = async (numOfIterations: number, numOfRecords: number) => {
-	const conn = await createConnection();
-	await dropTable(conn);
-	await createTable(conn);
+const performSqliteBenchmark = (numOfIterations: number, numOfRecords: number) => {
+	const conn = createConnection();
+	dropTable(conn);
+	createTable(conn);
 	const startTime = performance.now();
 
 	for (let i = 0; i < numOfIterations; i++) {
 		for (let j = 0; j < numOfRecords; j++) {
-			await insertUser(conn, createFakeUser());
+			insertUser(conn, createFakeUser());
 		}
 	}
 
 	const endTime = performance.now();
-	const users = await getUserFromDatabase(conn);
+	const users = getUserFromDatabase(conn);
 	const mappedUsers = users.map(mapUser);
 
 	return { time: endTime - startTime, users: mappedUsers };
 };
 
-(async () => {
-	const result = await performSqliteBenchmark(100, 100);
-	console.log("Result: \n", result.time);
+(() => {
+	if (Deno.args.length < 3) {
+		Deno.exit(1);
+	}
+
+	const numberOfIterations = Number(Deno.args.at(0));
+	const numberOfRecords = Number(Deno.args.at(1));
+	const noOfBenchmarks = Number(Deno.args.at(2));
+
+	const results = [];
+
+	if (!numberOfIterations || !numberOfRecords || !noOfBenchmarks) {
+		Deno.exit(1);
+	}
+
+	for (let i = 0; i < noOfBenchmarks; i++) {
+		const result = performSqliteBenchmark(numberOfIterations, numberOfRecords);
+		results.push(result);
+	}
+
+	const encoder = new TextEncoder();
+	const encodedResult = encoder.encode(JSON.stringify(results));
+
+	Deno.writeFileSync(`${__dirname}/denoSqlite.json`, encodedResult);
+
+	Deno.exit(0);
 })();

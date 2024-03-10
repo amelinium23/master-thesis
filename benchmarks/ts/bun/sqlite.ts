@@ -85,7 +85,33 @@ const performSqliteBenchmark = async (numOfIterations: number, numOfRecords: num
 	return { time: endTime - startTime, users: await getUserFromDatabase(conn) };
 };
 
+<<<<<<< HEAD
 await (async () => {
 	const result = await performSqliteBenchmark(100, 100);
 	console.log("Result: \n", result);
+=======
+(async () => {
+	if (Bun.argv.length < 5) {
+		process.exit(0);
+	}
+
+	const numberOfIterations = Number(Bun.argv.at(2));
+	const numberOfRecords = Number(Bun.argv.at(3));
+	const noOfBenchmarks = Number(Bun.argv.at(4));
+
+	const results = [];
+
+	if (!numberOfIterations || !numberOfRecords || !noOfBenchmarks) {
+		process.exit(1);
+	}
+
+	for (let i = 0; i < noOfBenchmarks; i++) {
+		const result = await performSqliteBenchmark(numberOfIterations, numberOfRecords);
+		results.push(result);
+	}
+
+	fs.writeFileSync(path.join(__dirname, "bunSqlite.json"), JSON.stringify(results));
+
+	process.exit(0);
+>>>>>>> 08dcba1 (feat: new features)
 })();

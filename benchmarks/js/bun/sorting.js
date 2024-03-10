@@ -155,8 +155,6 @@ const performSortingBenchmark = (type, numberOfSamples, numberOfIterations) => {
     const numberOfSamples = Number(Bun.argv.at(3));
     const numberOfIterations = Number(Bun.argv.at(4));
 
-    console.log(sortingType, numberOfIterations, numberOfSamples);
-
     if (!sortingType || !numberOfSamples || !numberOfIterations) {
         process.exit(1);
     }
