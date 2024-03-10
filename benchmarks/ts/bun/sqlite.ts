@@ -85,11 +85,6 @@ const performSqliteBenchmark = async (numOfIterations: number, numOfRecords: num
 	return { time: endTime - startTime, users: await getUserFromDatabase(conn) };
 };
 
-<<<<<<< HEAD
-await (async () => {
-	const result = await performSqliteBenchmark(100, 100);
-	console.log("Result: \n", result);
-=======
 (async () => {
 	if (Bun.argv.length < 5) {
 		process.exit(0);
@@ -113,5 +108,4 @@ await (async () => {
 	fs.writeFileSync(path.join(__dirname, "bunSqlite.json"), JSON.stringify(results));
 
 	process.exit(0);
->>>>>>> 08dcba1 (feat: new features)
 })();
