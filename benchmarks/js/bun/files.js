@@ -92,33 +92,63 @@ const removeFiles = (directory = "tmp") => {
     fs.rmSync(path.join(import.meta.dir, directory), { recursive: true, force: true });
 };
 
-const mainFunction = async (shouldBeBunFiles = false) => {
+const performBenchmark = async (numberOfFiles, numberOfParagraphs, numberOfIterations, shouldBeBunFiles = false) => {
     if (shouldBeBunFiles) {
-        await performBenchmarkBun(10, 100);
+        return await performBenchmarkBun(numberOfFiles, numberOfParagraphs, numberOfIterations);
     } else {
-        performBenchmarkFs(10, 100);
+        return performBenchmarkFs(numberOfFiles, numberOfParagraphs, numberOfIterations);
     }
 };
 
-const performBenchmarkBun = async (numberOfFiles, numOfParagraphs, filePrefix = "lorem") => {
+const performBenchmarkBun = async (numberOfFiles, numOfParagraphs, numberOfIterations, filePrefix = "lorem") => {
+    const results = [];
     const startTime = performance.now();
-    const fileNames = await createBatchOfBunFiles(numberOfFiles, filePrefix, numOfParagraphs);
-    const result = await readBunFiles(fileNames.fileNames);
-    const endTime = performance.now();
-    // console.log("[Benchmark] Time to complete: ", endTime - startTime);
-    console.log("[Benchmark] Result: ", result);
+    for (let i = 0; i < numberOfIterations; i++) {
+        const startTime = performance.now();
+        const fileNames = await createBatchOfBunFiles(numberOfFiles, filePrefix, numOfParagraphs);
+        const result = await readBunFiles(fileNames.fileNames);
+        const endTime = performance.now();
+        results.push({ result, time: endTime - startTime });
+    }
     removeFiles();
+    const endTime = performance.now();
+    return { time: endTime - startTime, results };
 };
 
-const performBenchmarkFs = (numberOfFiles, numOfParagraphs, filePrefix = "lorem") => {
+const performBenchmarkFs = (numberOfFiles, numOfParagraphs, numberOfIterations, filePrefix = "lorem") => {
+    const results = [];
     const startTime = performance.now();
-    const fileNames = createBatchOfFiles(numberOfFiles, filePrefix, numOfParagraphs);
-    const result = readFiles(fileNames.fileNames);
-    const endTime = performance.now();
-    console.log("[Benchmark] Time to complete: ", endTime - startTime);
+    for (let i = 0; i < numberOfIterations; i++) {
+        const startTime = performance.now();
+        const fileNames = createBatchOfFiles(numberOfFiles, filePrefix, numOfParagraphs);
+        const result = readFiles(fileNames.fileNames);
+        const endTime = performance.now();
+        results.push({ result, time: endTime - startTime });
+    }
     removeFiles();
+    const endTime = performance.now();
+    return { time: endTime - startTime, results };
 };
 
 (async () => {
-    await mainFunction(true);
+    if (Bun.argv.length < 6) {
+        process.stderr.write("[Files] You did not passed arguments");
+        process.exit(1);
+    }
+
+    const numberOfIterations = Number(Bun.argv.at(2));
+    const numberOfFiles = Number(Bun.argv.at(3));
+    const numberOfParagraphs = Number(Bun.argv.at(4));
+    const shouldBeBunFiles = Boolean(Bun.argv.at(5));
+
+    if (!numberOfFiles || !numberOfParagraphs || !numberOfIterations) {
+        process.stderr.write("[Files] Cannot parse arguments!");
+        process.exit(1);
+    }
+
+    const result = await performBenchmark(numberOfFiles, numberOfParagraphs, numberOfIterations, shouldBeBunFiles);
+
+    fs.writeFileSync(path.join(import.meta.dir, "bunCreateFile.json"), JSON.stringify(result));
+
+    process.exit(0);
 })();
