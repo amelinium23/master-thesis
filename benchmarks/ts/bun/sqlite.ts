@@ -105,7 +105,7 @@ const performSqliteBenchmark = async (numOfIterations: number, numOfRecords: num
 		results.push(result);
 	}
 
-	fs.writeFileSync(path.join(__dirname, "bunSqlite.json"), JSON.stringify(results));
+	fs.writeFileSync(path.join(import.meta.dir, "bunSqlite.json"), JSON.stringify(results));
 
 	process.exit(0);
 })();

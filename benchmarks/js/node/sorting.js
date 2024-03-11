@@ -148,7 +148,7 @@ const performSortingBenchmark = (type, numberOfSamples, numberOfIterations) => {
 };
 
 (() => {
-    if (process.argv.length < 7) {
+    if (process.argv.length < 5) {
         process.exit(1);
     }
 

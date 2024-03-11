@@ -1,8 +1,7 @@
 {
-    "name": "benchmarks-node",
+    "name": "benchmarks-js",
     "version": "1.0.0",
     "description": "Benchmarks for master thesis",
-    "main": "index.js",
     "author": "Piotr Tomczak",
     "license": "ISC",
     "scripts": {

@@ -1,24 +1,28 @@
-export const bubbleSort = (arr: number[]): number[] => {
-	if (arr.length <= 1) return arr;
-	const n = arr.length;
-	for (let i = 0; i < arr.length - 1; i++) {
-		for (let j = 0; j < arr.length - n - 1; j++) {
-			if (arr[j] > arr[j + 1]) {
-				const temp = arr[j];
-				arr[j] = arr[j + 1];
-				arr[j + 1] = temp;
+import fs from "fs";
+import path from "path";
+
+const bubbleSort = (arr: number[]) => {
+	const cArr = [...arr];
+	if (cArr.length <= 1) return cArr;
+	const n = cArr.length;
+	for (let i = 0; i < n - 1; i++) {
+		for (let j = 0; j < n - i - 1; j++) {
+			if (cArr[j] > cArr[j + 1]) {
+				const temp = cArr[j];
+				cArr[j] = cArr[j + 1];
+				cArr[j + 1] = temp;
 			}
 		}
 	}
-	return arr;
+	return cArr;
 };
 
-export const quickSort = (arr: number[]): number[] => {
+const quickSort = (arr: number[]): number[] => {
 	if (arr.length <= 1) return arr;
 	const pivot = arr[0];
 
-	let leftArr = [];
-	let rightArr = [];
+	const leftArr = [];
+	const rightArr = [];
 
 	for (let i = 1; i < arr.length; i++) {
 		arr[i] < pivot ? leftArr.push(arr[i]) : rightArr.push(arr[i]);
@@ -28,12 +32,12 @@ export const quickSort = (arr: number[]): number[] => {
 };
 
 const countingSortNegative = (arr: number[], place: number) => {
-	let min = Math.min(...arr);
-	let max = Math.max(...arr);
-	let range = max - min + 1;
+	const min = Math.min(...arr);
+	const max = Math.max(...arr);
+	const range = max - min + 1;
 	const n = arr.length;
-	let count = new Array(range).fill(0);
-	let output = new Array(arr.length).fill(0);
+	const count = new Array(range).fill(0);
+	const output = new Array(arr.length).fill(0);
 
 	//Store the frequency
 	for (let i = 0; i < n; i++) {
@@ -57,67 +61,108 @@ const countingSortNegative = (arr: number[], place: number) => {
 	for (let i = 0; i < n; i++) {
 		arr[i] = output[i];
 	}
-
-	return arr;
 };
 
-export const radixSort = (arr: number[]) => {
+const radixSort = (arr: number[]) => {
 	const max = Math.max(...arr);
-
 	for (let i = 1; Math.floor(max / i) > 0; i *= 10) {
 		countingSortNegative(arr, i);
 	}
-
 	return arr;
 };
 
-export const generateRandomArray = (size: number): number[] => {
-	return Array.from(new Set(Array.from({ length: size }, () => Math.floor(Math.random() * size))));
+const generateRandomArray = (size: number) => {
+	const arr = [];
+	while (arr.length < size) {
+		const r = Math.floor(Math.random() * size * 0.5);
+		if (arr.indexOf(r) === -1) arr.push(r);
+	}
+	return arr;
 };
 
-const bubbleSortBenchmark = (numOfSamples: number, sizeOfArray: number) => {
+const bubbleSortBenchmark = (numberOfSamples: number) => {
 	const results = [];
-	for (let i = 0; i < numOfSamples; i++) {
-		const arr = generateRandomArray(sizeOfArray);
+	for (let i = 0; i < numberOfSamples; i++) {
+		const arr = generateRandomArray(numberOfSamples);
 		const start = performance.now();
 		const sortingResult = bubbleSort(arr);
 		const end = performance.now();
-		results.push([end - start, sortingResult]);
+		results.push({ time: end - start, result: sortingResult });
 	}
 	return results;
 };
 
-const quickSortBenchmark = (numOfSamples: number, sizeOfArray: number) => {
+const quickSortBenchmark = (numberOfSamples: number) => {
 	const results = [];
-	for (let i = 0; i < numOfSamples; i++) {
-		const arr = generateRandomArray(sizeOfArray);
+	for (let i = 0; i < numberOfSamples; i++) {
+		const arr = generateRandomArray(numberOfSamples);
 		const start = performance.now();
 		const sortingResult = quickSort(arr);
 		const end = performance.now();
-		results.push([end - start, sortingResult]);
+		results.push({ time: end - start, result: sortingResult });
 	}
 	return results;
 };
 
-const radixSortBenchmark = (numOfSamples: number, sizeOfArray: number) => {
+const radixSortBenchmark = (numberOfSamples: number) => {
 	const results = [];
-	for (let i = 0; i < numOfSamples; i++) {
-		const arr = generateRandomArray(sizeOfArray);
+	for (let i = 0; i < numberOfSamples; i++) {
+		const arr = generateRandomArray(numberOfSamples);
 		const start = performance.now();
 		const sortingResult = radixSort(arr);
 		const end = performance.now();
-		results.push([end - start, sortingResult]);
+		results.push({ time: end - start, result: sortingResult });
 	}
+
 	return results;
 };
 
+const performSortingBenchmark = (type: string, numberOfSamples: number, numberOfIterations: number) => {
+	const result = [];
+
+	const startTime = performance.now();
+
+	switch (type) {
+		case "bubble":
+			for (let i = 0; i < numberOfIterations; i++) {
+				const bubbleSortResult = bubbleSortBenchmark(numberOfSamples);
+				result.push(bubbleSortResult);
+			}
+			return { result, time: performance.now() - startTime };
+		case "radix":
+			for (let i = 0; i < numberOfIterations; i++) {
+				const bubbleSortResult = radixSortBenchmark(numberOfSamples);
+				result.push(bubbleSortResult);
+			}
+			return { result, time: performance.now() - startTime };
+		case "quick":
+			for (let i = 0; i < numberOfIterations; i++) {
+				const bubbleSortResult = quickSortBenchmark(numberOfSamples);
+				result.push(bubbleSortResult);
+			}
+			return { result, time: performance.now() - startTime };
+
+		default:
+			throw Error(`[Sorting] Type of ${type} is not defined!`);
+	}
+};
+
 (() => {
-	const numOfSamples = 1000;
-	const sizeOfArray = 1000;
-	const bubbleSortResults = bubbleSortBenchmark(numOfSamples, sizeOfArray);
-	const quickSortResults = quickSortBenchmark(numOfSamples, sizeOfArray);
-	const radixSortResults = radixSortBenchmark(numOfSamples, sizeOfArray);
-	console.log(bubbleSortResults);
-	console.log(quickSortResults);
-	console.log(radixSortResults);
+	if (process.argv.length < 5) {
+		process.exit(1);
+	}
+
+	const sortingType = process.argv.at(2);
+	const numberOfSamples = Number(process.argv.at(3));
+	const numberOfIterations = Number(process.argv.at(4));
+
+	if (!sortingType || !numberOfSamples || !numberOfIterations) {
+		process.exit(1);
+	}
+
+	const result = performSortingBenchmark(sortingType, numberOfSamples, numberOfIterations);
+
+	fs.writeFileSync(path.join(__dirname, "nodeSortingResult.json"), JSON.stringify(result));
+
+	process.exit(0);
 })();
