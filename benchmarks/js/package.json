@@ -6,10 +6,10 @@
     "license": "ISC",
     "scripts": {
         "bun:base64": "bun run ./bun/base64.js",
-        "deno:base64": "deno run --allow-hrtime ./deno/base64.js",
+        "deno:base64": "deno run --allow-hrtime --allow-write --allow-read ./deno/base64.js",
         "node:base64": "node ./node/base64.js",
         "bun:sorting": "bun run ./bun/sorting.js",
-        "deno:sorting": "deno run --allow-hrtime ./deno/sorting.js",
+        "deno:sorting": "deno run --allow-hrtime --allow-write --allow-read ./deno/sorting.js",
         "node:sorting": "node ./node/sorting.js",
         "node:createData": "node ./node/sqlite.js",
         "deno:createData": "deno run --allow-hrtime --allow-write --allow-read ./deno/sqlite.js",

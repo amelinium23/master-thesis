@@ -4,10 +4,10 @@
 	"description": "Benchmarks for master thesis",
 	"scripts": {
 		"bun:base64": "bun run ./bun/base64.ts",
-		"deno:base64": "deno run --allow-hrtime ./deno/base64.ts",
+		"deno:base64": "deno run --allow-hrtime --allow-write --allow-read ./deno/base64.ts",
 		"node:base64": "node ./node/base64.ts",
 		"bun:sorting": "bun run ./bun/sorting.ts",
-		"deno:sorting": "deno run --allow-hrtime ./deno/sorting.ts",
+		"deno:sorting": "deno run --allow-hrtime --allow-write --allow-reade ./deno/sorting.ts",
 		"node:sorting": "node ./node/sorting.ts",
 		"node:createData": "node ./node/sqlite.ts",
 		"deno:createData": "deno run --allow-hrtime --allow-write --allow-read ./deno/sqlite.ts",

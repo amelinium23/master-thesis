@@ -86,17 +86,12 @@ const performBase64Benchmark = (numberOfIterations) => {
         Deno.exit(1);
     }
 
-    const { resultOfDecoding, resultOfEncoding } = performBase64Benchmark(numberOfIterations);
+    const result = performBase64Benchmark(numberOfIterations);
 
-    const encoderForEncodedResult = new TextEncoder();
-    const encodedEncodedResult = encoderForEncodedResult.encode(JSON.stringify(resultOfEncoding));
+    const encoderForResult = new TextEncoder();
+    const encodedResult = encoderForResult.encode(JSON.stringify(result));
 
-    Deno.writeFileSync(`${__dirname}/denoEncodedResult.json`, encodedEncodedResult);
-
-    const encoder = new TextEncoder();
-    const encodedDecodedResult = encoder.encode(JSON.stringify(resultOfDecoding));
-
-    Deno.writeFileSync(`${__dirname}/denoDecodedResult.json`, encodedDecodedResult);
+    Deno.writeFileSync(`${__dirname}/denoBase64Result.json`, encodedResult);
 
     Deno.exit(0);
 })();
