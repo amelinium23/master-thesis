@@ -78,10 +78,9 @@ const performBase64Benchmark = (numberOfIterations) => {
 
     const numberOfIterations = Number(Bun.argv.at(2));
 
-    const { resultOfDecoding, resultOfEncoding } = performBase64Benchmark(numberOfIterations);
+    const result = performBase64Benchmark(numberOfIterations);
 
-    fs.writeFileSync(path.join(__dirname, "encodedResult.json"), JSON.stringify(resultOfEncoding));
-    fs.writeFileSync(path.join(__dirname, "decodedResult.json"), JSON.stringify(resultOfDecoding));
+    fs.writeFileSync(path.join(__dirname, "denoBase64Result.json"), JSON.stringify(result));
 
     process.exit(0);
 })();

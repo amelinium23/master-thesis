@@ -148,7 +148,7 @@ const performBenchmarkFs = (numberOfFiles, numOfParagraphs, numberOfIterations, 
 
     const result = await performBenchmark(numberOfFiles, numberOfParagraphs, numberOfIterations, shouldBeBunFiles);
 
-    fs.writeFileSync(path.join(import.meta.dir, "bunCreateFile.json"), JSON.stringify(result));
+    fs.writeFileSync(path.join(import.meta.dir, "bunFilesResult.json"), JSON.stringify(result));
 
     process.exit(0);
 })();

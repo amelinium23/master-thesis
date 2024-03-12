@@ -73,10 +73,10 @@ const generateRandomArray = (size) => {
     return Array.from(new Set(Array.from({ length: size }, () => Math.floor(Math.random() * size))));
 };
 
-const bubbleSortBenchmark = (numberOfSamples, sizeOfArray) => {
+const bubbleSortBenchmark = (numberOfSamples) => {
     const results = [];
     for (let i = 0; i < numberOfSamples; i++) {
-        const arr = generateRandomArray(sizeOfArray);
+        const arr = generateRandomArray(numberOfSamples);
         const start = performance.now();
         const sortingResult = bubbleSort(arr);
         const end = performance.now();
@@ -85,10 +85,10 @@ const bubbleSortBenchmark = (numberOfSamples, sizeOfArray) => {
     return results;
 };
 
-const quickSortBenchmark = (numberOfSamples, sizeOfArray) => {
+const quickSortBenchmark = (numberOfSamples) => {
     const results = [];
     for (let i = 0; i < numberOfSamples; i++) {
-        const arr = generateRandomArray(sizeOfArray);
+        const arr = generateRandomArray(numberOfSamples);
         const start = performance.now();
         const sortingResult = quickSort(arr);
         const end = performance.now();
@@ -97,10 +97,10 @@ const quickSortBenchmark = (numberOfSamples, sizeOfArray) => {
     return results;
 };
 
-const radixSortBenchmark = (numberOfSamples, sizeOfArray) => {
+const radixSortBenchmark = (numberOfSamples) => {
     const results = [];
     for (let i = 0; i < numberOfSamples; i++) {
-        const arr = generateRandomArray(sizeOfArray);
+        const arr = generateRandomArray(numberOfSamples);
         const start = performance.now();
         const sortingResult = radixSort(arr);
         const end = performance.now();
@@ -109,7 +109,7 @@ const radixSortBenchmark = (numberOfSamples, sizeOfArray) => {
     return results;
 };
 
-const performSortingBenchmark = (type, numberOfSamples, sizeOfArray, numberOfIterations) => {
+const performSortingBenchmark = (type, numberOfSamples, numberOfIterations) => {
     const result = [];
 
     const startTime = performance.now();
@@ -117,19 +117,19 @@ const performSortingBenchmark = (type, numberOfSamples, sizeOfArray, numberOfIte
     switch (type) {
         case "bubble":
             for (let i = 0; i < numberOfIterations; i++) {
-                const bubbleSortResult = bubbleSortBenchmark(numberOfSamples, sizeOfArray);
+                const bubbleSortResult = bubbleSortBenchmark(numberOfSamples);
                 result.push(bubbleSortResult);
             }
             return { result, time: performance.now() - startTime };
         case "radix":
             for (let i = 0; i < numberOfIterations; i++) {
-                const radixSortResult = radixSortBenchmark(numberOfSamples, sizeOfArray);
+                const radixSortResult = radixSortBenchmark(numberOfSamples);
                 result.push(radixSortResult);
             }
             return { result, time: performance.now() - startTime };
         case "quick":
             for (let i = 0; i < numberOfIterations; i++) {
-                const quickSortResult = quickSortBenchmark(numberOfSamples, sizeOfArray);
+                const quickSortResult = quickSortBenchmark(numberOfSamples);
                 result.push(quickSortResult);
             }
             return { result, time: performance.now() - startTime };
@@ -140,7 +140,7 @@ const performSortingBenchmark = (type, numberOfSamples, sizeOfArray, numberOfIte
 };
 
 (() => {
-    if (Deno.args < 4) {
+    if (Deno.args < 3) {
         Deno.stderr.write("[Sorting] You did not passed arguments");
         Deno.exit(1);
     }
@@ -148,14 +148,12 @@ const performSortingBenchmark = (type, numberOfSamples, sizeOfArray, numberOfIte
     const sortingType = Deno.args.at(0);
     const numberOfSamples = Number(Deno.args.at(1));
     const numberOfIterations = Number(Deno.args.at(2));
-    const arraySize = Number(Deno.args.at(3));
 
-    if (!sortingType || !numberOfSamples || !numberOfIterations || !arraySize) {
-        Deno.stderr("[Sorting] Could not parsed the arguments");
+    if (!sortingType || !numberOfSamples || !numberOfIterations) {
         Deno.exit(1);
     }
 
-    const result = performSortingBenchmark(sortingType, numberOfSamples, arraySize, numberOfIterations);
+    const result = performSortingBenchmark(sortingType, numberOfSamples, numberOfIterations);
     const encoder = new TextEncoder();
     const encoded = encoder.encode(JSON.stringify(result));
 

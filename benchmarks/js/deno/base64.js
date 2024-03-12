@@ -75,14 +75,12 @@ const performBase64Benchmark = (numberOfIterations) => {
 
 (() => {
     if (Deno.args.length < 1) {
-        Deno.stderr.write("[Base64] You did not passed arguments!");
         Deno.exit(1);
     }
 
     const numberOfIterations = Number(Deno.args.at(0));
 
     if (!numberOfIterations) {
-        Deno.stderr.write("[Base64] You passed arguments that could not be parsed!");
         Deno.exit(1);
     }
 
