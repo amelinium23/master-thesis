@@ -87,7 +87,7 @@ const performFilesBenchmark = (numberOfFiles: number, numberOfParagraphs: number
 
 	const result = performFilesBenchmark(numberOfFiles, numberOfParagraphs, numberOfIterations);
 
-	fs.writeFileSync(path.join(__dirname, "resultFiles.json"), JSON.stringify(result));
+	fs.writeFileSync(path.join(__dirname, "nodeFilesResult.json"), JSON.stringify(result));
 
 	process.exit(0);
 })();

@@ -1,1 +1,4 @@
 **/tmp/**.txt
+
+ts/**/**.json
+js/**/**.json

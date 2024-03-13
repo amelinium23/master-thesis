@@ -75,10 +75,9 @@ const performBase64Benchmark = (numberOfIterations: number) => {
 
 	const numberOfIterations = Number(process.argv.at(2));
 
-	const { resultOfDecoding, resultOfEncoding } = performBase64Benchmark(numberOfIterations);
+	const result = performBase64Benchmark(numberOfIterations);
 
-	fs.writeFileSync(path.join(__dirname, "encodedResult.json"), JSON.stringify(resultOfEncoding));
-	fs.writeFileSync(path.join(__dirname, "decodedResult.json"), JSON.stringify(resultOfDecoding));
+	fs.writeFileSync(path.join(__dirname, "nodeBase64Result.json"), JSON.stringify(resultOfEncoding));
 
 	process.exit(0);
 })();

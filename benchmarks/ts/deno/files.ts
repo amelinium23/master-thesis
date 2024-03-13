@@ -92,7 +92,7 @@ const performFilesBenchmark = (numberOfFiles: number, numberOfParagraphs: number
 	const encoder = new TextEncoder();
 	const encodedResult = encoder.encode(JSON.stringify(result));
 
-	Deno.writeFileSync(`${__dirname}/denoFiles.json`, encodedResult);
+	Deno.writeFileSync(`${__dirname}/denoFilesResult.json`, encodedResult);
 
 	Deno.exit(0);
 })();

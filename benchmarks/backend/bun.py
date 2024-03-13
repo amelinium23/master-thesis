@@ -1,6 +1,7 @@
 import subprocess
 import os
 import json
+import psutil
 from options import (
     SortingParameters,
     BunFilesParameters,
@@ -11,7 +12,7 @@ from options import (
 
 def bun_js_perform_sorting_benchmark(options: SortingParameters):
     os.chdir("../js")
-    subprocess.run(
+    process = subprocess.Popen(
         [
             "npm",
             "run",
@@ -23,12 +24,18 @@ def bun_js_perform_sorting_benchmark(options: SortingParameters):
     )
     file = open("./bun/bunSortingResult.json").read()
     result = json.loads(file)
+    p_info = psutil.Process(process.pid)
+    used_memory = float(p_info.memory_full_info().rss)
+    used_cpu = float(p_info.cpu_percent(interval=1))
+    result["used_cpu"] = used_cpu
+    result["used_memory"] = used_memory
+    process.kill()
     return result
 
 
 def bun_ts_perform_sorting_benchmark(options: SortingParameters):
     os.chdir("../ts")
-    subprocess.run(
+    process = subprocess.Popen(
         [
             "npm",
             "run",
@@ -45,7 +52,7 @@ def bun_ts_perform_sorting_benchmark(options: SortingParameters):
 
 def bun_js_perform_files_benchmark(options: BunFilesParameters):
     os.chdir("../js")
-    subprocess.run(
+    process = subprocess.Popen(
         [
             "npm",
             "run",
@@ -58,12 +65,18 @@ def bun_js_perform_files_benchmark(options: BunFilesParameters):
     )
     file = open("./bun/bunFilesResult.json").read()
     result = json.loads(file)
+    p_info = psutil.Process(process.pid)
+    used_memory = float(p_info.memory_full_info().rss)
+    used_cpu = float(p_info.cpu_percent(interval=1))
+    result["used_cpu"] = used_cpu
+    result["used_memory"] = used_memory
+    process.kill()
     return result
 
 
 def bun_ts_perform_files_benchmark(options: BunFilesParameters):
     os.chdir("../ts")
-    subprocess.run(
+    process = subprocess.Popen(
         [
             "npm",
             "run",
@@ -76,12 +89,18 @@ def bun_ts_perform_files_benchmark(options: BunFilesParameters):
     )
     file = open("./bun/bunFilesResult.json").read()
     result = json.loads(file)
+    p_info = psutil.Process(process.pid)
+    used_memory = float(p_info.memory_full_info().rss)
+    used_cpu = float(p_info.cpu_percent(interval=1))
+    result["used_cpu"] = used_cpu
+    result["used_memory"] = used_memory
+    process.kill()
     return result
 
 
 def bun_js_perform_base64_benchmark(options: Base64Parameters):
     os.chdir("../js")
-    subprocess.run(
+    process = subprocess.Popen(
         [
             "npm",
             "run",
@@ -91,12 +110,18 @@ def bun_js_perform_base64_benchmark(options: Base64Parameters):
     )
     file = open("./bun/bunBase64Result.json").read()
     result = json.loads(file)
+    p_info = psutil.Process(process.pid)
+    used_memory = float(p_info.memory_full_info().rss)
+    used_cpu = float(p_info.cpu_percent(interval=1))
+    result["used_cpu"] = used_cpu
+    result["used_memory"] = used_memory
+    process.kill()
     return result
 
 
 def bun_ts_perform_base64_benchmark(options: Base64Parameters):
     os.chdir("../ts")
-    subprocess.run(
+    process = subprocess.Popen(
         [
             "npm",
             "run",
@@ -106,12 +131,18 @@ def bun_ts_perform_base64_benchmark(options: Base64Parameters):
     )
     file = open("./bun/bunBase64Result.json").read()
     result = json.loads(file)
+    p_info = psutil.Process(process.pid)
+    used_memory = float(p_info.memory_full_info().rss)
+    used_cpu = float(p_info.cpu_percent(interval=1))
+    result["used_cpu"] = used_cpu
+    result["used_memory"] = used_memory
+    process.kill()
     return result
 
 
 def bun_js_perform_sqlite_benchmark(options: SqliteParameters):
     os.chdir("../js")
-    subprocess.run(
+    process = subprocess.Popen(
         [
             "npm",
             "run",
@@ -123,12 +154,18 @@ def bun_js_perform_sqlite_benchmark(options: SqliteParameters):
     )
     file = open("./bun/bunSqlite.json").read()
     result = json.loads(file)
+    p_info = psutil.Process(process.pid)
+    used_memory = float(p_info.memory_full_info().rss)
+    used_cpu = float(p_info.cpu_percent(interval=1))
+    result["used_cpu"] = used_cpu
+    result["used_memory"] = used_memory
+    process.kill()
     return result
 
 
 def bun_ts_perform_sqlite_benchmark(options: SqliteParameters):
     os.chdir("../ts")
-    subprocess.run(
+    process = subprocess.Popen(
         [
             "npm",
             "run",
@@ -138,6 +175,12 @@ def bun_ts_perform_sqlite_benchmark(options: SqliteParameters):
             str(options.number_of_benchmarks),
         ]
     )
-    file = open("./bun/denoSqlite.json").read()
+    file = open("./bun/bunSqlite.json").read()
     result = json.loads(file)
+    p_info = psutil.Process(process.pid)
+    used_memory = float(p_info.memory_full_info().rss)
+    used_cpu = float(p_info.cpu_percent(interval=1))
+    result["used_cpu"] = used_cpu
+    result["used_memory"] = used_memory
+    process.kill()
     return result
