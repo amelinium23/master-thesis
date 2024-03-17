@@ -25,3 +25,8 @@ class SqliteParameters(BaseModel):
 
 class Base64Parameters(BaseModel):
     number_of_iterations: int
+
+
+class ServerParameters(BaseModel):
+    number_of_requests: int
+    number_of_connections: int

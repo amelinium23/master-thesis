@@ -6,6 +6,7 @@ from options import (
     Base64Parameters,
     FilesParameters,
     SqliteParameters,
+    ServerParameters,
 )
 from deno import (
     deno_js_perform_sorting_benchmark,
@@ -38,6 +39,7 @@ from node import (
     node_js_perform_sqlite_benchmark,
     node_ts_perform_base64_benchmark,
     node_ts_perform_sqlite_benchmark,
+    node_js_perform_server_benchmark,
 )
 
 app = FastAPI()
@@ -193,4 +195,10 @@ def perform_js_node_sqlite_benchmark(options: SqliteParameters):
 @app.post("/api/ts/node/sqlite")
 def perform_ts_node_sqlite_benchmark(options: SqliteParameters):
     result = node_ts_perform_sqlite_benchmark(options)
+    return JSONResponse(content=result)
+
+
+@app.post("/api/js/node/server")
+def perform_js_node_sqlite_benchmark(options: ServerParameters):
+    result = node_js_perform_server_benchmark(options)
     return JSONResponse(content=result)

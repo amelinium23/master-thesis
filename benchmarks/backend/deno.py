@@ -1,8 +1,10 @@
+import signal
 import subprocess
 import os
 import json
 import psutil
 from options import (
+    ServerParameters,
     SortingParameters,
     FilesParameters,
     SqliteParameters,
@@ -186,4 +188,48 @@ def deno_ts_perform_sqlite_benchmark(options: SqliteParameters):
     process.kill()
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
+    return result
+
+
+def deno_js_perform_server_benchmark(options: ServerParameters):
+    os.chdir("../js")
+    process_server = subprocess.Popen(["npm", "run", "deno:server"])
+    subprocess.run(["touch", "./deno/denoServerResult.json"])
+    process_oha = subprocess.Popen(
+        [
+            f"oha http://localhost:3000 -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
+        ],
+        shell=True,
+    )
+    p_info = psutil.Process(process_server.pid)
+    file = open("./deno/denoServerResult.json").read()
+    result = json.loads(file)
+    used_memory = float(p_info.memory_full_info().rss)
+    used_cpu = float(p_info.cpu_percent(interval=1))
+    result["used_cpu"] = used_cpu
+    result["used_memory"] = used_memory
+    os.kill(process_server.pid, signal.SIGKILL)
+    process_oha.kill()
+    return result
+
+
+def deno_ts_perform_server_benchmark(options: ServerParameters):
+    os.chdir("../ts")
+    process_server = subprocess.Popen(["npm", "run", "deno:server"])
+    subprocess.run(["touch", "./deno/denoServerResult.json"])
+    process_oha = subprocess.Popen(
+        [
+            f"oha http://localhost:3000 -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
+        ],
+        shell=True,
+    )
+    p_info = psutil.Process(process_server.pid)
+    file = open("./node/nodeServerResult.json").read()
+    result = json.loads(file)
+    used_memory = float(p_info.memory_full_info().rss)
+    used_cpu = float(p_info.cpu_percent(interval=1))
+    result["used_cpu"] = used_cpu
+    result["used_memory"] = used_memory
+    os.kill(process_server.pid, signal.SIGKILL)
+    process_oha.kill()
     return result
