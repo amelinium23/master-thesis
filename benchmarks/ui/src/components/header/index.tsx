@@ -1,6 +1,6 @@
-import Bun from '../../assets/svgs/bun.svg?react';
-import Deno from '../../assets/svgs/deno.svg?react';
-import Node from '../../assets/svgs/nodejs.svg?react';
+import Bun from "../../assets/svgs/bun.svg?react";
+import Deno from "../../assets/svgs/deno.svg?react";
+import Node from "../../assets/svgs/nodejs.svg?react";
 
 export const Header = () => {
   return (
