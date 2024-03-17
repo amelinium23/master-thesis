@@ -9,7 +9,9 @@ from options import (
     ServerParameters,
 )
 from deno import (
+    deno_js_perform_server_benchmark,
     deno_js_perform_sorting_benchmark,
+    deno_ts_perform_server_benchmark,
     deno_ts_perform_sorting_benchmark,
     deno_js_perform_base64_benchmark,
     deno_ts_perform_files_benchmark,
@@ -20,7 +22,9 @@ from deno import (
 )
 
 from bun import (
+    bun_js_perform_server_benchmark,
     bun_js_perform_sorting_benchmark,
+    bun_ts_perform_server_benchmark,
     bun_ts_perform_sorting_benchmark,
     bun_js_perform_base64_benchmark,
     bun_ts_perform_files_benchmark,
@@ -32,6 +36,7 @@ from bun import (
 
 from node import (
     node_js_perform_sorting_benchmark,
+    node_ts_perform_server_benchmark,
     node_ts_perform_sorting_benchmark,
     node_js_perform_base64_benchmark,
     node_ts_perform_files_benchmark,
@@ -98,6 +103,18 @@ def perform_ts_deno_sqlite_benchmark(options: SqliteParameters):
     return JSONResponse(content=result)
 
 
+@app.post("/api/js/deno/server")
+def perform_js_deno_server_benchmark(options: ServerParameters):
+    result = deno_js_perform_server_benchmark(options)
+    return JSONResponse(content=result)
+
+
+@app.post("/api/ts/deno/server")
+def perform_ts_deno_server_benchmark(options: ServerParameters):
+    result = deno_ts_perform_server_benchmark(options)
+    return JSONResponse(content=result)
+
+
 # bun
 
 
@@ -146,6 +163,18 @@ def perform_js_bun_sqlite_benchmark(options: SqliteParameters):
 @app.post("/api/ts/bun/sqlite")
 def perform_ts_bun_sqlite_benchmark(options: SqliteParameters):
     result = bun_ts_perform_sqlite_benchmark(options)
+    return JSONResponse(content=result)
+
+
+@app.post("/api/js/bun/server")
+def perform_js_bun_server_benchmark(options: ServerParameters):
+    result = bun_js_perform_server_benchmark(options)
+    return JSONResponse(content=result)
+
+
+@app.post("/api/ts/bun/server")
+def perform_ts_bun_server_benchmark(options: ServerParameters):
+    result = bun_ts_perform_server_benchmark(options)
     return JSONResponse(content=result)
 
 
@@ -199,6 +228,12 @@ def perform_ts_node_sqlite_benchmark(options: SqliteParameters):
 
 
 @app.post("/api/js/node/server")
-def perform_js_node_sqlite_benchmark(options: ServerParameters):
+def perform_js_node_server_benchmark(options: ServerParameters):
     result = node_js_perform_server_benchmark(options)
+    return JSONResponse(content=result)
+
+
+@app.post("/api/ts/node/server")
+def perform_ts_node_server_benchmark(options: ServerParameters):
+    result = node_ts_perform_server_benchmark(options)
     return JSONResponse(content=result)
