@@ -230,6 +230,8 @@ def deno_ts_perform_server_benchmark(options: ServerParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    os.kill(process_server.pid, signal.SIGKILL)
-    process_oha.kill()
+    os.kill(process_server.pid)
+    os.kill(
+        process_oha.pid,
+    )
     return result

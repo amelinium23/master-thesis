@@ -9,10 +9,11 @@ export const AlgorithmForm = ({ options, currentOption, setCurrentOption }: Algo
         <CardTitle>Perform benchmarks</CardTitle>
         <Select
           autoComplete="off"
+          defaultValue={currentOption.value}
           onValueChange={(value) => setCurrentOption(options.find((val) => val.value === value)!)}
         >
           <SelectTrigger className="SelectTrigger" aria-label="Algorithm">
-            <SelectValue placeholder="Select algorithm" defaultValue={currentOption.label} />
+            <SelectValue placeholder="Select algorithm" defaultValue={currentOption.value} />
           </SelectTrigger>
           <SelectContent>
             {options.map((option) => (

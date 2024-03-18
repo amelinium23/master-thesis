@@ -17,8 +17,8 @@
         "node:fileWrite": "node ./node/files.js",
         "deno:fileWrite": "deno run --allow-hrtime --allow-read --allow-write ./deno/files.js",
         "bun:fileWrite": "bun run ./bun/files.js",
-        "node:server": "node ./node/server.js --watch",
-        "deno:server": "deno run --allow-net --watch ./deno/server.js",
+        "node:server": "node ./node/server.js ",
+        "deno:server": "deno run --allow-net ./deno/server.js",
         "bun:server": "bun run ./bun/server.js"
     },
     "devDependencies": {

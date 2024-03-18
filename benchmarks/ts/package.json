@@ -16,7 +16,7 @@
 		"deno:fileWrite": "deno run --allow-hrtime --allow-read --allow-write ./deno/files.ts",
 		"bun:fileWrite": "bun run ./bun/files.ts",
 		"node:server": "node ./node/server.ts --watch",
-		"deno:server": "deno run --allow-net --watch ./deno/server.ts",
+		"deno:server": "deno run --allow-net ./deno/server.ts",
 		"bun:server": "bun run ./bun/server.ts"
 	},
 	"author": "Piotr Tomczak",
