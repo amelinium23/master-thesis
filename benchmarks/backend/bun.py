@@ -158,7 +158,6 @@ def bun_js_perform_sqlite_benchmark(options: SqliteParameters):
             "bun:createData",
             str(options.number_of_iterations),
             str(options.number_of_records),
-            str(options.number_of_benchmarks),
         ]
     )
     file = open("./bun/bunSqlite.json").read()
@@ -181,7 +180,6 @@ def bun_ts_perform_sqlite_benchmark(options: SqliteParameters):
             "bun:createData",
             str(options.number_of_iterations),
             str(options.number_of_records),
-            str(options.number_of_benchmarks),
         ]
     )
     file = open("./bun/bunSqlite.json").read()

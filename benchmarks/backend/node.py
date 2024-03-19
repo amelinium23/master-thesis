@@ -156,7 +156,6 @@ def node_js_perform_sqlite_benchmark(options: SqliteParameters):
             "node:createData",
             str(options.number_of_iterations),
             str(options.number_of_records),
-            str(options.number_of_benchmarks),
         ]
     )
     file = open("./node/nodeSqlite.json").read()
@@ -179,7 +178,6 @@ def node_ts_perform_sqlite_benchmark(options: SqliteParameters):
             "node:createData",
             str(options.number_of_iterations),
             str(options.number_of_records),
-            str(options.number_of_benchmarks),
         ]
     )
     file = open("./node/nodeSqlite.json").read()

@@ -154,7 +154,6 @@ def deno_js_perform_sqlite_benchmark(options: SqliteParameters):
             "deno:createData",
             str(options.number_of_iterations),
             str(options.number_of_records),
-            str(options.number_of_benchmarks),
         ]
     )
     p_info = psutil.Process(process.pid)
@@ -177,7 +176,6 @@ def deno_ts_perform_sqlite_benchmark(options: SqliteParameters):
             "deno:createData",
             str(options.number_of_iterations),
             str(options.number_of_records),
-            str(options.number_of_benchmarks),
         ]
     )
     p_info = psutil.Process(process.pid)
