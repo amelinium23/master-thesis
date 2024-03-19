@@ -33,7 +33,6 @@ const dropTable = (db) => {
         throw err;
     }
 };
-
 const insertUser = (db, user) => {
     try {
         return db.query(
@@ -95,27 +94,21 @@ const performSqliteBenchmark = (numOfIterations, numOfRecords) => {
 };
 
 (() => {
-    if (Deno.args.length < 3) {
+    if (Deno.args.length < 2) {
         Deno.exit(1);
     }
 
     const numberOfIterations = Number(Deno.args.at(0));
     const numberOfRecords = Number(Deno.args.at(1));
-    const noOfBenchmarks = Number(Deno.args.at(2));
 
-    const results = [];
-
-    if (!numberOfIterations || !numberOfRecords || !noOfBenchmarks) {
+    if (!numberOfIterations || !numberOfRecords) {
         Deno.exit(1);
     }
 
-    for (let i = 0; i < noOfBenchmarks; i++) {
-        const result = performSqliteBenchmark(numberOfIterations, numberOfRecords);
-        results.push(result);
-    }
+    const result = performSqliteBenchmark(numberOfIterations, numberOfRecords);
 
     const encoder = new TextEncoder();
-    const encodedResult = encoder.encode(JSON.stringify(results));
+    const encodedResult = encoder.encode(JSON.stringify(result));
 
     Deno.writeFileSync(`${__dirname}/denoSqlite.json`, encodedResult);
 

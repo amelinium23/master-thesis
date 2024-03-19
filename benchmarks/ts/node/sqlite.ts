@@ -84,26 +84,20 @@ const performSqliteBenchmark = async (numOfIterations: number, numOfRecords: num
 };
 
 (async () => {
-	if (process.argv.length < 5) {
+	if (process.argv.length < 4) {
 		process.exit(0);
 	}
 
 	const numberOfIterations = Number(process.argv.at(2));
 	const numberOfRecords = Number(process.argv.at(3));
-	const noOfBenchmarks = Number(process.argv.at(4));
 
-	const results = [];
-
-	if (!numberOfIterations || !numberOfRecords || !noOfBenchmarks) {
+	if (!numberOfIterations || !numberOfRecords) {
 		process.exit(1);
 	}
 
-	for (let i = 0; i < noOfBenchmarks; i++) {
-		const result = await performSqliteBenchmark(numberOfIterations, numberOfRecords);
-		results.push(result);
-	}
+	const result = await performSqliteBenchmark(numberOfIterations, numberOfRecords);
 
-	fs.writeFileSync(path.join(__dirname, "nodeSqlite.json"), JSON.stringify(results));
+	fs.writeFileSync(path.join(__dirname, "nodeSqlite.json"), JSON.stringify(result));
 
 	process.exit(0);
 })();

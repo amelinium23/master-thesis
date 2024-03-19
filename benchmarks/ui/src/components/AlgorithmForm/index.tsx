@@ -4,8 +4,8 @@ import { AlgorithmFormProps } from "./types";
 
 export const AlgorithmForm = ({ options, currentOption, setCurrentOption }: AlgorithmFormProps) => {
   return (
-    <div className="w-full max-h-fit flex mx-auto justify-center">
-      <Card className="flex flex-col gap-2 w-1/2 self-center p-4">
+    <div className="max-h-fit flex mx-auto min-w-screen-md w-full max-w-screen-md justify-center">
+      <Card className="flex flex-col gap-2 w-full self-center p-4">
         <CardTitle>Perform benchmarks</CardTitle>
         <Select
           autoComplete="off"

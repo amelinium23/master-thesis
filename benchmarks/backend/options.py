@@ -18,7 +18,6 @@ class BunFilesParameters(FilesParameters):
 
 
 class SqliteParameters(BaseModel):
-    number_of_benchmarks: int
     number_of_iterations: int
     number_of_records: int
 

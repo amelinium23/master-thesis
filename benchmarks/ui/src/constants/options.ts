@@ -7,7 +7,7 @@ export const options = [
 ];
 
 export const sortingOptions = [
-  { value: "bubble", label: "Sorting benchmark" },
-  { value: "radix", label: "Files benchmark" },
-  { value: "quick", label: "Sqlite benchmark" }
+  { value: "bubble", label: "Bubble sort" },
+  { value: "radix", label: "Radix sort" },
+  { value: "quick", label: "Quick sort" }
 ];
