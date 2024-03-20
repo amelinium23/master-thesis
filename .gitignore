@@ -3,6 +3,9 @@ out/**
 
 **.db
 
+**/.DS_Store
+.DS_Store
+
 **/node_modules/**
 
 benchmarks/js/**/**.json
