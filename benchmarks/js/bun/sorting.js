@@ -72,48 +72,36 @@ const radixSort = (arr) => {
 };
 
 const generateRandomArray = (size) => {
-    const arr = [];
-    while (arr.length < size) {
-        const r = Math.floor(Math.random() * size);
-        if (arr.indexOf(r) === -1) arr.push(r);
+    const uniqueNumbers = new Set();
+    while (uniqueNumbers.size < size) {
+        const randomNumber = Math.floor(Math.random() * size);
+        uniqueNumbers.add(randomNumber);
     }
-    return arr;
+    return Array.from(uniqueNumbers);
 };
 
 const bubbleSortBenchmark = (numberOfSamples) => {
-    const results = [];
-    for (let i = 0; i < numberOfSamples; i++) {
-        const arr = generateRandomArray(numberOfSamples);
-        const start = performance.now();
-        const sortingResult = bubbleSort(arr);
-        const end = performance.now();
-        results.push({ time: end - start, result: sortingResult });
-    }
-    return results;
+    const arr = generateRandomArray(numberOfSamples);
+    const start = performance.now();
+    const sortingResult = bubbleSort(arr);
+    const end = performance.now();
+    return { time: end - start, result: sortingResult };
 };
 
 const quickSortBenchmark = (numberOfSamples) => {
-    const results = [];
-    for (let i = 0; i < numberOfSamples; i++) {
-        const arr = generateRandomArray(numberOfSamples);
-        const start = performance.now();
-        const sortingResult = quickSort(arr);
-        const end = performance.now();
-        results.push({ time: end - start, result: sortingResult });
-    }
-    return results;
+    const arr = generateRandomArray(numberOfSamples);
+    const start = performance.now();
+    const sortingResult = quickSort(arr);
+    const end = performance.now();
+    return { time: end - start, result: sortingResult };
 };
 
 const radixSortBenchmark = (numberOfSamples) => {
-    const results = [];
-    for (let i = 0; i < numberOfSamples; i++) {
-        const arr = generateRandomArray(numberOfSamples);
-        const start = performance.now();
-        const sortingResult = radixSort(arr);
-        const end = performance.now();
-        results.push({ time: end - start, result: sortingResult });
-    }
-    return results;
+    const arr = generateRandomArray(numberOfSamples);
+    const start = performance.now();
+    const sortingResult = radixSort(arr);
+    const end = performance.now();
+    return { time: end - start, result: sortingResult };
 };
 
 const performSortingBenchmark = (type, numberOfSamples, numberOfIterations) => {

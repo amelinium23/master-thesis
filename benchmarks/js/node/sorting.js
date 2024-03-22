@@ -2,19 +2,17 @@ const fs = require("fs");
 const path = require("path");
 
 const bubbleSort = (arr) => {
-    const cArr = [...arr];
-    if (cArr.length <= 1) return cArr;
-    const n = cArr.length;
-    for (let i = 0; i < n - 1; i++) {
-        for (let j = 0; j < n - i - 1; j++) {
-            if (cArr[j] > cArr[j + 1]) {
-                const temp = cArr[j];
-                cArr[j] = cArr[j + 1];
-                cArr[j + 1] = temp;
+    const length = arr.length;
+    for (let i = 0; i < length; i++) {
+        for (let j = 0; j < length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                const temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
-    return cArr;
+    return arr;
 };
 
 const quickSort = (arr) => {
@@ -39,25 +37,21 @@ const countingSortNegative = (arr, place) => {
     const count = new Array(range).fill(0);
     const output = new Array(arr.length).fill(0);
 
-    //Store the frequency
     for (let i = 0; i < n; i++) {
         const num = Math.floor(arr[i] / place) % 10;
         count[num - min]++;
     }
 
-    //Accumulate the frequency
     for (let i = 1; i < count.length; i++) {
         count[i] += count[i - 1];
     }
 
-    //Sort based on frequency
     for (let i = n - 1; i >= 0; i--) {
         const num = Math.floor(arr[i] / place) % 10;
         output[count[num - min] - 1] = arr[i];
         count[num - min]--;
     }
 
-    //Copy the output array
     for (let i = 0; i < n; i++) {
         arr[i] = output[i];
     }
@@ -72,49 +66,36 @@ const radixSort = (arr) => {
 };
 
 const generateRandomArray = (size) => {
-    const arr = [];
-    while (arr.length < size) {
-        const r = Math.floor(Math.random() * size * 0.5);
-        if (arr.indexOf(r) === -1) arr.push(r);
+    const uniqueNumbers = new Set();
+    while (uniqueNumbers.size < size) {
+        const randomNumber = Math.floor(Math.random() * size);
+        uniqueNumbers.add(randomNumber);
     }
-    return arr;
+    return Array.from(uniqueNumbers);
 };
 
 const bubbleSortBenchmark = (numberOfSamples) => {
-    const results = [];
-    for (let i = 0; i < numberOfSamples; i++) {
-        const arr = generateRandomArray(numberOfSamples);
-        const start = performance.now();
-        const sortingResult = bubbleSort(arr);
-        const end = performance.now();
-        results.push({ time: end - start, result: sortingResult });
-    }
-    return results;
+    const arr = generateRandomArray(numberOfSamples);
+    const start = performance.now();
+    const sortingResult = bubbleSort(arr);
+    const end = performance.now();
+    return { time: end - start, result: sortingResult };
 };
 
 const quickSortBenchmark = (numberOfSamples) => {
-    const results = [];
-    for (let i = 0; i < numberOfSamples; i++) {
-        const arr = generateRandomArray(numberOfSamples);
-        const start = performance.now();
-        const sortingResult = quickSort(arr);
-        const end = performance.now();
-        results.push({ time: end - start, result: sortingResult });
-    }
-    return results;
+    const arr = generateRandomArray(numberOfSamples);
+    const start = performance.now();
+    const sortingResult = quickSort(arr);
+    const end = performance.now();
+    return { time: end - start, result: sortingResult };
 };
 
 const radixSortBenchmark = (numberOfSamples) => {
-    const results = [];
-    for (let i = 0; i < numberOfSamples; i++) {
-        const arr = generateRandomArray(numberOfSamples);
-        const start = performance.now();
-        const sortingResult = radixSort(arr);
-        const end = performance.now();
-        results.push({ time: end - start, result: sortingResult });
-    }
-
-    return results;
+    const arr = generateRandomArray(numberOfSamples);
+    const start = performance.now();
+    const sortingResult = radixSort(arr);
+    const end = performance.now();
+    return { time: end - start, result: sortingResult };
 };
 
 const performSortingBenchmark = (type, numberOfSamples, numberOfIterations) => {

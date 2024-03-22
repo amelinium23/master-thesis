@@ -55,6 +55,18 @@ def read_root():
     return {"Hello": "World"}
 
 
+@app.post("/api/js/sorting")
+def perform_sorting_all(options: SortingParameters):
+    result = {}
+    result_bun = bun_js_perform_sorting_benchmark(options)
+    result_deno = deno_js_perform_sorting_benchmark(options)
+    result_node = node_js_perform_sorting_benchmark(options)
+    result["result_bun"] = result_bun
+    result["result_deno"] = result_deno
+    result["result_node"] = result_node
+    return JSONResponse(content=result)
+
+
 @app.post("/api/js/deno/sorting")
 def perform_js_deno_sorting_benchmark(options: SortingParameters):
     result = deno_js_perform_sorting_benchmark(options)
