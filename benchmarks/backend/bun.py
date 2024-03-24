@@ -6,7 +6,7 @@ import psutil
 from options import (
     ServerParameters,
     SortingParameters,
-    BunFilesParameters,
+    FilesParameters,
     SqliteParameters,
     Base64Parameters,
 )
@@ -31,7 +31,6 @@ def bun_js_perform_sorting_benchmark(options: SortingParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    process.kill()
     return result
 
 
@@ -54,12 +53,12 @@ def bun_ts_perform_sorting_benchmark(options: SortingParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    process.kill()
+
     p_info.kill()
     return result
 
 
-def bun_js_perform_files_benchmark(options: BunFilesParameters):
+def bun_js_perform_files_benchmark(options: FilesParameters):
     os.chdir("../js")
     process = subprocess.Popen(
         [
@@ -79,11 +78,11 @@ def bun_js_perform_files_benchmark(options: BunFilesParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    process.kill()
+
     return result
 
 
-def bun_ts_perform_files_benchmark(options: BunFilesParameters):
+def bun_ts_perform_files_benchmark(options: FilesParameters):
     os.chdir("../ts")
     process = subprocess.Popen(
         [
@@ -103,7 +102,7 @@ def bun_ts_perform_files_benchmark(options: BunFilesParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    process.kill()
+
     return result
 
 
@@ -124,7 +123,7 @@ def bun_js_perform_base64_benchmark(options: Base64Parameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    process.kill()
+
     return result
 
 
@@ -145,7 +144,7 @@ def bun_ts_perform_base64_benchmark(options: Base64Parameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    process.kill()
+
     return result
 
 
@@ -167,7 +166,6 @@ def bun_js_perform_sqlite_benchmark(options: SqliteParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    process.kill()
     return result
 
 
@@ -189,7 +187,6 @@ def bun_ts_perform_sqlite_benchmark(options: SqliteParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    process.kill()
     return result
 
 

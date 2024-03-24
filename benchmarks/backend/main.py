@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from options import (
     SortingParameters,
-    BunFilesParameters,
     Base64Parameters,
     FilesParameters,
     SqliteParameters,
@@ -55,197 +54,91 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.post("/api/js/sorting")
+@app.post("/api/sorting")
 def perform_sorting_all(options: SortingParameters):
-    result = {}
+    result = {"ts": {}, "js": {}}
     result_bun = bun_js_perform_sorting_benchmark(options)
     result_deno = deno_js_perform_sorting_benchmark(options)
     result_node = node_js_perform_sorting_benchmark(options)
-    result["result_bun"] = result_bun
-    result["result_deno"] = result_deno
-    result["result_node"] = result_node
+    result["js"]["result_bun"] = result_bun
+    result["js"]["result_deno"] = result_deno
+    result["js"]["result_node"] = result_node
+    result_ts_bun = bun_ts_perform_sorting_benchmark(options)
+    result_ts_deno = deno_ts_perform_sorting_benchmark(options)
+    result_ts_node = node_ts_perform_sorting_benchmark(options)
+    result["ts"]["result_bun"] = result_ts_bun
+    result["ts"]["result_deno"] = result_ts_deno
+    result["ts"]["result_node"] = result_ts_node
     return JSONResponse(content=result)
 
 
-@app.post("/api/js/deno/sorting")
-def perform_js_deno_sorting_benchmark(options: SortingParameters):
-    result = deno_js_perform_sorting_benchmark(options)
+@app.post("/api/files")
+def perform_files_all(options: FilesParameters):
+    result = {"ts": {}, "js": {}}
+    result_bun = bun_js_perform_files_benchmark(options)
+    result_deno = deno_js_perform_files_benchmark(options)
+    result_node = node_js_perform_files_benchmark(options)
+    result["js"]["result_bun"] = result_bun
+    result["js"]["result_deno"] = result_deno
+    result["js"]["result_node"] = result_node
+    result_ts_bun = bun_ts_perform_files_benchmark(options)
+    result_ts_deno = deno_ts_perform_files_benchmark(options)
+    result_ts_node = node_ts_perform_files_benchmark(options)
+    result["ts"]["result_bun"] = result_ts_bun
+    result["ts"]["result_deno"] = result_ts_deno
+    result["ts"]["result_node"] = result_ts_node
     return JSONResponse(content=result)
 
 
-@app.post("/api/ts/deno/sorting")
-def perform_ts_deno_sorting_benchmark(options: SortingParameters):
-    result = deno_ts_perform_sorting_benchmark(options)
+@app.post("/api/sqlite")
+def perform_sqlite_all(options: SqliteParameters):
+    result = {"ts": {}, "js": {}}
+    result_bun = bun_js_perform_sqlite_benchmark(options)
+    result_deno = deno_js_perform_sqlite_benchmark(options)
+    result_node = node_js_perform_sqlite_benchmark(options)
+    result["js"]["result_bun"] = result_bun
+    result["js"]["result_deno"] = result_deno
+    result["js"]["result_node"] = result_node
+    result_ts_bun = bun_ts_perform_sqlite_benchmark(options)
+    result_ts_deno = deno_ts_perform_sqlite_benchmark(options)
+    result_ts_node = node_ts_perform_sqlite_benchmark(options)
+    result["ts"]["result_bun"] = result_ts_bun
+    result["ts"]["result_deno"] = result_ts_deno
+    result["ts"]["result_node"] = result_ts_node
     return JSONResponse(content=result)
 
 
-@app.post("/api/js/deno/files")
-def perform_js_deno_files_benchmark(options: FilesParameters):
-    result = deno_js_perform_files_benchmark(options)
+@app.post("/api/server")
+def perform_server_all(options: ServerParameters):
+    result = {"ts": {}, "js": {}}
+    result_bun = bun_js_perform_server_benchmark(options)
+    result_deno = deno_js_perform_server_benchmark(options)
+    result_node = node_js_perform_server_benchmark(options)
+    result["js"]["result_bun"] = result_bun
+    result["js"]["result_deno"] = result_deno
+    result["js"]["result_node"] = result_node
+    result_ts_bun = bun_ts_perform_server_benchmark(options)
+    result_ts_deno = deno_ts_perform_server_benchmark(options)
+    result_ts_node = node_ts_perform_server_benchmark(options)
+    result["ts"]["result_bun"] = result_ts_bun
+    result["ts"]["result_deno"] = result_ts_deno
+    result["ts"]["result_node"] = result_ts_node
     return JSONResponse(content=result)
 
 
-@app.post("/api/ts/deno/files")
-def perform_ts_deno_files_benchmark(options: FilesParameters):
-    result = deno_ts_perform_files_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/deno/base64")
-def perform_js_deno_base64_benchmark(options: Base64Parameters):
-    result = deno_js_perform_base64_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/deno/base64")
-def perform_ts_deno_base64_benchmark(options: Base64Parameters):
-    result = deno_ts_perform_base64_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/deno/sqlite")
-def perform_js_deno_sqlite_benchmark(options: SqliteParameters):
-    result = deno_js_perform_sqlite_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/deno/sqlite")
-def perform_ts_deno_sqlite_benchmark(options: SqliteParameters):
-    result = deno_ts_perform_sqlite_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/deno/server")
-def perform_js_deno_server_benchmark(options: ServerParameters):
-    result = deno_js_perform_server_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/deno/server")
-def perform_ts_deno_server_benchmark(options: ServerParameters):
-    result = deno_ts_perform_server_benchmark(options)
-    return JSONResponse(content=result)
-
-
-# bun
-
-
-@app.post("/api/js/bun/sorting")
-def perform_js_bun_sorting_benchmark(options: SortingParameters):
-    result = bun_js_perform_sorting_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/bun/sorting")
-def perform_ts_bun_sorting_benchmark(options: SortingParameters):
-    result = bun_ts_perform_sorting_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/bun/files")
-def perform_js_bun_files_benchmark(options: BunFilesParameters):
-    result = bun_js_perform_files_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/bun/files")
-def perform_ts_bun_files_benchmark(options: BunFilesParameters):
-    result = bun_ts_perform_files_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/bun/base64")
-def perform_js_bun_base64_benchmark(options: Base64Parameters):
-    result = bun_js_perform_base64_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/bun/base64")
-def perform_ts_bun_base64_benchmark(options: Base64Parameters):
-    result = bun_ts_perform_base64_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/bun/sqlite")
-def perform_js_bun_sqlite_benchmark(options: SqliteParameters):
-    result = bun_js_perform_sqlite_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/bun/sqlite")
-def perform_ts_bun_sqlite_benchmark(options: SqliteParameters):
-    result = bun_ts_perform_sqlite_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/bun/server")
-def perform_js_bun_server_benchmark(options: ServerParameters):
-    result = bun_js_perform_server_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/bun/server")
-def perform_ts_bun_server_benchmark(options: ServerParameters):
-    result = bun_ts_perform_server_benchmark(options)
-    return JSONResponse(content=result)
-
-
-# Node
-@app.post("/api/js/node/sorting")
-def perform_js_node_sorting_benchmark(options: SortingParameters):
-    result = node_js_perform_sorting_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/node/sorting")
-def perform_ts_node_sorting_benchmark(options: SortingParameters):
-    result = node_ts_perform_sorting_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/node/files")
-def perform_js_node_files_benchmark(options: FilesParameters):
-    result = node_js_perform_files_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/node/files")
-def perform_ts_node_files_benchmark(options: FilesParameters):
-    result = node_ts_perform_files_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/node/base64")
-def perform_js_node_base64_benchmark(options: Base64Parameters):
-    result = node_js_perform_base64_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/node/base64")
-def perform_ts_node_base64_benchmark(options: Base64Parameters):
-    result = node_ts_perform_base64_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/node/sqlite")
-def perform_js_node_sqlite_benchmark(options: SqliteParameters):
-    result = node_js_perform_sqlite_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/node/sqlite")
-def perform_ts_node_sqlite_benchmark(options: SqliteParameters):
-    result = node_ts_perform_sqlite_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/js/node/server")
-def perform_js_node_server_benchmark(options: ServerParameters):
-    result = node_js_perform_server_benchmark(options)
-    return JSONResponse(content=result)
-
-
-@app.post("/api/ts/node/server")
-def perform_ts_node_server_benchmark(options: ServerParameters):
-    result = node_ts_perform_server_benchmark(options)
+@app.post("/api/base64")
+def perform_base64_all(options: Base64Parameters):
+    result = {"ts": {}, "js": {}}
+    result_bun = bun_js_perform_base64_benchmark(options)
+    result_deno = deno_js_perform_base64_benchmark(options)
+    result_node = node_js_perform_base64_benchmark(options)
+    result["js"]["result_bun"] = result_bun
+    result["js"]["result_deno"] = result_deno
+    result["js"]["result_node"] = result_node
+    result_ts_bun = bun_ts_perform_base64_benchmark(options)
+    result_ts_deno = deno_ts_perform_base64_benchmark(options)
+    result_ts_node = node_ts_perform_base64_benchmark(options)
+    result["ts"]["result_bun"] = result_ts_bun
+    result["ts"]["result_deno"] = result_ts_deno
+    result["ts"]["result_node"] = result_ts_node
     return JSONResponse(content=result)

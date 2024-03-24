@@ -2,7 +2,6 @@ import subprocess
 import os
 import json
 import psutil
-import signal
 
 from options import (
     ServerParameters,
@@ -208,7 +207,6 @@ def node_js_perform_server_benchmark(options: ServerParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    os.kill(process_server.pid, signal.SIGKILL)
     process_oha.kill()
     return result
 
@@ -230,6 +228,5 @@ def node_ts_perform_server_benchmark(options: ServerParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    os.kill(process_server.pid, signal.SIGKILL)
     process_oha.kill()
     return result

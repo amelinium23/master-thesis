@@ -11,9 +11,6 @@ class FilesParameters(BaseModel):
     number_of_files: int
     number_of_iterations: int
     number_of_paragraphs: int
-
-
-class BunFilesParameters(FilesParameters):
     should_be_bun_files: bool
 
 

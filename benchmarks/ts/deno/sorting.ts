@@ -133,7 +133,7 @@ const performSortingBenchmark = (type: string, numberOfSamples: number, numberOf
 };
 
 (() => {
-	if (Deno.args.length < 4) {
+	if (Deno.args.length < 3) {
 		Deno.exit(1);
 	}
 

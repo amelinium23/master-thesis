@@ -58,7 +58,6 @@ const performFilesBenchmark = (numberOfFiles, numberOfParagraphs, numberOfIterat
         const { fileNames, time } = createBatchOfFiles(numberOfFiles, "lorem", numberOfParagraphs);
         const resultReadFiles = readFiles(fileNames);
         result.push({
-            fileNames,
             timeToCreateFiles: time,
             resultsReading: resultReadFiles.results,
             timeOfReading: resultReadFiles.time,
