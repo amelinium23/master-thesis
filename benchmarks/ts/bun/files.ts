@@ -29,7 +29,7 @@ const createBatchOfBunFiles = async (
 		fileNames.push(fileName);
 	}
 	const endTime = performance.now();
-	return { fileNames: fileNames, time: endTime - startTime };
+	return { fileNames: fileNames, timeOfCreating: endTime - startTime };
 };
 
 const createFile = (fileName: string, numberOfParagraphs: number) => {
@@ -53,7 +53,7 @@ const createBatchOfFiles = (
 		fileNames.push(fileName);
 	}
 	const endTime = performance.now();
-	return { fileNames: fileNames, time: endTime - startTime };
+	return { fileNames: fileNames, timeOfCreating: endTime - startTime };
 };
 
 const readFiles = (fileNames: string[]) => {
@@ -77,7 +77,7 @@ const readFiles = (fileNames: string[]) => {
 	}
 	const endTime = performance.now();
 
-	return { results: resultOfWriting, time: endTime - startTime };
+	return { results: resultOfWriting, timeOfReading: endTime - startTime };
 };
 
 const readBunFiles = async (fileNames: string[]) => {
@@ -95,7 +95,7 @@ const readBunFiles = async (fileNames: string[]) => {
 	}
 	const endTime = performance.now();
 
-	return { results: resultOfWriting, time: endTime - startTime };
+	return { results: resultOfWriting, timeOfReading: endTime - startTime };
 };
 
 const removeFiles = (directory = "tmp") => {
@@ -121,18 +121,16 @@ const performBenchmarkBun = async (
 	numberOfIterations: number,
 	filePrefix = "lorem"
 ) => {
-	const results = [];
+	const result = [];
 	const startTime = performance.now();
 	for (let i = 0; i < numberOfIterations; i++) {
-		const startTime = performance.now();
-		const fileNames = await createBatchOfBunFiles(numberOfFiles, filePrefix, numOfParagraphs);
-		const result = await readBunFiles(fileNames.fileNames);
-		const endTime = performance.now();
-		results.push({ result, time: endTime - startTime });
+		const { fileNames, timeOfCreating } = await createBatchOfBunFiles(numberOfFiles, filePrefix, numOfParagraphs);
+		const { results, timeOfReading } = await readBunFiles(fileNames);
+		result.push({ results, timeOfReading, timeOfCreating });
 	}
 	removeFiles();
 	const endTime = performance.now();
-	return { time: endTime - startTime, results };
+	return { results: result, timeOfExecution: endTime - startTime };
 };
 
 const performBenchmarkFs = (
@@ -141,23 +139,20 @@ const performBenchmarkFs = (
 	numberOfIterations: number,
 	filePrefix = "lorem"
 ) => {
-	const results = [];
+	const result = [];
 	const startTime = performance.now();
 	for (let i = 0; i < numberOfIterations; i++) {
-		const startTime = performance.now();
-		const fileNames = createBatchOfFiles(numberOfFiles, filePrefix, numOfParagraphs);
-		const result = readFiles(fileNames.fileNames);
-		const endTime = performance.now();
-		results.push({ result, time: endTime - startTime });
+		const { fileNames, timeOfCreating } = createBatchOfFiles(numberOfFiles, filePrefix, numOfParagraphs);
+		const { results, timeOfReading } = readFiles(fileNames);
+		result.push({ results, timeOfReading, timeOfCreating });
 	}
 	removeFiles();
 	const endTime = performance.now();
-	return { time: endTime - startTime, results };
+	return { results: result, timeOfExecution: endTime - startTime };
 };
 
 (async () => {
 	if (Bun.argv.length < 6) {
-		process.stderr.write("[Files] You did not passed arguments!\n");
 		process.exit(1);
 	}
 
@@ -167,7 +162,6 @@ const performBenchmarkFs = (
 	const shouldBeBunFiles = Boolean(Bun.argv.at(5));
 
 	if (!numberOfFiles || !numberOfParagraphs || !numberOfIterations) {
-		process.stderr.write("[Files] Cannot parse arguments!\n");
 		process.exit(1);
 	}
 

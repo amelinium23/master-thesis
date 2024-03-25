@@ -1,4 +1,6 @@
 import { Database } from "bun:sqlite";
+import fs from "node:fs";
+import path from "node:path";
 
 const { faker } = require("@faker-js/faker");
 
@@ -93,8 +95,7 @@ const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
     const numberOfIterations = Number(Bun.argv.at(2));
     const numberOfRecords = Number(Bun.argv.at(3));
 
-
-    if (!numberOfIterations || !numberOfRecords ) {
+    if (!numberOfIterations || !numberOfRecords) {
         process.exit(1);
     }
 

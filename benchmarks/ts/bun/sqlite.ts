@@ -1,6 +1,8 @@
 import { Database } from "bun:sqlite";
 import { faker } from "@faker-js/faker";
 import { User } from "../types";
+import path from "node:path";
+import fs from "node:fs";
 
 const createFakeUser = () => {
 	return {

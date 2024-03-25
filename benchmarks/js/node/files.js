@@ -18,7 +18,7 @@ const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 2
         fileNames.push(fileName);
     }
     const endTime = performance.now();
-    return { fileNames: fileNames, time: endTime - startTime };
+    return { fileNames: fileNames, timeOfCreating: endTime - startTime };
 };
 
 const readFiles = (fileNames) => {
@@ -40,7 +40,7 @@ const readFiles = (fileNames) => {
     }
     const endTime = performance.now();
 
-    return { results: resultOfWriting, time: endTime - startTime };
+    return { results: resultOfWriting, timeOfReading: endTime - startTime };
 };
 
 const removeFiles = (directory = "tmp") => {
@@ -52,19 +52,18 @@ const performFilesBenchmark = (numberOfFiles, numberOfParagraphs, numberOfIterat
     const startTime = performance.now();
 
     for (let i = 0; i < numberOfIterations; i++) {
-        const { fileNames, time } = createBatchOfFiles(numberOfFiles, "lorem", numberOfParagraphs);
-        const resultReadFiles = readFiles(fileNames);
+        const { fileNames, timeOfCreating } = createBatchOfFiles(numberOfFiles, "lorem", numberOfParagraphs);
+        const { results, timeOfReading } = readFiles(fileNames);
         result.push({
-            fileNames,
-            timeToCreateFiles: time,
-            resultsReading: resultReadFiles.results,
-            timeOfReading: resultReadFiles.time,
+            results,
+            timeOfCreating,
+            timeOfReading,
         });
     }
     const endTime = performance.now();
     removeFiles();
 
-    return { result, timeToEnd: endTime - startTime };
+    return { results: result, timeToEnd: endTime - startTime };
 };
 
 (() => {

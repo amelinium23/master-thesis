@@ -2,6 +2,8 @@ import { faker } from "@faker-js/faker";
 import { open, Database as SqLiteDatabase } from "sqlite";
 import { Database, Statement } from "sqlite3";
 import { User } from "../types";
+import fs from "fs";
+import path from "path";
 
 const createFakeUser = (): User => {
 	return {
