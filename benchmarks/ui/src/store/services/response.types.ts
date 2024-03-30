@@ -42,6 +42,11 @@ type Base64Result = {
   resultOfEncoding: EncodeResult[];
 };
 
+type SortingResult = {
+  result: SortingDetails[];
+  time: number;
+};
+
 export type Response<T> = {
   ts: Results<T>;
   js: Results<T>;
@@ -58,13 +63,64 @@ export type Usage = {
   used_memory: number;
 };
 
-export type SortingResult = {
-  result: SortingDetails[];
-  time: number;
-} & Usage;
+export type ServerResult = {
+  summary: Summary;
+  responseTimeHistogram: Record<string, number>;
+  latencyPercentiles: Percentiles;
+  rps: Rps;
+  details: Details;
+  statusCodeDistribution: StatusCodeDistribution;
+  errorDistribution: Record<string, unknown>;
+};
+
+export type Details = {
+  DNSDialup: DNS;
+  DNSLookup: DNS;
+};
+
+export type DNS = {
+  average: number;
+  fastest: number;
+  slowest: number;
+};
+
+export type Percentiles = {
+  p10: number;
+  p25: number;
+  p50: number;
+  p75: number;
+  p90: number;
+  p95: number;
+  p99: number;
+  "p99.9": number;
+  "p99.99": number;
+};
+
+export type Rps = {
+  mean: number;
+  stddev: number;
+  max: number;
+  percentiles: Percentiles;
+};
+
+export type StatusCodeDistribution = {
+  "200": number;
+};
+
+export type Summary = {
+  successRate: number;
+  total: number;
+  slowest: number;
+  fastest: number;
+  average: number;
+  requestsPerSec: number;
+  totalData: number;
+  sizePerRequest: number;
+  sizePerSec: number;
+};
 
 export type Base64Results = Base64Result & Usage;
-
 export type SqliteResults = SqliteResult & Usage;
-
-export type FilesResult = FileResult & Usage;
+export type FilesResults = FileResult & Usage;
+export type ServerResults = ServerResult & Usage;
+export type SortingResults = SortingResult & Usage;

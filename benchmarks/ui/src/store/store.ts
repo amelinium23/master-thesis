@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     [benchmarkApi.reducerPath]: benchmarkApi.reducer
   },
-  middleware: (getDefaultMiddleWare) => getDefaultMiddleWare()
+  middleware: (getDefaultMiddleWare) => getDefaultMiddleWare().concat(benchmarkApi.middleware)
 });
 
 setupListeners(store.dispatch);
