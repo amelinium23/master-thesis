@@ -1,4 +1,3 @@
-import signal
 import subprocess
 import os
 import json
@@ -196,7 +195,7 @@ def bun_js_perform_server_benchmark(options: ServerParameters):
     subprocess.run(["touch", "./bun/bunServerResult.json"])
     process_oha = subprocess.Popen(
         [
-            f"oha http://localhost:3000 -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
+            f"oha http://localhost:3000/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
         ],
         shell=True,
     )
@@ -207,7 +206,7 @@ def bun_js_perform_server_benchmark(options: ServerParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    os.kill(process_server.pid, signal.SIGKILL)
+    process_server.kill()
     process_oha.kill()
     return result
 
@@ -218,17 +217,17 @@ def bun_ts_perform_server_benchmark(options: ServerParameters):
     subprocess.run(["touch", "./bun/bunServerResult.json"])
     process_oha = subprocess.Popen(
         [
-            f"oha http://localhost:3000 -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
+            f"oha http://localhost:3003/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
         ],
         shell=True,
     )
     p_info = psutil.Process(process_server.pid)
-    file = open("./node/nodeServerResult.json").read()
+    file = open("./bun/bunServerResult.json").read()
     result = json.loads(file)
     used_memory = float(p_info.memory_full_info().rss)
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    os.kill(process_server.pid, signal.SIGKILL)
+    process_server.kill()
     process_oha.kill()
     return result

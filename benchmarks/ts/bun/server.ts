@@ -14,7 +14,7 @@ const createFakeUser = () => {
 };
 
 Bun.serve({
-	port: 3000,
+	port: 3003,
 	fetch(req) {
 		const url = new URL(req.url);
 		if (url.pathname === "/") return new Response("Home Page!");

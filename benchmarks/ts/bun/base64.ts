@@ -14,7 +14,7 @@ const startEncoding = (buffer: Buffer, str2: string) => {
 		encodedString += buffer.toString("base64").length;
 	}
 	const end = performance.now();
-	const timeEncoding = (end - start) / 1000;
+	const timeEncoding = end - start;
 
 	notify(
 		format(
@@ -36,7 +36,7 @@ const startDecoding = (str2: string, str3: Buffer) => {
 		decodedString += Buffer.from(str2, "base64").length;
 	}
 	const endDecoding = performance.now();
-	const timeDecoded = (endDecoding - startDecoded) / 1000;
+	const timeDecoded = endDecoding - startDecoded;
 
 	notify(
 		format(

@@ -3,9 +3,8 @@ import path from "node:path";
 
 export const bubbleSort = (arr: number[]): number[] => {
 	if (arr.length <= 1) return arr;
-	const n = arr.length;
 	for (let i = 0; i < arr.length - 1; i++) {
-		for (let j = 0; j < arr.length - n - 1; j++) {
+		for (let j = 0; j < arr.length - i - 1; j++) {
 			if (arr[j] > arr[j + 1]) {
 				const temp = arr[j];
 				arr[j] = arr[j + 1];

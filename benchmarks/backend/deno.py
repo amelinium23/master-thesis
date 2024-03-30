@@ -195,7 +195,7 @@ def deno_js_perform_server_benchmark(options: ServerParameters):
     subprocess.run(["touch", "./deno/denoServerResult.json"])
     process_oha = subprocess.Popen(
         [
-            f"oha http://localhost:3000 -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
+            f"oha http://localhost:3001/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
         ],
         shell=True,
     )
@@ -206,7 +206,7 @@ def deno_js_perform_server_benchmark(options: ServerParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    os.kill(process_server.pid, signal.SIGKILL)
+    process_server.kill()
     process_oha.kill()
     return result
 
@@ -217,19 +217,17 @@ def deno_ts_perform_server_benchmark(options: ServerParameters):
     subprocess.run(["touch", "./deno/denoServerResult.json"])
     process_oha = subprocess.Popen(
         [
-            f"oha http://localhost:3000 -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
+            f"oha http://localhost:3004/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
         ],
         shell=True,
     )
     p_info = psutil.Process(process_server.pid)
-    file = open("./node/nodeServerResult.json").read()
+    file = open("./deno/denoServerResult.json").read()
     result = json.loads(file)
     used_memory = float(p_info.memory_full_info().rss)
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
-    os.kill(process_server.pid)
-    os.kill(
-        process_oha.pid,
-    )
+    process_server.kill()
+    process_oha.kill()
     return result

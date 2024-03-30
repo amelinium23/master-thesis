@@ -93,7 +93,7 @@ const performSqliteBenchmark = (numOfIterations: number, numOfRecords: number) =
 	const users = getUserFromDatabase(conn);
 	const mappedUsers = users.map(mapUser);
 
-	return { time: endTime - startTime, users: mappedUsers };
+	return { time: endTime - startTime, result: mappedUsers };
 };
 
 (() => {

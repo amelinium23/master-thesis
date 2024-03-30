@@ -1,6 +1,6 @@
 import { faker } from "https://deno.land/x/deno_faker@v1.0.3/mod.ts";
 
-const port = 3000;
+const port = 3001;
 
 const createFakeUser = () => {
     return {

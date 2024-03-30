@@ -1,3 +1,4 @@
+import signal
 import subprocess
 import os
 import json
@@ -196,7 +197,7 @@ def node_js_perform_server_benchmark(options: ServerParameters):
     subprocess.run(["touch", "./node/nodeServerResult.json"])
     process_oha = subprocess.Popen(
         [
-            f"oha http://localhost:3000 -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./node/nodeServerResult.json",
+            f"oha http://localhost:3002/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./node/nodeServerResult.json",
         ],
         shell=True,
     )
@@ -207,6 +208,7 @@ def node_js_perform_server_benchmark(options: ServerParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
+    process_server.kill()
     process_oha.kill()
     return result
 
@@ -217,7 +219,7 @@ def node_ts_perform_server_benchmark(options: ServerParameters):
     subprocess.run(["touch", "./node/nodeServerResult.json"])
     process_oha = subprocess.Popen(
         [
-            f"oha http://localhost:3000 -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./node/nodeServerResult.json",
+            f"oha http://localhost:3005/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./node/nodeServerResult.json",
         ],
         shell=True,
     )
@@ -228,5 +230,6 @@ def node_ts_perform_server_benchmark(options: ServerParameters):
     used_cpu = float(p_info.cpu_percent(interval=1))
     result["used_cpu"] = used_cpu
     result["used_memory"] = used_memory
+    process_server.kill()
     process_oha.kill()
     return result

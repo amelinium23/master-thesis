@@ -14,7 +14,7 @@ const startEncoding = (buffer, str2) => {
         encodedString += buffer.toString("base64").length;
     }
     const end = performance.now();
-    const timeEncoding = (end - start) / 1000;
+    const timeEncoding = end - start;
 
     notify(
         util.format(
@@ -36,7 +36,7 @@ const startDecoding = (str2, str3) => {
         decodedString += Buffer.from(str2, "base64").length;
     }
     const endDecoding = performance.now();
-    const timeDecoded = (endDecoding - startDecoded) / 1000;
+    const timeDecoded = endDecoding - startDecoded;
 
     notify(
         util.format(
@@ -80,10 +80,9 @@ const performBase64Benchmark = (numberOfIterations) => {
 
     const numberOfIterations = Number(process.argv.at(2));
 
-    const { resultOfDecoding, resultOfEncoding } = performBase64Benchmark(numberOfIterations);
+    const result = performBase64Benchmark(numberOfIterations);
 
-    fs.writeFileSync(path.join(__dirname, "encodedResult.json"), JSON.stringify(resultOfEncoding));
-    fs.writeFileSync(path.join(__dirname, "decodedResult.json"), JSON.stringify(resultOfDecoding));
+    fs.writeFileSync(path.join(__dirname, "nodeBase64Result.json"), JSON.stringify(result));
 
     process.exit(0);
 })();

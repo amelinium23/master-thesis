@@ -14,7 +14,7 @@ const startEncoding = (buffer: Buffer, str2: string) => {
 		encodedString += buffer.toString("base64").length;
 	}
 	const end = performance.now();
-	const timeEncoding = (end - start) / 1000;
+	const timeEncoding = end - start;
 
 	notify(
 		util.format(
@@ -25,6 +25,8 @@ const startEncoding = (buffer: Buffer, str2: string) => {
 			timeEncoding
 		)
 	);
+
+	return { encodedString, timeEncoding };
 };
 
 const startDecoding = (str2: string, str3: Buffer) => {
@@ -34,7 +36,7 @@ const startDecoding = (str2: string, str3: Buffer) => {
 		decodedString += Buffer.from(str2, "base64").length;
 	}
 	const endDecoding = performance.now();
-	const timeDecoded = (endDecoding - startDecoded) / 1000;
+	const timeDecoded = endDecoding - startDecoded;
 
 	notify(
 		util.format(
@@ -45,6 +47,8 @@ const startDecoding = (str2: string, str3: Buffer) => {
 			timeDecoded
 		)
 	);
+
+	return { decodedString, timeDecoded };
 };
 
 const performBase64Benchmark = (numberOfIterations: number) => {
@@ -77,7 +81,7 @@ const performBase64Benchmark = (numberOfIterations: number) => {
 
 	const result = performBase64Benchmark(numberOfIterations);
 
-	fs.writeFileSync(path.join(__dirname, "nodeBase64Result.json"), JSON.stringify(resultOfEncoding));
+	fs.writeFileSync(path.join(__dirname, "nodeBase64Result.json"), JSON.stringify(result));
 
 	process.exit(0);
 })();

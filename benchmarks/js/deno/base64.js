@@ -16,7 +16,7 @@ const startEncoding = (buffer, str2) => {
         encodedString += buffer.toString("base64").length;
     }
     const end = performance.now();
-    const timeEncoding = (end - start) / 1000;
+    const timeEncoding = end - start;
 
     notify(
         mod.format(
@@ -38,7 +38,7 @@ const startDecoding = (str2, str3) => {
         decodedString += Buffer.from(str2, "base64").length;
     }
     const endDecoding = performance.now();
-    const timeDecoded = (endDecoding - startDecoded) / 1000;
+    const timeDecoded = endDecoding - startDecoded;
 
     notify(
         mod.format(
@@ -85,7 +85,6 @@ const performBase64Benchmark = (numberOfIterations) => {
     }
 
     const result = performBase64Benchmark(numberOfIterations);
-
     const encoderForResult = new TextEncoder();
     const encodedResult = encoderForResult.encode(JSON.stringify(result));
 

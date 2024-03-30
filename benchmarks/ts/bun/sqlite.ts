@@ -84,7 +84,7 @@ const performSqliteBenchmark = async (numOfIterations: number, numOfRecords: num
 
 	const endTime = performance.now();
 
-	return { time: endTime - startTime, users: await getUserFromDatabase(conn) };
+	return { time: endTime - startTime, result: await getUserFromDatabase(conn) };
 };
 
 (async () => {
