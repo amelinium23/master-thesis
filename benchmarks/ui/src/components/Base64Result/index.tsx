@@ -8,10 +8,9 @@ import {
   Title,
   Tooltip
 } from "chart.js";
-import { saveAs } from "file-saver";
 import { Line } from "react-chartjs-2";
 
-import { chartOptions, generateLabels } from "@/constants/chartOptions";
+import { chartOptions, generateLabels, saveCharts } from "@/constants/chartOptions";
 import { useGetBase64ResultsQuery } from "@/store/services/benchmarkService";
 import { Base64Request } from "@/store/services/request.types";
 
@@ -140,13 +139,6 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
     ]
   };
 
-  const saveCharts = () => {
-    charts.forEach((chart) => {
-      const canvasElement = document.getElementById(chart) as HTMLCanvasElement;
-      if (canvasElement) canvasElement.toBlob((blob) => saveAs(blob as Blob, `${chart}.png`));
-    });
-  };
-
   return (
     <Card className="flex flex-col w-full text-center max-w-screen-md justify-evenly gap-2 min-h-[400px] py-4 px-4">
       <CardTitle className="text-md">Result</CardTitle>
@@ -161,7 +153,7 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
           <Line id="jsChartDecoding" className="bg-white" data={jsDecodingChartData} options={chartOptions} />
           <Line id="tsChartEncoding" className="bg-white" data={tsEncodingChartData} options={chartOptions} />
           <Line id="tsChartDecoding" className="bg-white" data={tsDecodingChartData} options={chartOptions} />
-          <Button onClick={saveCharts} className="w-md">
+          <Button onClick={() => saveCharts(charts)} className="w-md">
             Save charts
           </Button>
         </CardContent>
