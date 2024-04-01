@@ -1,44 +1,44 @@
 import { Line } from "react-chartjs-2";
 
 import { chartOptions, generateLabels, saveCharts } from "@/constants/chartOptions";
-import { useGetSortingResultsQuery } from "@/store/services/benchmarkService";
-import { SortingRequest } from "@/store/services/request.types";
+import { useGetFilesResultsQuery } from "@/store/services/benchmarkService";
+import { FilesRequest } from "@/store/services/request.types";
 
 import { ErrorInformation } from "../ErrorInformation";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardTitle } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
-import { SortingResultChartProps } from "./types";
+import { FilesResultProps } from "./types";
 
-const charts = ["jsChart", "tsChart"];
+const charts = ["jsChartFiles", "tsChartFiles"];
 
-export const SortingResultChart = ({ req }: SortingResultChartProps) => {
-  const { data, isLoading, isError } = useGetSortingResultsQuery(req satisfies SortingRequest);
+export const FilesResult = ({ req }: FilesResultProps) => {
+  const { data, isLoading, isError } = useGetFilesResultsQuery(req satisfies FilesRequest);
 
   if (isError) return <ErrorInformation />;
 
   const labels = generateLabels(req.number_of_iterations);
 
-  const jsChartData = {
+  const jsResultData = {
     labels,
     datasets: [
       {
         label: "Bun result - JS",
-        data: data?.js.result_bun?.result.map((res) => res.time),
+        data: data?.js.result_bun?.results.timeOfReading,
         borderColor: "#c8373e",
         backgroundColor: "#c8373e",
         pointRadius: 0
       },
       {
         label: "Deno result - JS",
-        data: data?.js.result_deno?.result.map((res) => res.time),
+        data: data?.js.result_deno?.results.timeOfReading,
         borderColor: "#01C2FF",
         backgroundColor: "#01C2FF",
         pointRadius: 0
       },
       {
         label: "Node result - JS",
-        data: data?.js.result_node?.result.map((res) => res.time),
+        data: data?.js.result_node?.results.timeOfReading,
         borderColor: "#417e38",
         backgroundColor: "#417e38",
         pointRadius: 0
@@ -46,26 +46,26 @@ export const SortingResultChart = ({ req }: SortingResultChartProps) => {
     ]
   };
 
-  const tsChartData = {
+  const tsResultData = {
     labels,
     datasets: [
       {
-        label: "Bun result - TS",
-        data: data?.ts.result_bun?.result.map((res) => res.time),
+        label: "Bun result - JS",
+        data: data?.js.result_bun?.results.timeOfReading,
         borderColor: "#c8373e",
         backgroundColor: "#c8373e",
         pointRadius: 0
       },
       {
-        label: "Deno result - TS",
-        data: data?.js.result_deno?.result.map((res) => res.time),
+        label: "Deno result - JS",
+        data: data?.js.result_deno?.results.timeOfReading,
         borderColor: "#01C2FF",
         backgroundColor: "#01C2FF",
         pointRadius: 0
       },
       {
-        label: "Node result - TS",
-        data: data?.ts.result_node?.result.map((res) => res.time),
+        label: "Node result - JS",
+        data: data?.js.result_node?.results.timeOfReading,
         borderColor: "#417e38",
         backgroundColor: "#417e38",
         pointRadius: 0
@@ -83,8 +83,8 @@ export const SortingResultChart = ({ req }: SortingResultChartProps) => {
       ) : null}
       {data ? (
         <CardContent className=" rounded-xl flex flex-col gap-4">
-          <Line id="jsChart" className="bg-white" data={jsChartData} options={chartOptions} />
-          <Line id="tsChart" className="bg-white" data={tsChartData} options={chartOptions} />
+          <Line id="jsChartFiles" className="bg-white" data={jsResultData} options={chartOptions} />
+          <Line id="tsChartFiles" className="bg-white" data={tsResultData} options={chartOptions} />
           <Button onClick={() => saveCharts(charts)} className="w-md">
             Save charts
           </Button>

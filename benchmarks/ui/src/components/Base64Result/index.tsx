@@ -1,13 +1,3 @@
-import {
-  CategoryScale,
-  Chart as ChartJS,
-  Legend,
-  LinearScale,
-  LineElement,
-  PointElement,
-  Title,
-  Tooltip
-} from "chart.js";
 import { Line } from "react-chartjs-2";
 
 import { chartOptions, generateLabels, saveCharts } from "@/constants/chartOptions";
@@ -21,8 +11,6 @@ import { Skeleton } from "../ui/skeleton";
 import { Base64ResultProps } from "./types";
 
 const charts = ["jsChartEncoding", "tsChartEncoding", "jsChartDecoding", "tsChartDecoding"];
-
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 export const Base64Result = ({ req }: Base64ResultProps) => {
   const { data, isLoading, isError } = useGetBase64ResultsQuery(req satisfies Base64Request);
