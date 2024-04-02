@@ -3,12 +3,30 @@ type SortingDetails = {
   result: number[];
 };
 
+type FileContent = {
+  content: string;
+  time: number;
+};
+
+type ReadingResult = {
+  results: FileContent[];
+  times: number[];
+  timeOfReading: number;
+};
+
+type WritingResult = {
+  fileNames: string[];
+  times: number[];
+  timeOfCreating: number;
+};
+
+type FileBenchmarkResult = {
+  resultOfReading: ReadingResult;
+  resultOfWriting: WritingResult;
+};
+
 type FileResult = {
-  results: {
-    results: string[];
-    timeOfReading: number;
-    timeOfCreating: number;
-  };
+  results: FileBenchmarkResult[];
   timeOfExecution: number;
 };
 

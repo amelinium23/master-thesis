@@ -19,12 +19,18 @@ const createBatchOfBunFiles = async (numberOfFiles, startFileName, numberOfParag
         fs.mkdirSync(path.join(import.meta.dir, directory));
     }
     for (let i = 0; i < numberOfFiles; i++) {
+        const startTime = performance.now();
         const fileName = path.join(import.meta.dir, directory, `${startFileName}-${i + 1}.txt`).toString();
         await createBunFile(fileName, numberOfParagraphs);
-        fileNames.push(fileName);
+        const endTime = performance.now();
+        fileNames.push({ fileName, time: endTime - startTime });
     }
     const endTime = performance.now();
-    return { fileNames, timeOfCreating: endTime - startTime };
+    return {
+        fileNames: fileNames.map(({ fileName }) => fileName),
+        times: fileNames.map(({ time }) => time),
+        timeOfCreating: endTime - startTime,
+    };
 };
 
 const createFile = (fileName, numberOfParagraphs) => {
@@ -38,20 +44,26 @@ const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 2
         fs.mkdirSync(path.join(import.meta.dir, directory));
     }
     for (let i = 0; i < numberOfFiles; i++) {
+        const startTime = performance.now();
         const fileName = path.join(import.meta.dir, directory, `${startFileName}-${i + 1}.txt`).toString();
         createFile(fileName, numberOfParagraphs);
-        fileNames.push(fileName);
+        const endTime = performance.now();
+        fileNames.push({ fileName, time: endTime - startTime });
     }
     const endTime = performance.now();
-    return { fileNames, timeOfCreating: endTime - startTime };
+    return {
+        fileNames: fileNames.map(({ fileName }) => fileName),
+        times: fileNames.map(({ time }) => time),
+        timeOfCreating: endTime - startTime,
+    };
 };
 
 const readFiles = (fileNames) => {
     const resultOfWriting = [];
     const startTime = performance.now();
-
     for (const fileName of fileNames) {
         try {
+            const startTime = performance.now();
             const realFileName = fileName
                 .split("/")
                 .filter((s) => s)
@@ -60,32 +72,37 @@ const readFiles = (fileNames) => {
                 encoding: "utf-8",
             });
             const content = lines.toString();
-            resultOfWriting.push(content);
+            const endTime = performance.now();
+            resultOfWriting.push({ content: content, time: endTime - startTime });
         } catch (err) {
             console.error(err);
         }
     }
     const endTime = performance.now();
 
-    return { results: resultOfWriting, time: endTime - startTime };
+    return { results: resultOfWriting, times: resultOfWriting.map(({ time }) => time), time: endTime - startTime };
 };
 
 const readBunFiles = async (fileNames) => {
     const resultOfWriting = [];
     const startTime = performance.now();
-
     for (const fileName of fileNames) {
         try {
+            const startTime = performance.now();
             const file = Bun.file(fileName);
             const lines = await file.text();
-            resultOfWriting.push(lines);
+            const endTime = performance.now();
+            resultOfWriting.push({ lines, time: endTime - startTime });
         } catch (err) {
             console.error(err);
         }
     }
     const endTime = performance.now();
-
-    return { results: resultOfWriting, time: endTime - startTime };
+    return {
+        results: resultOfWriting.map(({ lines }) => lines),
+        times: resultOfWriting.map(({ time }) => time),
+        time: endTime - startTime,
+    };
 };
 
 const removeFiles = (directory = "tmp") => {
@@ -104,9 +121,12 @@ const performBenchmarkBun = async (numberOfFiles, numOfParagraphs, numberOfItera
     const results = [];
     const startTime = performance.now();
     for (let i = 0; i < numberOfIterations; i++) {
-        const creatingResult = await createBatchOfBunFiles(numberOfFiles, filePrefix, numOfParagraphs);
-        const result = await readBunFiles(creatingResult.fileNames);
-        results.push({ result, timeOfCreating: creatingResult.timeOfCreating });
+        const resultOfWriting = await createBatchOfBunFiles(numberOfFiles, filePrefix, numOfParagraphs);
+        const resultOfReading = await readBunFiles(resultOfWriting.fileNames);
+        results.push({
+            resultOfReading,
+            resultOfWriting,
+        });
     }
     removeFiles();
     const endTime = performance.now();
@@ -117,9 +137,12 @@ const performBenchmarkFs = (numberOfFiles, numOfParagraphs, numberOfIterations, 
     const results = [];
     const startTime = performance.now();
     for (let i = 0; i < numberOfIterations; i++) {
-        const creatingResult = createBatchOfFiles(numberOfFiles, filePrefix, numOfParagraphs);
-        const result = readFiles(creatingResult.fileNames);
-        results.push({ result, timeOfCreating: creatingResult.timeOfCreating });
+        const resultOfWriting = createBatchOfFiles(numberOfFiles, filePrefix, numOfParagraphs);
+        const resultOfReading = readFiles(resultOfWriting.fileNames);
+        results.push({
+            resultOfReading,
+            resultOfWriting,
+        });
     }
     removeFiles();
     const endTime = performance.now();

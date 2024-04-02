@@ -23,12 +23,18 @@ const createBatchOfFiles = (
 		Deno.mkdirSync(path.join(__dirname, directory));
 	}
 	for (let i = 0; i < numberOfFiles; i++) {
+		const startTime = performance.now();
 		const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`);
 		createFile(fileName, numberOfParagraphs);
-		fileNames.push(fileName);
+		const endTime = performance.now();
+		fileNames.push({ fileName: fileName, time: endTime - startTime });
 	}
 	const endTime = performance.now();
-	return { fileNames, timeOfCreating: endTime - startTime };
+	return {
+		fileNames: fileNames.map(({ fileName }) => fileName),
+		times: fileNames.map(({ time }) => time),
+		timeOfCreating: endTime - startTime,
+	};
 };
 
 const readFiles = (fileNames: string[]) => {
@@ -37,10 +43,12 @@ const readFiles = (fileNames: string[]) => {
 
 	for (const fileName of fileNames) {
 		try {
+			const startTime = performance.now();
 			const data = Deno.readFileSync(fileName);
 			const textDecoder = new TextDecoder("utf-8");
 			const content = textDecoder.decode(data);
-			resultOfWriting.push(content);
+			const endTime = performance.now();
+			resultOfWriting.push({ content: content, timeOfReading: endTime - startTime });
 		} catch (err) {
 			console.error(err);
 		}
@@ -60,13 +68,9 @@ const performFilesBenchmark = (numberOfFiles: number, numberOfParagraphs: number
 	const startTime = performance.now();
 
 	for (let i = 0; i < numberOfIterations; i++) {
-		const { timeOfCreating, fileNames } = createBatchOfFiles(numberOfFiles, "lorem", numberOfParagraphs);
-		const { results, timeOfReading } = readFiles(fileNames);
-		result.push({
-			results,
-			timeOfCreating,
-			timeOfReading,
-		});
+		const resultOfWriting = createBatchOfFiles(numberOfFiles, "lorem", numberOfParagraphs);
+		const resultOfReading = readFiles(resultOfWriting.fileNames);
+		result.push({ resultOfWriting, resultOfReading });
 	}
 	const endTime = performance.now();
 	removeFiles();

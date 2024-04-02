@@ -18,30 +18,41 @@ const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 2
         Deno.mkdirSync(path.join(__dirname, directory));
     }
     for (let i = 0; i < numberOfFiles; i++) {
+        const startTime = performance.now();
         const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`);
         createFile(fileName, numberOfParagraphs);
-        fileNames.push(fileName);
+        const endTime = performance.now();
+        fileNames.push({ fileName: fileName, time: endTime - startTime });
     }
     const endTime = performance.now();
-    return { fileNames, timeOfCreating: endTime - startTime };
+    return {
+        fileNames: fileNames.map(({ fileName }) => fileName),
+        times: fileNames.map(({ time }) => time),
+        timeOfCreating: endTime - startTime,
+    };
 };
 
 const readFiles = (fileNames) => {
     const resultOfWriting = [];
     const startTime = performance.now();
-
     for (const fileName of fileNames) {
         try {
+            const startTime = performance.now();
             const data = Deno.readFileSync(fileName);
             const textDecoder = new TextDecoder("utf-8");
             const content = textDecoder.decode(data);
-            resultOfWriting.push(content);
+            const endTime = performance.now();
+            resultOfWriting.push({ content: content, time: endTime - startTime });
         } catch (err) {
             console.error(err);
         }
     }
     const endTime = performance.now();
-    return { results: resultOfWriting, timeOfReading: endTime - startTime };
+    return {
+        results: resultOfWriting,
+        times: resultOfWriting.map(({ time }) => time),
+        timeOfReading: endTime - startTime,
+    };
 };
 
 const removeFiles = (directory = "tmp") => {
@@ -52,14 +63,12 @@ const removeFiles = (directory = "tmp") => {
 const performFilesBenchmark = (numberOfFiles, numberOfParagraphs, numberOfIterations) => {
     const result = [];
     const startTime = performance.now();
-
     for (let i = 0; i < numberOfIterations; i++) {
-        const { timeOfCreating, fileNames } = createBatchOfFiles(numberOfFiles, "lorem", numberOfParagraphs);
-        const { results, timeOfReading } = readFiles(fileNames);
+        const resultOfWriting = createBatchOfFiles(numberOfFiles, "lorem", numberOfParagraphs);
+        const resultOfReading = readFiles(resultOfWriting.fileNames);
         result.push({
-            results,
-            timeOfCreating,
-            timeOfReading,
+            resultOfReading,
+            resultOfWriting,
         });
     }
     const endTime = performance.now();
