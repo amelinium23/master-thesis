@@ -46,8 +46,7 @@ const readFiles = (fileNames) => {
         }
     }
     const endTime = performance.now();
-
-    return { results: resultOfWriting, timeOfReading: endTime - startTime };
+    return { results: resultOfWriting, times: resultOfWriting.map(({ time }) => time), time: endTime - startTime };
 };
 
 const removeFiles = (directory = "tmp") => {

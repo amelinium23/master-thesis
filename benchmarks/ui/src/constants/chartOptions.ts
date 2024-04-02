@@ -22,7 +22,7 @@ export const chartOptions = {
     },
     title: {
       display: true,
-      text: "Sorting benchmark"
+      text: ""
     }
   }
 };
