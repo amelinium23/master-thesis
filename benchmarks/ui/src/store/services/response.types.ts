@@ -41,7 +41,8 @@ type User = {
 };
 
 type SqliteResult = {
-  result: User;
+  users: User[];
+  times: number[];
   time: number;
 };
 

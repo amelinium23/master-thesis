@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { sortingOptions } from "@/constants/options";
 import { SortingRequest } from "@/store/services/request.types";
 
-import { SortingResultChart } from "../SortitingResult";
+import { SortingResultChart } from "../SortingResult";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardDescription, CardTitle } from "../ui/card";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form";

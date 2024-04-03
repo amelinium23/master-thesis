@@ -78,22 +78,29 @@ const mapUser = (values: Row) => {
 };
 
 const performSqliteBenchmark = (numOfIterations: number, numOfRecords: number) => {
+	const times = [];
+	const memoryUsage = [];
 	const conn = createConnection();
 	dropTable(conn);
 	createTable(conn);
 	const startTime = performance.now();
 
 	for (let i = 0; i < numOfIterations; i++) {
+		const startTime = performance.now();
+		const memory = Deno.memoryUsage().rss;
 		for (let j = 0; j < numOfRecords; j++) {
 			insertUser(conn, createFakeUser());
 		}
+		const endTime = performance.now();
+		times.push(endTime - startTime);
+		memoryUsage.push(memory);
 	}
 
 	const endTime = performance.now();
 	const users = getUserFromDatabase(conn);
 	const mappedUsers = users.map(mapUser);
 
-	return { time: endTime - startTime, result: mappedUsers };
+	return { time: endTime - startTime, times, memoryUsage, users: mappedUsers };
 };
 
 (() => {
@@ -103,8 +110,6 @@ const performSqliteBenchmark = (numOfIterations: number, numOfRecords: number) =
 
 	const numberOfIterations = Number(Deno.args.at(0));
 	const numberOfRecords = Number(Deno.args.at(1));
-
-	const results = [];
 
 	if (!numberOfIterations || !numberOfRecords) {
 		Deno.exit(1);

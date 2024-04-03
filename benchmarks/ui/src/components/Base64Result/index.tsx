@@ -19,6 +19,28 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
 
   const labels = generateLabels(req.number_of_iterations);
 
+  const encodingChartOptions = {
+    ...chartOptions,
+    plugins: {
+      ...chartOptions.plugins,
+      title: {
+        ...chartOptions.plugins.title,
+        text: "Base64 encoding benchmark result"
+      }
+    }
+  };
+
+  const decodingChartOptions = {
+    ...chartOptions,
+    plugins: {
+      ...chartOptions.plugins,
+      title: {
+        ...chartOptions.plugins.title,
+        text: "Base64 decoding benchmark result"
+      }
+    }
+  };
+
   const jsEncodingChartData = {
     labels,
     datasets: [
@@ -137,10 +159,10 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
       ) : null}
       {data ? (
         <CardContent className=" rounded-xl flex flex-col gap-4">
-          <Line id="jsChartEncoding" className="bg-white" data={jsEncodingChartData} options={chartOptions} />
-          <Line id="jsChartDecoding" className="bg-white" data={jsDecodingChartData} options={chartOptions} />
-          <Line id="tsChartEncoding" className="bg-white" data={tsEncodingChartData} options={chartOptions} />
-          <Line id="tsChartDecoding" className="bg-white" data={tsDecodingChartData} options={chartOptions} />
+          <Line id="jsChartEncoding" className="bg-white" data={jsEncodingChartData} options={encodingChartOptions} />
+          <Line id="jsChartDecoding" className="bg-white" data={jsDecodingChartData} options={decodingChartOptions} />
+          <Line id="tsChartEncoding" className="bg-white" data={tsEncodingChartData} options={encodingChartOptions} />
+          <Line id="tsChartDecoding" className="bg-white" data={tsDecodingChartData} options={decodingChartOptions} />
           <Button onClick={() => saveCharts(charts)} className="w-md">
             Save charts
           </Button>

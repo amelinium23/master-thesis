@@ -68,20 +68,27 @@ const createConnection = async () => {
 };
 
 const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
+    const times = [];
+    const memoryUsage = [];
     const conn = await createConnection();
     await dropTable(conn);
     await createTable(conn);
     const startTime = performance.now();
 
     for (let i = 0; i < numOfIterations; i++) {
+        const startTime = performance.now();
+        const memory = process.memoryUsage().rss;
         for (let j = 0; j < numOfRecords; j++) {
             await insertUser(conn, createFakeUser());
         }
+        const endTime = performance.now();
+        times.push(endTime - startTime);
+        memoryUsage.push(memory);
     }
 
     const endTime = performance.now();
 
-    return { time: endTime - startTime, users: await getUserFromDatabase(conn) };
+    return { time: endTime - startTime, times, memoryUsage, users: await getUserFromDatabase(conn) };
 };
 
 (async () => {

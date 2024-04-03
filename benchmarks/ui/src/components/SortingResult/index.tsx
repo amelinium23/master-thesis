@@ -19,6 +19,17 @@ export const SortingResultChart = ({ req }: SortingResultChartProps) => {
 
   const labels = generateLabels(req.number_of_iterations);
 
+  const sortingChartOptions = {
+    ...chartOptions,
+    plugins: {
+      ...chartOptions.plugins,
+      title: {
+        ...chartOptions.plugins.title,
+        text: "Sorting benchmark result"
+      }
+    }
+  };
+
   const jsChartData = {
     labels,
     datasets: [
@@ -83,8 +94,8 @@ export const SortingResultChart = ({ req }: SortingResultChartProps) => {
       ) : null}
       {data ? (
         <CardContent className=" rounded-xl flex flex-col gap-4">
-          <Line id="jsChart" className="bg-white" data={jsChartData} options={chartOptions} />
-          <Line id="tsChart" className="bg-white" data={tsChartData} options={chartOptions} />
+          <Line id="jsChart" className="bg-white" data={jsChartData} options={sortingChartOptions} />
+          <Line id="tsChart" className="bg-white" data={tsChartData} options={sortingChartOptions} />
           <Button onClick={() => saveCharts(charts)} className="w-md">
             Save charts
           </Button>
