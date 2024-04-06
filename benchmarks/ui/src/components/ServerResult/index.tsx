@@ -37,13 +37,22 @@ export const ServerResult = ({ req }: ServerResultProps) => {
                     {key
                       .split("_")
                       .filter((x) => x)
-                      .join(" ")}
+                      .join(" - js")}
                   </TableCaption>
                   {Object.keys(data.js[key as ResultKeys]).map((summaryKey) => (
                     <TableRow key={summaryKey}>
                       <TableCell>{summaryKey}</TableCell>
                       <TableCell className="break-words max-w-[300px]">
-                        {JSON.stringify(data.js[key as ResultKeys][summaryKey as SummaryKeys])}
+                        {typeof data.js[key as ResultKeys][summaryKey as SummaryKeys] === "object"
+                          ? Object.entries(data.js[key as ResultKeys][summaryKey as SummaryKeys]).map(
+                              ([insertedKey, value]) => (
+                                <TableRow key={insertedKey}>
+                                  <TableCell>{insertedKey}</TableCell>
+                                  <TableCell>{}</TableCell>
+                                </TableRow>
+                              )
+                            )
+                          : null}
                       </TableCell>
                     </TableRow>
                   ))}
