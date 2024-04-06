@@ -194,7 +194,7 @@ def node_ts_perform_sqlite_benchmark(options: SqliteParameters):
 def node_js_perform_server_benchmark(options: ServerParameters):
     os.chdir("../js")
     process_server = subprocess.Popen(["npm", "run", "node:server"])
-    subprocess.run(["touch", "./node/nodeServerResult.json"])
+    # subprocess.run(["touch", "./node/nodeServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3002/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./node/nodeServerResult.json",
@@ -216,7 +216,7 @@ def node_js_perform_server_benchmark(options: ServerParameters):
 def node_ts_perform_server_benchmark(options: ServerParameters):
     os.chdir("../ts")
     process_server = subprocess.Popen(["npm", "run", "node:server"])
-    subprocess.run(["touch", "./node/nodeServerResult.json"])
+    # subprocess.run(["touch", "./node/nodeServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3005/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./node/nodeServerResult.json",

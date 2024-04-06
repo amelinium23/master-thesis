@@ -192,7 +192,7 @@ def bun_ts_perform_sqlite_benchmark(options: SqliteParameters):
 def bun_js_perform_server_benchmark(options: ServerParameters):
     os.chdir("../js")
     process_server = subprocess.Popen(["npm", "run", "bun:server"])
-    subprocess.run(["touch", "./bun/bunServerResult.json"])
+    # subprocess.run(["touch", "./bun/bunServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3000/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
@@ -214,7 +214,7 @@ def bun_js_perform_server_benchmark(options: ServerParameters):
 def bun_ts_perform_server_benchmark(options: ServerParameters):
     os.chdir("../ts")
     process_server = subprocess.Popen(["npm", "run", "bun:server"])
-    subprocess.run(["touch", "./bun/bunServerResult.json"])
+    # subprocess.run(["touch", "./bun/bunServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3003/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",

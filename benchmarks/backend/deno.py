@@ -1,4 +1,3 @@
-import signal
 import subprocess
 import os
 import json
@@ -192,7 +191,7 @@ def deno_ts_perform_sqlite_benchmark(options: SqliteParameters):
 def deno_js_perform_server_benchmark(options: ServerParameters):
     os.chdir("../js")
     process_server = subprocess.Popen(["npm", "run", "deno:server"])
-    subprocess.run(["touch", "./deno/denoServerResult.json"])
+    # subprocess.run(["touch", "./deno/denoServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3001/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
@@ -214,7 +213,7 @@ def deno_js_perform_server_benchmark(options: ServerParameters):
 def deno_ts_perform_server_benchmark(options: ServerParameters):
     os.chdir("../ts")
     process_server = subprocess.Popen(["npm", "run", "deno:server"])
-    subprocess.run(["touch", "./deno/denoServerResult.json"])
+    # subprocess.run(["touch", "./deno/denoServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3004/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
