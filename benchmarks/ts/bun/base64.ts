@@ -13,6 +13,7 @@ const startEncoding = (buffer: Buffer, str2: string) => {
 	for (let i = 0; i < TRIES; i++) {
 		encodedString += buffer.toString("base64").length;
 	}
+	const { rss } = process.memoryUsage();
 	const end = performance.now();
 	const timeEncoding = end - start;
 
@@ -26,7 +27,7 @@ const startEncoding = (buffer: Buffer, str2: string) => {
 		)
 	);
 
-	return { encodedString, timeEncoding };
+	return { encodedString, rss, timeEncoding };
 };
 
 const startDecoding = (str2: string, str3: Buffer) => {
@@ -35,6 +36,7 @@ const startDecoding = (str2: string, str3: Buffer) => {
 	for (let i = 0; i < TRIES; i++) {
 		decodedString += Buffer.from(str2, "base64").length;
 	}
+	const { rss } = process.memoryUsage();
 	const endDecoding = performance.now();
 	const timeDecoded = endDecoding - startDecoded;
 
@@ -48,7 +50,7 @@ const startDecoding = (str2: string, str3: Buffer) => {
 		)
 	);
 
-	return { timeDecoded, decodedString };
+	return { timeDecoded, rss, decodedString };
 };
 
 const performBase64Benchmark = (numberOfIterations: number) => {

@@ -27,13 +27,15 @@ const createBatchOfBunFiles = async (
 		const startTime = performance.now();
 		const fileName = path.join(import.meta.dir, directory, `${startFileName}-${i + 1}.txt`).toString();
 		await createBunFile(fileName, numberOfParagraphs);
+		const { rss } = process.memoryUsage();
 		const endTime = performance.now();
-		fileNames.push({ fileName, time: endTime - startTime });
+		fileNames.push({ fileName, time: endTime - startTime, rss });
 	}
 	const endTime = performance.now();
 	return {
 		fileNames: fileNames.map(({ fileName }) => fileName),
 		times: fileNames.map(({ time }) => time),
+		memory: fileNames.map(({ rss }) => rss),
 		timeOfCreating: endTime - startTime,
 	};
 };
@@ -57,13 +59,15 @@ const createBatchOfFiles = (
 		const startTime = performance.now();
 		const fileName = path.join(import.meta.dir, directory, `${startFileName}-${i + 1}.txt`).toString();
 		createFile(fileName, numberOfParagraphs);
+		const { rss } = process.memoryUsage();
 		const endTime = performance.now();
-		fileNames.push({ fileName, time: endTime - startTime });
+		fileNames.push({ fileName, time: endTime - startTime, rss });
 	}
 	const endTime = performance.now();
 	return {
 		fileNames: fileNames.map(({ fileName }) => fileName),
 		times: fileNames.map(({ time }) => time),
+		memory: fileNames.map(({ rss }) => rss),
 		timeOfCreating: endTime - startTime,
 	};
 };
@@ -82,14 +86,20 @@ const readFiles = (fileNames: string[]) => {
 				encoding: "utf-8",
 			});
 			const content = lines.toString();
+			const { rss } = process.memoryUsage();
 			const endTime = performance.now();
-			resultOfWriting.push({ content: content, time: endTime - startTime });
+			resultOfWriting.push({ content: content, time: endTime - startTime, rss });
 		} catch (err) {
 			console.error(err);
 		}
 	}
 	const endTime = performance.now();
-	return { results: resultOfWriting, times: resultOfWriting.map(({ time }) => time), time: endTime - startTime };
+	return {
+		results: resultOfWriting,
+		times: resultOfWriting.map(({ time }) => time),
+		time: endTime - startTime,
+		memory: resultOfWriting.map(({ rss }) => rss),
+	};
 };
 
 const readBunFiles = async (fileNames: string[]) => {
@@ -102,7 +112,8 @@ const readBunFiles = async (fileNames: string[]) => {
 			const file = Bun.file(fileName);
 			const lines = await file.text();
 			const endTime = performance.now();
-			resultOfWriting.push({ lines, time: endTime - startTime });
+			const { rss } = process.memoryUsage();
+			resultOfWriting.push({ lines, time: endTime - startTime, rss });
 		} catch (err) {
 			console.error(err);
 		}
@@ -112,6 +123,7 @@ const readBunFiles = async (fileNames: string[]) => {
 	return {
 		results: resultOfWriting.map(({ lines }) => lines),
 		times: resultOfWriting.map(({ time }) => time),
+		memory: resultOfWriting.map(({ rss }) => rss),
 		time: endTime - startTime,
 	};
 };

@@ -77,28 +77,30 @@ const generateRandomArray = (size: number): number[] => {
 };
 
 const bubbleSortBenchmark = (numberOfSamples: number) => {
-	const results = [];
 	const arr = generateRandomArray(numberOfSamples);
 	const start = performance.now();
 	const sortingResult = bubbleSort(arr);
+	const { rss } = process.memoryUsage();
 	const end = performance.now();
-	return { time: end - start, result: sortingResult };
+	return { time: end - start, result: sortingResult, rss };
 };
 
 const quickSortBenchmark = (numberOfSamples: number) => {
 	const arr = generateRandomArray(numberOfSamples);
 	const start = performance.now();
 	const sortingResult = quickSort(arr);
+	const { rss } = process.memoryUsage();
 	const end = performance.now();
-	return { time: end - start, result: sortingResult };
+	return { time: end - start, result: sortingResult, rss };
 };
 
 const radixSortBenchmark = (numberOfSamples: number) => {
 	const arr = generateRandomArray(numberOfSamples);
 	const start = performance.now();
 	const sortingResult = radixSort(arr);
+	const { rss } = process.memoryUsage();
 	const end = performance.now();
-	return { time: end - start, result: sortingResult };
+	return { time: end - start, result: sortingResult, rss };
 };
 
 const performSortingBenchmark = (type: string, numberOfSamples: number, numberOfIterations: number) => {

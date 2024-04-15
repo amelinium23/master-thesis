@@ -77,10 +77,10 @@ const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 
     for (let i = 0; i < numOfIterations; i++) {
         const startTime = performance.now();
-        const memory = process.memoryUsage().rss;
         for (let j = 0; j < numOfRecords; j++) {
             await insertUser(conn, createFakeUser());
         }
+        const memory = process.memoryUsage().rss;
         const endTime = performance.now();
         times.push(endTime - startTime);
         memoryUsage.push(memory);
@@ -88,7 +88,7 @@ const performSqliteBenchmark = async (numOfIterations, numOfRecords) => {
 
     const endTime = performance.now();
 
-    return { time: endTime - startTime, times, memoryUsage, users: await getUserFromDatabase(conn) };
+    return { time: endTime - startTime, times, memory: memoryUsage, users: await getUserFromDatabase(conn) };
 };
 
 (async () => {

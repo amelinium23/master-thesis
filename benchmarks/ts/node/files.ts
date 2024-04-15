@@ -21,8 +21,9 @@ const createBatchOfFiles = (
 		const startTime = performance.now();
 		const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`).toString();
 		createFile(fileName, numberOfParagraphs);
+		const { rss } = process.memoryUsage();
 		const endTime = performance.now();
-		fileNames.push({ fileName, time: endTime - startTime });
+		fileNames.push({ fileName, time: endTime - startTime, rss });
 	}
 	const endTime = performance.now();
 	return {
@@ -46,8 +47,11 @@ const readFiles = (fileNames: string[]) => {
 			const lines = fs.readFileSync(path.join(__dirname, "tmp", realFileName).toString(), { encoding: "utf-8" });
 			const content = lines.toString();
 			const endTime = performance.now();
+			const { rss } = process.memoryUsage();
+
 			resultOfWriting.push({
 				content,
+				rss,
 				time: endTime - startTime,
 			});
 		} catch (err) {
@@ -58,8 +62,9 @@ const readFiles = (fileNames: string[]) => {
 
 	return {
 		results: resultOfWriting,
-		times: resultOfWriting.map(({ time }) => time),
 		timeOfReading: endTime - startTime,
+		times: resultOfWriting.map(({ time }) => time),
+		memory: resultOfWriting.map(({ rss }) => rss),
 	};
 };
 

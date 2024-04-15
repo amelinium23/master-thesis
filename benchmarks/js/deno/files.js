@@ -22,12 +22,14 @@ const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 2
         const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`);
         createFile(fileName, numberOfParagraphs);
         const endTime = performance.now();
-        fileNames.push({ fileName: fileName, time: endTime - startTime });
+        const { rss } = Deno.memoryUsage();
+        fileNames.push({ fileName: fileName, time: endTime - startTime, rss });
     }
     const endTime = performance.now();
     return {
         fileNames: fileNames.map(({ fileName }) => fileName),
         times: fileNames.map(({ time }) => time),
+        memory: fileNames.map(({ rss }) => rss),
         timeOfCreating: endTime - startTime,
     };
 };
@@ -42,7 +44,8 @@ const readFiles = (fileNames) => {
             const textDecoder = new TextDecoder("utf-8");
             const content = textDecoder.decode(data);
             const endTime = performance.now();
-            resultOfWriting.push({ content: content, time: endTime - startTime });
+            const { rss } = Deno.memoryUsage();
+            resultOfWriting.push({ content: content, time: endTime - startTime, rss });
         } catch (err) {
             console.error(err);
         }
@@ -51,6 +54,7 @@ const readFiles = (fileNames) => {
     return {
         results: resultOfWriting,
         times: resultOfWriting.map(({ time }) => time),
+        memory: fileNames.map(({ rss }) => rss),
         timeOfReading: endTime - startTime,
     };
 };

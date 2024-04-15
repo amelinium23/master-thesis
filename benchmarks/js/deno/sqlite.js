@@ -84,10 +84,10 @@ const performSqliteBenchmark = (numOfIterations, numOfRecords) => {
 
     for (let i = 0; i < numOfIterations; i++) {
         const startTime = performance.now();
-        const memory = Deno.memoryUsage().rss;
         for (let j = 0; j < numOfRecords; j++) {
             insertUser(conn, createFakeUser());
         }
+        const memory = Deno.memoryUsage().rss;
         const endTime = performance.now();
         times.push(endTime - startTime);
         memoryUsage.push(memory);
@@ -97,7 +97,7 @@ const performSqliteBenchmark = (numOfIterations, numOfRecords) => {
     const users = getUserFromDatabase(conn);
     const mappedUsers = users.map(mapUser);
 
-    return { time: endTime - startTime, times, memoryUsage, users: mappedUsers };
+    return { time: endTime - startTime, times, memory: memoryUsage, users: mappedUsers };
 };
 
 (() => {

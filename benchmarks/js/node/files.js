@@ -16,13 +16,15 @@ const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 2
         const startTime = performance.now();
         const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`).toString();
         createFile(fileName, numberOfParagraphs);
+        const { rss } = process.memoryUsage();
         const endTime = performance.now();
-        fileNames.push({ fileName, time: endTime - startTime });
+        fileNames.push({ fileName, time: endTime - startTime, rss });
     }
     const endTime = performance.now();
     return {
         fileNames: fileNames.map(({ fileName }) => fileName),
         times: fileNames.map(({ time }) => time),
+        memory: fileNames.map(({ rss }) => rss),
         timeOfCreating: endTime - startTime,
     };
 };
@@ -40,13 +42,20 @@ const readFiles = (fileNames) => {
             const lines = fs.readFileSync(path.join(__dirname, "tmp", realFileName).toString(), { encoding: "utf-8" });
             const content = lines.toString();
             const endTime = performance.now();
-            resultOfWriting.push({ content, time: endTime - startTime });
+            const { rss } = process.memoryUsage();
+            resultOfWriting.push({ content, time: endTime - startTime, rss });
         } catch (err) {
             console.error(err);
         }
     }
     const endTime = performance.now();
-    return { results: resultOfWriting, times: resultOfWriting.map(({ time }) => time), time: endTime - startTime };
+
+    return {
+        results: resultOfWriting,
+        memory: fileNames.map(({ rss }) => rss),
+        times: resultOfWriting.map(({ time }) => time),
+        time: endTime - startTime,
+    };
 };
 
 const removeFiles = (directory = "tmp") => {

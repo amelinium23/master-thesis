@@ -1,5 +1,6 @@
 type SortingDetails = {
   time: number;
+  rss: number;
   result: number[];
 };
 
@@ -11,12 +12,14 @@ type FileContent = {
 type ReadingResult = {
   results: FileContent[];
   times: number[];
+  memory: number[];
   timeOfReading: number;
 };
 
 type WritingResult = {
   fileNames: string[];
   times: number[];
+  memory: number[];
   timeOfCreating: number;
 };
 
@@ -43,16 +46,19 @@ type User = {
 type SqliteResult = {
   users: User[];
   times: number[];
+  memory: number[];
   time: number;
 };
 
 type DecodeResult = {
   timeDecoded: number;
+  rss: number;
   decodedString: string;
 };
 
 type EncodeResult = {
   timeEncoding: number;
+  rss: number;
   encodedString: string;
 };
 

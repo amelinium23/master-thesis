@@ -26,13 +26,15 @@ const createBatchOfFiles = (
 		const startTime = performance.now();
 		const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`);
 		createFile(fileName, numberOfParagraphs);
+		const { rss } = Deno.memoryUsage();
 		const endTime = performance.now();
-		fileNames.push({ fileName: fileName, time: endTime - startTime });
+		fileNames.push({ fileName: fileName, time: endTime - startTime, rss });
 	}
 	const endTime = performance.now();
 	return {
 		fileNames: fileNames.map(({ fileName }) => fileName),
 		times: fileNames.map(({ time }) => time),
+		memory: fileNames.map(({ rss }) => rss),
 		timeOfCreating: endTime - startTime,
 	};
 };
@@ -47,15 +49,21 @@ const readFiles = (fileNames: string[]) => {
 			const data = Deno.readFileSync(fileName);
 			const textDecoder = new TextDecoder("utf-8");
 			const content = textDecoder.decode(data);
+			const { rss } = Deno.memoryUsage();
 			const endTime = performance.now();
-			resultOfWriting.push({ content: content, timeOfReading: endTime - startTime });
+			resultOfWriting.push({ content: content, time: endTime - startTime, rss });
 		} catch (err) {
 			console.error(err);
 		}
 	}
 	const endTime = performance.now();
 
-	return { results: resultOfWriting, timeOfReading: endTime - startTime };
+	return {
+		results: resultOfWriting,
+		timeOfReading: endTime - startTime,
+		memory: resultOfWriting.map(({ rss }) => rss),
+		times: resultOfWriting.map(({ time }) => time),
+	};
 };
 
 const removeFiles = (directory = "tmp") => {
