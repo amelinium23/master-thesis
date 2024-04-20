@@ -51,6 +51,15 @@ export const FilesResult = ({ req }: FilesResultProps) => {
 
   const filesMemoryChartOptions = {
     ...chartOptions,
+    scales: {
+      ...chartOptions.scales,
+      y: {
+        title: {
+          text: "Memory",
+          display: true
+        }
+      }
+    },
     plugins: {
       ...chartOptions.plugins,
       title: {

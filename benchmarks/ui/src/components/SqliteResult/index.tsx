@@ -51,6 +51,15 @@ export const SqliteResult = ({ req }: SqliteResultProps) => {
 
   const sqliteMemoryChartOptions = {
     ...chartOptions,
+    scales: {
+      ...chartOptions.scales,
+      y: {
+        title: {
+          text: "Memory",
+          display: true
+        }
+      }
+    },
     plugins: {
       ...chartOptions.plugins,
       title: {

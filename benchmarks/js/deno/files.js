@@ -54,7 +54,7 @@ const readFiles = (fileNames) => {
     return {
         results: resultOfWriting,
         times: resultOfWriting.map(({ time }) => time),
-        memory: fileNames.map(({ rss }) => rss),
+        memory: resultOfWriting.map(({ rss }) => rss),
         timeOfReading: endTime - startTime,
     };
 };

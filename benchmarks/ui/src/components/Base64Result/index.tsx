@@ -71,6 +71,15 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
 
   const encodingMemoryChartOptions = {
     ...chartOptions,
+    scales: {
+      ...chartOptions.scales,
+      y: {
+        title: {
+          text: "Memory",
+          display: true
+        }
+      }
+    },
     plugins: {
       ...chartOptions.plugins,
       title: {
@@ -82,6 +91,15 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
 
   const decodingMemoryChartOptions = {
     ...chartOptions,
+    scales: {
+      ...chartOptions.scales,
+      y: {
+        title: {
+          text: "Memory",
+          display: true
+        }
+      }
+    },
     plugins: {
       ...chartOptions.plugins,
       title: {

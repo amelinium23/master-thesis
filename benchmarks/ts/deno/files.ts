@@ -51,7 +51,7 @@ const readFiles = (fileNames: string[]) => {
 			const content = textDecoder.decode(data);
 			const { rss } = Deno.memoryUsage();
 			const endTime = performance.now();
-			resultOfWriting.push({ content: content, time: endTime - startTime, rss });
+			resultOfWriting.push({ content, time: endTime - startTime, rss });
 		} catch (err) {
 			console.error(err);
 		}

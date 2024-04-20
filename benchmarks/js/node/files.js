@@ -30,7 +30,7 @@ const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 2
 };
 
 const readFiles = (fileNames) => {
-    const resultOfWriting = [];
+    const resultOfReading = [];
     const startTime = performance.now();
     for (const fileName of fileNames) {
         try {
@@ -43,7 +43,7 @@ const readFiles = (fileNames) => {
             const content = lines.toString();
             const endTime = performance.now();
             const { rss } = process.memoryUsage();
-            resultOfWriting.push({ content, time: endTime - startTime, rss });
+            resultOfReading.push({ content, time: endTime - startTime, memory: rss });
         } catch (err) {
             console.error(err);
         }
@@ -51,9 +51,9 @@ const readFiles = (fileNames) => {
     const endTime = performance.now();
 
     return {
-        results: resultOfWriting,
-        memory: fileNames.map(({ rss }) => rss),
-        times: resultOfWriting.map(({ time }) => time),
+        results: resultOfReading,
+        memory: resultOfReading.map(({ memory }) => memory),
+        times: resultOfReading.map(({ time }) => time),
         time: endTime - startTime,
     };
 };
