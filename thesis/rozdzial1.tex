@@ -1,8 +1,16 @@
 \section*{Przegląd środowisk uruchomieniowych}
 \addcontentsline{toc}{section}{Przegląd środowisk uruchomieniowych}
-Środowisko uruchomieniowe jest to program pozwalający na uruchomienie skompilowanego programu w danym języku. 
+Do czasów powstania pierwszego środowiska uruchomieniowego JavaScript, możliwość uruchomienia programów ograniczał się do przeglądarki. Przeglądarki nie pozwalały na dostęp do pików, co nie pozwalało zapisywać dodatkowych plików na maszynie klienta. W ten sposób powstało pierwsze środowisko uruchomieniowe JavaScript w 2009, czyli NodeJS.
 
-Środowiska zostały wybrane na podstawie corocznej ankiety State of JS \cite{State_of_js:2022}, w której programiści wybierają narzędzia, które są przez nich najczęściej używane. Na liście z 2022 roku, można zauważyć, że nie został wymienione środowisko Bun. Spowodowane jest to wydanie wersji 1.0 we wrześniu 2023 roku.
+Środowiska uruchomieniowe pozwalają na uruchomienie skryptów JavaScriptu poza przeglądarką. Pozwoliło to językowi JavaScript stać się językiem generalnego użycia, co dla programistów stworzyło możliwość tworzenia aplikacji desktopowych, pozwoliło także na tworzenie API. Atutem powstałego w 2009 roku środowisko był asynchroniczny dostęp do systemu plików, pozwoliło to na optymalizacje operacji wejścia/wyjścia dla dużych skalowalnych aplikacji webowych.
+
+Po upływie czasu zauważono, że NodeJS nie jest na tyle szybkim językiem do tworzenia serwerów, które mogły przekazywać informacje poprzez żądania HTTP. Stworzono także menadżera paczek, który pozwalał z jednego repozytorium pobierać paczkę, która umożliwiała uzupełnić braki samego środowiska. W czasie rosnącej popularności także zauważono, że rośnie liczba bibliotek, które korzystały z słabych punkty samego środowiska, dzięki którym pozyskano wrażliwe dane.
+
+W odpowiedzi na narastające problemy związku działanie środowiska NodeJSm jego wolnym działaniem, zaczęto prace nad nowym bezpieczniejszym oraz wydajniejszym środowiskiem uruchomieniowym czyli Deno. Początkowo zostało zbudowane w oparciu o język Go, który został zamieniony na język Rust. Samo środowisko korzystało z silnika JavaScript stworzonego przez Google czyli V8. Twórcy Deno chcieli, aby paczki były dostępne pod linkiem, co oznacza szybsze przejście do samych pakietów. Dodatkowo Deno wprowadziło natywne wsparcie do TypeScript'a, pozwoliło to na statyczne typowanie samych bibliotek oraz zewnętrznych pakietów. Wersja 1.0 Deno, została wydana 13 maja 2020 roku.
+
+Środowiska zostały wybrane na podstawie corocznej ankiety State of JS \cite{State_of_js:2022}, w której programiści wybierają narzędzia, które są przez nich najczęściej używane. Na liście z 2022 roku, można zauważyć, że nie został wymienione środowisko Bun,  spowodowane jest to wydanie wersji 1.0 we wrześniu 2023 roku. Możemy jednakże zauważyć, że Bun pojawia się w pracach \cite{NodeAndBun}, które analizują wydajność NodeJs oraz Bun.
+
+Bun jako najmłodszy reprezentant środowisk wyróżnia się od pozostałych środowisk swoją szybkością, wbudowanym w sam silnik menadżer pakietów i bundler, co ułatwiło deweloperom kompresowanie samych aplikacji webowych. Środowisko to zostało napisane w języku Zig, dzięki czemu zawdzięcza swoją szybkość.
 
 W tym rozdziale znajduje się opis wybranych do badań środowisk uruchomieniowych JavaScript.
 
