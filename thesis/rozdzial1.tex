@@ -14,12 +14,24 @@ Bun jako najmłodszy reprezentant środowisk wyróżnia się od pozostałych śr
 
 W tym rozdziale znajduje się opis wybranych do badań środowisk uruchomieniowych JavaScript.
 
-\subsection*{NodeJS}
+\section*{NodeJS}
 \addcontentsline{toc}{subsection}{NodeJS}
+NodeJs jest to powstałe w 2009 środowisko uruchomieniowe, które pozwoliło na znaczne rozwinięcie samego środowiska języka JavaScript o dodatkowe funkcjonalności. Środowisko zostało oparte o silnik V8 od Google, które pozwoliło na uruchamianie kodu poza przeglądarką, które było do powstania środowiska niemożliwe. Wprowadziło to także możliwość tworzenia dynamicznych stron, co pozwoliło na rozwój bibliotek związanych z tworzeniem widoków. Aktualnie środowisko jest rozwijane przez OpenJs Fundation, sama organizacja wprowadza zmiany do samego środowiska np. obsługa zmiennych środowiskowych pobieranych z pliku.
 
+Środowisko zostało zbudowane o paradygmat zdarzeniowy, stosuje się w nim pętle zdarzeniową, która nasłuchuje konkretnych zdarzeń, a następnie zdarzenia, które są umieszczone w stosie zdarzeń są wykonywane w kolejności FIFO. \cite{event_loop} Przedstawioną architekturę przedstawiono na Rysunku \ref{fig:eventLoop}.
 
-\subsection*{Deno}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.9\textwidth]{Figures/eventLoop.png}
+  \caption{}
+  \label{fig:eventLoop}
+\end{figure}
+
+Zastosowanie powyższej architektury pozwoliło na wprowadzenie asynchronicznej obsługi operacji wyjścia wyjścia. 
+
+\section*{Deno}
 \addcontentsline{toc}{subsection}{Deno}
 
-\subsection*{Bun}
+
+\section*{Bun}
 \addcontentsline{toc}{subsection}{Bun}
