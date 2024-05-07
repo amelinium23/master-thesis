@@ -35,6 +35,22 @@ W środowisku możemy pisać w kilku językach, niestety nie odbywa się to bez 
 
 \section*{Deno}
 \addcontentsline{toc}{subsection}{Deno}
+Deno jest to środowisko uruchomieniowe, które zostało podobnie jak NodeJs zbudowane na podstawie silnika V8 od Google. Współautorem środowiska jest Ryan Dahl, który jest współtwórcą Deno. Deno jako środowisko spełnia rolę menadżera paczek, który pozwala na pobieranie paczek z repozytorium. W przeciwieństwie do NodeJs, Deno nie posiada menadżera paczek, co pozwala na szybsze pobieranie paczek. Wszystkie paczki są dostępne pod linkiem, co pozwala na szybsze pobieranie paczek.
+
+Dzięki bazowaniu na silniku V8 oraz przepisaniu części funkcjonalności za języka Rust, pozwoliło na zwiększenie wydajności samego silnika. Wydajność samego Deno została zbadana w pracy \cite{deno_performance}, w której porównano wydajność samego środowiska z NodeJs. W pracy wykazano, że Deno jest szybsze od NodeJs, co pozwala na zwiększenie wydajności samego środowiska. W tej pracy sprawdzono wydajność wysyłanych żądań HTTP, w której wykazano, że Deno jest szybsze od NodeJs. Rysunek \ref{fig:deno_vs_node} przedstawia wyniki porównania wydajności Deno oraz NodeJs.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\textwidth]{Figures/deno_performance.png}
+  \caption{Architektura zdarzeń}
+  \label{fig:deno_vs_node}
+\end{figure}
+
+Deno jako środowisko jest bezpieczniejsze od NodeJs, co pozwala na ograniczenie dostępu do plików, co pozwala na zwiększenie bezpieczeństwa samego środowiska. W NodeJs, dostęp do plików jest nieograniczony, co pozwala na dostęp do wszystkich plików na maszynie. W Deno, dostęp do plików jest ograniczony, co pozwala na dostęp do plików, które są wskazane w pliku konfiguracyjnym. Należy także wspomnieć, iż Deno także nie zezwala na ruch sieciowy bez wskazania właściwej flagi, co pozwala na zwiększenie bezpieczeństwa samego środowiska.
+
+Deno jako środowisko posiada wbudowane wsparcie dla TypeScript, co pozwala na statyczne typowanie samych bibliotek oraz zewnętrznych pakietów. W NodeJs, musimy zainstalować dodatkowe paczki, które pozwolą na statyczne typowanie. W Deno, nie musimy instalować dodatkowych paczek, co pozwala na szybsze tworzenie aplikacji.
+
+Deno jako środowisko posiada wbudowany bundler, co pozwala na kompresowanie samej aplikacji. W NodeJs, musimy zainstalować dodatkowe paczki, które pozwolą na kompresowanie samej aplikacji. W Deno, nie musimy instalować dodatkowych paczek, co pozwala na szybsze tworzenie aplikacji.
 
 
 \section*{Bun}
