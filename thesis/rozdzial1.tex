@@ -29,7 +29,7 @@ NodeJs jest to powstałe w 2009 środowisko uruchomieniowe, które pozwoliło na
 
 Zastosowanie powyższej architektury pozwoliło na wprowadzenie asynchronicznej obsługi operacji wyjścia wyjścia. Dzięki tej architekturze, NodeJs jest środowiskiem, w którym produkuje się skalowalne aplikacje internetowe. Środowisko to zostało rozwijane, gdzie dodatkowo wprowadzono moduły odpowiedzialne za funkcje kryptograficzne, funkcje odpowiedzialne za sieci oraz obsługę binarnych danych.
 
-Środowisko posiada własny menadżer paczek, które są przeznaczone dla środowiska nazywający się npm. Npm został zaprezentowany w 2010 roku, rok od powstania samego środowiska. Korzystając z menadżer, deweloperzy mogą udostępniać biblioteki zrobione specjalnie pod NodeJs. Obecnie jest zarejestrowane 2.1 miliona bibliotek \cite{npm}, które znajdują się na w npm. Na przestrzeni czasu, można zauważyć, że Npm nie jest wydajnym menadżerem, dlatego też powstały alternatywy do npm takie jak: yarn oraz pnpm. 
+Środowisko posiada własny menadżer paczek, które są przeznaczone dla środowiska nazywający się npm. Npm został zaprezentowany w 2010 roku, rok od powstania samego środowiska. Korzystając z menadżer, deweloperzy mogą udostępniać biblioteki zrobione specjalnie pod NodeJs. Obecnie jest zarejestrowane 2.1 miliona bibliotek \cite{npm}, które znajdują się na w npm. Na przestrzeni czasu, można zauważyć, że Npm nie jest wydajnym menadżerem, dlatego też powstały alternatywy do npm takie jak: yarn \cite{yarn} oraz pnpm \cite{pnpm}. 
 
 W środowisku możemy pisać w kilku językach, niestety nie odbywa się to bez dodatkowej konfiguracji projektu. Sam NodeJs odczytuje tylko i wyłącznie programy transpilowane lub napisane w JavaScript. Na dzień dzisiejszy dzień środowisko wspiera transpilowanie w kilku języków takich jak: CoffeeScript, Dart, TypeScript oraz ClojureScript.
 
@@ -41,8 +41,8 @@ Dzięki bazowaniu na silniku V8 oraz przepisaniu części funkcjonalności za j�
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.8\textwidth]{Figures/deno_performance.png}
-  \caption{Architektura zdarzeń}
+  \includegraphics[width=0.52\textwidth]{Figures/deno_performance.png}
+  \caption{Wyniki testu wydajnościowego Deno oraz NodeJs \cite{deno_performance}}
   \label{fig:deno_vs_node}
 \end{figure}
 
@@ -52,6 +52,43 @@ Deno jako środowisko posiada wbudowane wsparcie dla TypeScript, co pozwala na s
 
 Deno jako środowisko posiada wbudowany bundler, co pozwala na kompresowanie samej aplikacji. W NodeJs, musimy zainstalować dodatkowe paczki, które pozwolą na kompresowanie samej aplikacji. W Deno, nie musimy instalować dodatkowych paczek, co pozwala na szybsze tworzenie aplikacji.
 
+Samo środowisko udostępnia także wbudowane narzędzia pozwalające na tworzenie aplikacji webowych w oparciu o składnie JSX bądź TSX. Dzięki czemu środowisko jest rozszerzone, deweloperzy nie muszą tworzyć repozytoriów odpowiedzialnych tylko za widoki przedstawione na stronie. Pozwala to na tworzenie jednej wspólnej bazy kodowej, co pozwala na szybszy rozwój aplikacji.
+
+Misją samego środowisko jest ujednolicanie bazy kodowej napisanych w tym środowisku. Z tego powodu Deno posiada swój własny formater kodu, który pozwala na pozbycie się dodatkowych pakietów odpowiedzialnych za formatowanie kodu. 
 
 \section*{Bun}
 \addcontentsline{toc}{subsection}{Bun}
+Bun \cite{bun} jest to najmłodsze środowisko uruchomieniowe, stworzone przez Jarreda Summera. Wersja 1.0 została zaprezentowana we wrześniu 2023 roku. Środowisko to zostało zbudowane na podstawie silnika JavaScript WebKit, jest to rozwiązanie od firmy Apple wykorzystywane w przeglądarce Safari.
+
+Sam autor środowiska twierdzi, że środowisko jest szybsze od NodeJs oraz Deno, co pozwala na zwiększenie wydajności samego środowiska. W pracy \cite{NodeAndBun} porównano wydajność samego środowiska z NodeJs oraz Bun. W pracy wykazano, że Bun jest szybsze od NodeJs, co pozwala na zwiększenie wydajności samego środowiska. W tej pracy sprawdzono wydajność samego środowiska, w której wykazano, że Bun jest szybsze od NodeJs. Jednakże ta praca pokazuje w najbardziej wydajność, tylko i wyłącznie w liczbie żądań na sekundę. Rysunek \ref{fig:bun_vs_node} przedstawia wyniki porównania liczby żądań HTTP przy założonej liczby współbieżnych połączeń z serwerem połaczeniach Bun oraz NodeJs.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.47\textwidth]{Figures/bun_bench_node.png}
+  \caption{Wyniki testu wydajnościowego Bun oraz NodeJs \cite{bun_test}}
+  \label{fig:bun_vs_node}
+\end{figure}
+
+Sam twórca opracował testy wydajnościowe, sprawdzające wydajność środowiska ich rezultaty są opublikowane na stronie \cite{bun_test}. Autor korzystał wbudowanych w silniki metod, które odpowiadają za SSR (\textit{ang. Server Side Rendering}), co imituje środowisko przeglądarki. Jednakże możemy zauważyć, że jest to prosta strona, która zawiera tylko tekst. W testach wydajnościowych sprawdzono wydajność samego środowiska, w których wykazano, że Bun jest szybsze od NodeJs. Rysunek \ref{fig:bun_bench} przedstawia wyniki porównania liczby żądań HTTP na sekundę.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.47\textwidth]{Figures/bun_bench.png}
+  \caption{Wyniki testu wydajnościowego Bun oraz NodeJs \cite{bun_test}}
+  \label{fig:bun_bench}
+\end{figure}
+
+To co wyróżnia środowisko od pozostałych to wbudowany menadżer pakietów, który pozwala na integracje z npm \cite{npm} oraz pozwala na importowanie paczek z samego NodeJs. Pozwala to na integracje z powstałymi już projektami w NodeJs. Samo środowisko też nie potrzebuje pliku \textit{package.json} \cite{package_structure}, które w NodeJs jest wymagane. Samo środowisko tworzy jeden plik odpowiedzialny za wszystkie zależności wykorzystywane w projekcie.
+
+Sprawdzenie jakości kodu jest ułatwione, dla użytkowników środowiska ze względu na wbudowane środowisko testowe. Pozwala to na zrezygnowanie z dodatkowych bibliotek odpowiedzialnych za tworzenie testów. Samo środowisko posiada asercję oraz dodatkowe funkcje, które pozwalają na tworzenie testów jednostkowych. Niektóre funkcje pozwala na niewykonywanie testów w zależności od warunków dla na przykład wyłączenie danego testu w zależności od architektury danego systemu. W dokumentacji znajduję się przykład samej asercji, który przedstawiono na Listingu \ref{lst:bun_assert}.
+
+\begin{centering}
+  \begin{lstlisting}[caption={Przykład asercji w środowisku Bun}, label={lst:bun_assert} ]
+    const macOS = process.arch === "darwin";
+    test.skipIf(macOS)("runs on non-macOS", () => {
+      // runs if *not* macOS
+    });
+  \end{lstlisting}
+\end{centering}
+
+
