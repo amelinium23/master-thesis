@@ -1,2 +1,26 @@
 \section*{Metodologia badań}
 \addcontentsline{toc}{section}{Metodologia badań}
+
+W tym rozdziale przedstawiono metodologię przeprowadzonych badań, środowisko testowe oraz wybrane algorytmy do badań środowisk uruchomieniowych.
+\subsection*{Środowisko testowe}
+\addcontentsline{toc}{subsection}{Środowisko testowe}
+Do przeprowadzenia testów został wykorzystany system operacyjny Linux Ubuntu 22.04.03, zainstalowany w (ang. \textit{ang. Windows Subsystem for Linux}). Specyfikacje sprzętowe komputera, na którym przeprowadzono testy, przedstawiono w tabeli \ref{tab:specyfikacje_sprzetowe}.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Parametr} & \textbf{Wartość} \\
+        \hline
+        Procesor & Intel Core i7-13700HX \\
+        \hline
+        Pamięć RAM & 32 GB \\
+        \hline
+    \end{tabular}
+    \caption{Specyfikacje sprzętowe komputera}
+    \label{tab:specyfikacje_sprzetowe}
+\end{table}
+
+Wybór powyższego systemu jest podyktowany faktem, że jest to system, na którym wybrane środowiska są najczęściej uruchamiane. Badanie wykonane w 2015 roku, pokazuje iż większość osób odpowiedzialnych za administrowanie aplikacjami webowymi korzysta z systemu Linux \cite{performance_comparison_linux}. Kolejnym badaniem przeprowadzonym w 2021 roku, pokazało iż sam system jest bardziej wydajny niż Windows Server \cite{web_server_performance}. Badania także pokazało, że większość serwerów internetowych działa na systemie Linux. W związku z tym, wybór systemu Linux jest uzasadniony.
+
+\subsection*{Wybrane algorytmy}
+\addcontentsline{toc}{subsection}{Wybrane algorytmy}
