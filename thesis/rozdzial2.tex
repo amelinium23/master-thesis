@@ -4,23 +4,26 @@
 W tym rozdziale przedstawiono metodologię przeprowadzonych badań, środowisko testowe oraz wybrane algorytmy do badań środowisk uruchomieniowych.
 \subsection*{Środowisko testowe}
 \addcontentsline{toc}{subsection}{Środowisko testowe}
-Do przeprowadzenia testów został wykorzystany system operacyjny Linux Ubuntu 22.04.03, zainstalowany w (ang. \textit{ang. Windows Subsystem for Linux}). Specyfikacje sprzętowe komputera, na którym przeprowadzono testy, przedstawiono w tabeli \ref{tab:specyfikacje_sprzetowe}.
-\begin{table}[H]
-    \centering
-    \begin{tabular}{|c|c|}
-        \hline
-        \textbf{Parametr} & \textbf{Wartość} \\
-        \hline
-        Procesor & Intel Core i7-13700HX \\
-        \hline
-        Pamięć RAM & 32 GB \\
-        \hline
-    \end{tabular}
-    \caption{Specyfikacje sprzętowe komputera}
-    \label{tab:specyfikacje_sprzetowe}
-\end{table}
+Do przeprowadzenia testów został wykorzystany system operacyjny Linux Ubuntu 22.04.03, zainstalowany w (ang. \textit{ang. Windows Subsystem for Linux}). Wybór ten dodatkowo jest podyktowany faktem iż do momentu pisania niniejszej pracy, środowisko Bun nie udostępniło oficjalnego wsparcia dla systemu Windows.
 
 Wybór powyższego systemu jest podyktowany faktem, że jest to system, na którym wybrane środowiska są najczęściej uruchamiane. Badanie wykonane w 2015 roku, pokazuje iż większość osób odpowiedzialnych za administrowanie aplikacjami webowymi korzysta z systemu Linux \cite{performance_comparison_linux}. Kolejnym badaniem przeprowadzonym w 2021 roku, pokazało iż sam system jest bardziej wydajny niż Windows Server \cite{web_server_performance}. Badania także pokazało, że większość serwerów internetowych działa na systemie Linux. W związku z tym, wybór systemu Linux jest uzasadniony.
 
+Wymienione środowiska posługują się swoimi implementacjami programów umożliwiających uruchamianie programów opartych o Javascript, staje się to problematyczne w przypadku użycia języka TypeScript. Aby uruchomić skrypty napisane za pomocą tego języka TypeScript należy je stranspilować do języka Javascript. W przypadku NodeJs, powstały odpowiednie paczki tj.: \textit{ts-node} \cite{ts_node}, \textit{tsx} \cite{tsx}. Potrafią one przetworzyć pliki napisane w TypeScript do Javascript. W przypadku Deno oraz Bun, ta funkcjonalność jest wbudowana w środowisko, pozwala to na zrezygnowanie z dodatkowych narzędzi.
+
+Środowiska także inaczej podchodzą do zapisu plików na urządzeniach. We wszystkich środowiskach można zapisać oraz odczytać plik za pomocą metod synchronicznych jak i asynchronicznych. Środowisko Bun udostępnia swoją implementacje zapisy oraz odczytu wykorzystując swoje metody asynchroniczne. Dodatkowym atutem samego środowiska Bun jest możliwość użycia bibliotek, które są odpowiednikiem dla tych dostępnych w NodeJs. W przypadku Deno, zapis oraz odczyt odbywa się za pomocą dekoderów oraz enkoderów, które odczytują tekst w zadanym formacie.
+
 \subsection*{Wybrane algorytmy}
 \addcontentsline{toc}{subsection}{Wybrane algorytmy}
+W tym rozdziale znajdują się algorytmy wykorzystane w testach wydajnościowych dla każdego środowiska uruchomieniowego. Wraz z podaniem opisu algorytmu, znajduje się także opis zastosowania algorytmu w praktyce.
+
+\subsubsection*{Algorytmy sortowania}
+\addcontentsline{toc}{subsubsection}{Algorytmy sortowania}
+
+\subsubsection*{Algorytmy Kodowania}
+\addcontentsline{toc}{subsubsection}{Algorytmy Kodowania}
+W testach został wykorzystany jeden algorytm kodowania, który jest najczęściej wykorzystywany do przesyłania danych. Wybrany algorytm kodowania jest Base64. Wykorzystywany jest on do kodowania obrazów, danych wykorzystywanych w formularzach, a także do przedstawiania plików pdf na stronach. Sam algorytm wykorzystywany jest także w 
+
+Algorytm ten charakteryzuje się jak swoją postawą jaką są 64 bity, które kodują każdy z znaków w postaci szesnastkowej. Przykładem takiego kodowania możemy zauważyć na 
+
+\subsection*{Narzędzia pomiarowe}
+\addcontentsline{toc}{subsection}{Narzędzia pomiarowe}
