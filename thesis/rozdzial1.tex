@@ -1,5 +1,4 @@
-\section*{Przegląd środowisk uruchomieniowych}\label{env}
-\addcontentsline{toc}{section}{Przegląd środowisk uruchomieniowych}
+\section{Przegląd środowisk uruchomieniowych}\label{env}
 Do czasów powstania pierwszego środowiska uruchomieniowego JavaScript, możliwość uruchomienia programów ograniczał się do przeglądarki. Przeglądarki nie pozwalały na dostęp do pików, co nie pozwalało zapisywać dodatkowych plików na maszynie klienta. W ten sposób powstało pierwsze środowisko uruchomieniowe JavaScript w 2009, czyli NodeJS.
 
 Środowiska uruchomieniowe pozwalają na uruchomienie skryptów JavaScriptu poza przeglądarką. Pozwoliło to językowi JavaScript stać się językiem generalnego użycia, co dla programistów stworzyło możliwość tworzenia aplikacji desktopowych, pozwoliło także na tworzenie API. Atutem powstałego w 2009 roku środowisko był asynchroniczny dostęp do systemu plików, pozwoliło to na optymalizacje operacji wejścia/wyjścia dla dużych skalowalnych aplikacji webowych.
@@ -14,8 +13,7 @@ Bun jako najmłodszy reprezentant środowisk wyróżnia się od pozostałych śr
 
 W tym rozdziale znajduje się opis wybranych do badań środowisk uruchomieniowych JavaScript.
 
-\section*{NodeJS}
-\addcontentsline{toc}{subsection}{NodeJS}
+\subsection{NodeJS}
 NodeJs jest to powstałe w 2009 środowisko uruchomieniowe, które pozwoliło na znaczne rozwinięcie samego środowiska języka JavaScript o dodatkowe funkcjonalności. Środowisko zostało oparte o silnik V8 od Google, które pozwoliło na uruchamianie kodu poza przeglądarką, które było do powstania środowiska niemożliwe. Wprowadziło to także możliwość tworzenia dynamicznych stron, co pozwoliło na rozwój bibliotek związanych z tworzeniem widoków. Aktualnie środowisko jest rozwijane przez OpenJs Fundation, sama organizacja wprowadza zmiany do samego środowiska np. obsługa zmiennych środowiskowych pobieranych z pliku.
 
 Środowisko zostało zbudowane o paradygmat zdarzeniowy, stosuje się w nim pętle zdarzeniową, która nasłuchuje konkretnych zdarzeń, a następnie zdarzenia, które są umieszczone w stosie zdarzeń są wykonywane w kolejności FIFO. \cite{event_loop} Przedstawioną architekturę przedstawiono na Rysunku \ref{fig:eventLoop}.
@@ -33,8 +31,7 @@ Zastosowanie powyższej architektury pozwoliło na wprowadzenie asynchronicznej 
 
 W środowisku możemy pisać w kilku językach, niestety nie odbywa się to bez dodatkowej konfiguracji projektu. Sam NodeJs odczytuje tylko i wyłącznie programy transpilowane lub napisane w JavaScript. Na dzień dzisiejszy dzień środowisko wspiera transpilowanie w kilku języków takich jak: CoffeeScript, Dart, TypeScript oraz ClojureScript.
 
-\section*{Deno}
-\addcontentsline{toc}{subsection}{Deno}
+\subsection{Deno}
 Deno jest to środowisko uruchomieniowe, które zostało podobnie jak NodeJs zbudowane na podstawie silnika V8 od Google. Współautorem środowiska jest Ryan Dahl, który jest współtwórcą Deno. Deno jako środowisko spełnia rolę menadżera paczek, który pozwala na pobieranie paczek z repozytorium. W przeciwieństwie do NodeJs, Deno nie posiada menadżera paczek, co pozwala na szybsze pobieranie paczek. Wszystkie paczki są dostępne pod linkiem, co pozwala na szybsze pobieranie paczek.
 
 Dzięki bazowaniu na silniku V8 oraz przepisaniu części funkcjonalności za języka Rust, pozwoliło na zwiększenie wydajności samego silnika. Wydajność samego Deno została zbadana w pracy \cite{deno_performance}, w której porównano wydajność samego środowiska z NodeJs. W pracy wykazano, że Deno jest szybsze od NodeJs, co pozwala na zwiększenie wydajności samego środowiska. W tej pracy sprawdzono wydajność wysyłanych żądań HTTP, w której wykazano, że Deno jest szybsze od NodeJs. Rysunek \ref{fig:deno_vs_node} przedstawia wyniki porównania wydajności Deno oraz NodeJs.
@@ -56,8 +53,7 @@ Samo środowisko udostępnia także wbudowane narzędzia pozwalające na tworzen
 
 Misją samego środowisko jest ujednolicanie bazy kodowej napisanych w tym środowisku. Z tego powodu Deno posiada swój własny formater kodu, który pozwala na pozbycie się dodatkowych pakietów odpowiedzialnych za formatowanie kodu. 
 
-\section*{Bun}
-\addcontentsline{toc}{subsection}{Bun}
+\subsection{Bun}
 Bun \cite{bun} jest to najmłodsze środowisko uruchomieniowe, stworzone przez Jarreda Summera. Wersja 1.0 została zaprezentowana we wrześniu 2023 roku. Środowisko to zostało zbudowane na podstawie silnika JavaScript WebKit, jest to rozwiązanie od firmy Apple wykorzystywane w przeglądarce Safari.
 
 Sam autor środowiska twierdzi, że środowisko jest szybsze od NodeJs oraz Deno, co pozwala na zwiększenie wydajności samego środowiska. W pracy \cite{NodeAndBun} porównano wydajność samego środowiska z NodeJs oraz Bun. W pracy wykazano, że Bun jest szybsze od NodeJs, co pozwala na zwiększenie wydajności samego środowiska. W tej pracy sprawdzono wydajność samego środowiska, w której wykazano, że Bun jest szybsze od NodeJs. Jednakże ta praca pokazuje w najbardziej wydajność, tylko i wyłącznie w liczbie żądań na sekundę. Rysunek \ref{fig:bun_vs_node} przedstawia wyniki porównania liczby żądań HTTP przy założonej liczby współbieżnych połączeń z serwerem połaczeniach Bun oraz NodeJs.
@@ -83,7 +79,7 @@ To co wyróżnia środowisko od pozostałych to wbudowany menadżer pakietów, k
 Sprawdzenie jakości kodu jest ułatwione, dla użytkowników środowiska ze względu na wbudowane środowisko testowe. Pozwala to na zrezygnowanie z dodatkowych bibliotek odpowiedzialnych za tworzenie testów. Samo środowisko posiada asercję oraz dodatkowe funkcje, które pozwalają na tworzenie testów jednostkowych. Niektóre funkcje pozwala na niewykonywanie testów w zależności od warunków dla na przykład wyłączenie danego testu w zależności od architektury danego systemu. W dokumentacji znajduję się przykład samej asercji, który przedstawiono na Listingu \ref{lst:bun_assert}.
 
 \begin{centering}
-  \begin{lstlisting}[caption={Przykład asercji w środowisku Bun}, label={lst:bun_assert} ]
+  \begin{lstlisting}[caption={Przykład asercji w środowisku Bun},label={lst:bun_assert},captionpos=b]
     const macOS = process.arch === "darwin";
     test.skipIf(macOS)("runs on non-macOS", () => {
       // runs if *not* macOS

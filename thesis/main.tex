@@ -1,10 +1,10 @@
 \documentclass[a4paper,12pt,twoside]{article}
+
 \usepackage[top=2.5cm,bottom=2.5cm,inner=3cm,outer=2cm, headheight=1.25cm, footskip=1.25cm]{geometry}
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{enumitem}
-
 \usepackage[polish]{babel}
 \usepackage{pdfpages}
 \usepackage{graphicx}
@@ -12,21 +12,24 @@
 \usepackage[T1]{fontenc} 
 \usepackage[utf8]{inputenc} 
 \usepackage{helvet} 
-\renewcommand{\familydefault}{\sfdefault} 
 \usepackage{amsmath}
 \usepackage{chngcntr}
-\counterwithin{figure}{section} 
 \usepackage{amsmath}
 \usepackage{tocloft}
 \usepackage{nomencl}
 \usepackage[normalem]{ulem}
-\makenomenclature
 \usepackage[nottoc]{tocbibind}
 \usepackage{tocloft}
 \usepackage{caption}
 \usepackage[breaklinks]{hyperref}
+\usepackage{minted}
+\usepackage{listings}
+\usepackage{lmodern}
+\usepackage{hyperref}
+\usepackage{url}
 \usepackage{breakcites}
 
+\renewcommand{\familydefault}{\sfdefault} 
 \newcommand{\listequationsname}{Spis równań}
 \newlistof{myequations}{equ}{\listequationsname}
 \newcommand{\myequations}[1]{%
@@ -34,12 +37,6 @@
 }
 
 \captionsetup[figure]{name=Rys.}
-
-\usepackage{minted}
-\usepackage{listings}
-\usepackage{lmodern}
-\usepackage{hyperref}
-\usepackage{url}
 
 \renewcommand*\familydefault{\sfdefault}
 
@@ -54,9 +51,9 @@
 \setlength{\parindent}{0.5cm}
 \setlist[itemize]{label=•,itemsep=0pt}
 
-\titleformat{\section}{\normalfont\fontsize{16}{18}\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\fontsize{14}{16}\bfseries}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\fontsize{13}{15}\bfseries}{\thesubsubsection}{1em}{}
+% \titleformat{\section}{\normalfont\fontsize{16}{18}\bfseries}{\thesection}{1em}{}
+% \titleformat{\subsection}{\normalfont\fontsize{14}{16}\bfseries}{\thesubsection}{1em}{}
+% \titleformat{\subsubsection}{\normalfont\fontsize{13}{15}\bfseries}{\thesubsubsection}{1em}{}
 
 \begin{document}
 \include{titlepage.tex}

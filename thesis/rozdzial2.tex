@@ -1,9 +1,7 @@
-\section*{Metodologia badań}
-\addcontentsline{toc}{section}{Metodologia badań}
+\section{Metodologia badań}
 W tym rozdziale przedstawiono metodologię przeprowadzonych badań, środowisko testowe oraz wybrane algorytmy do badań środowisk uruchomieniowych.
 
-\section*{Środowisko testowe}
-\addcontentsline{toc}{subsection}{Środowisko testowe}
+\subsection{Środowisko testowe}
 Do przeprowadzenia testów został wykorzystany system operacyjny Linux Ubuntu 22.04.03, zainstalowany w (ang. \textit{ang. Windows Subsystem for Linux}). Wybór ten dodatkowo jest podyktowany faktem iż do momentu pisania niniejszej pracy, środowisko Bun nie udostępniło oficjalnego wsparcia dla systemu Windows.
 
 Wybór powyższego systemu jest podyktowany faktem, że jest to system, na którym wybrane środowiska są najczęściej uruchamiane. Badanie wykonane w 2015 roku, pokazuje iż większość osób odpowiedzialnych za administrowanie aplikacjami webowymi korzysta z systemu Linux \cite{performance_comparison_linux}. Kolejnym badaniem przeprowadzonym w 2021 roku, pokazało iż sam system jest bardziej wydajny niż Windows Server \cite{web_server_performance}. Badania także pokazało, że większość serwerów internetowych działa na systemie Linux. W związku z tym, wybór systemu Linux jest uzasadniony.
@@ -12,12 +10,10 @@ Wymienione środowiska posługują się swoimi implementacjami programów umożl
 
 Środowiska także inaczej podchodzą do zapisu plików na urządzeniach. We wszystkich środowiskach można zapisać oraz odczytać plik za pomocą metod synchronicznych jak i asynchronicznych. Środowisko Bun udostępnia swoją implementacje zapisy oraz odczytu wykorzystując swoje metody asynchroniczne. Dodatkowym atutem samego środowiska Bun jest możliwość użycia bibliotek, które są odpowiednikiem dla tych dostępnych w NodeJs. W przypadku Deno, zapis oraz odczyt odbywa się za pomocą dekoderów oraz enkoderów, które odczytują tekst w zadanym formacie.
 
-\section*{Wybrane narzędzi i algorytmy}
-\addcontentsline{toc}{subsection}{Wybrane narzędzi i algorytmy}
+\section{Wybrane narzędzi i algorytmy}
 W tym rozdziale znajdują się algorytmy wykorzystane w testach wydajnościowych dla każdego środowiska uruchomieniowego. Wraz z podaniem opisu algorytmu, znajduje się także opis zastosowania algorytmu w praktyce.
 
-\section*{Algorytmy sortowania}
-\addcontentsline{toc}{subsection}{Algorytmy sortowania}
+\subsection{Algorytmy sortowania}
 W testach zostały wykorzystane trzy algorytmy sortowania, które są najczęściej wykorzystywane w praktyce. Sortowanie jako metoda jest używana w wielu zastosowaniach, takich jak sortowanie danych w bazach danych, sortowanie danych w aplikacjach webowych, a także w algorytmach wyszukiwania. W teście sortowania został przeprowadzone testy na losowo wybranych liczbach całkowitych.
 
 Liczby całkowite zostały wylosowane za pomocą generatora liczb całkowitych. Do samej implementacji generatora liczb całkowitych posłużył pakiet \textit{Math}, który jest dostępny w języku JavaScript. Generator został zaimplementowany tak, aby losował liczby w zależności od zadanego rozmiaru tablicy.
@@ -40,8 +36,7 @@ Każdy z algorytmów charakteryzuje się inną złożonością obliczeniową, co
   \label{tab:sorting_complexity}
 \end{table}
 
-\subsection*{Sortowanie bąbelkowe (\textit{ang. Bubble Sort})}
-\addcontentsline{toc}{subsubsection}{Sortowanie bąbelkowe (\textit{ang. Bubble Sort})}
+\subsubsection{Sortowanie bąbelkowe (\textit{ang. Bubble Sort})}
 Sortowanie bąbelkowe (\textit{ang. Bubble Sort}) to jeden z najprostszych algorytmów sortowania. Algorytm ten działa poprzez porównywanie dwóch sąsiadujących elementów i zamianę ich miejscami, jeśli są w niewłaściwej kolejności. Złożoność obliczeniowa algorytmu w pesymistycznym wypadku wynosi $O(n^2)$.
 
 Działanie algorytmu można określić w kilku krokach:
@@ -54,8 +49,7 @@ Działanie algorytmu można określić w kilku krokach:
 
 Algorytm ten jest jednym z najwolniejszych algorytmów sortowania, jednakże jest on prosty w implementacji. W przypadku małych zbiorów danych, algorytm ten jest wystarczający, jednakże w przypadku dużych zbiorów danych, algorytm ten może być bardzo wolny. W najlepszym wypadku, gdy tablica jest już posortowana złożoność obliczeniowa wynosi $O(n)$, co oznacza, że algorytm ten jest szybki w przypadku posortowanych danych.
 
-\subsection*{Sortowanie szybkie (\textit{ang. Quick Sort})}
-\addcontentsline{toc}{subsubsection}{Sortowanie szybkie (\textit{ang. Quick Sort})}
+\subsubsection{Sortowanie szybkie (\textit{ang. Quick Sort})}
 Quick Sort to jeden z najpopularniejszych i najwydajniejszych algorytmów sortowania ogólnego przeznaczenia. Został opracowany przez Tony'ego Hoare'a w 1960 roku. Algorytm działa na zasadzie "dziel i zwyciężaj" (\textit{ang. divide and conquer}), co oznacza, że dzieli w przypadku testów tablicę liczb całkowitych na mniejsze tablice, które są następnie rozwiązywane rekurencyjnie.
 
 Działanie algorytmu można określić w kilku krokach:
@@ -69,8 +63,7 @@ Działanie algorytmu można określić w kilku krokach:
 
 Zaletą algorytmu jest to, że w porównaniu do algorytmu sortowanie pozycyjnego, nie wymaga on dodatkowego alokowania pamięci na tablice tymczasowe, pracuje on na oryginalnej tablicy. Można zauważyć z tabeli \ref{tab:sorting_complexity}, że algorytm w najgorszym wypadku ma złożoność obliczeniową $O(n^2)$, co oznacza, że w przypadku dużej ilości danych, algorytm ten może być wolniejszy od innych algorytmów sortowania.
 
-\subsection*{Sortowanie pozycyjne (\textit{ang. Radix Sort})}
-\addcontentsline{toc}{subsubsection}{Sortowanie pozycyjne (\textit{ang. Radix Sort})}
+\subsubsection{Sortowanie pozycyjne (\textit{ang. Radix Sort})}
 Radix Sort to wydajny algorytm sortowania stosowany do porządkowania liczb całkowitych lub innych danych, które można reprezentować jako krotki o stałej długości. Algorytm działa na zasadzie sortowania pozycyjnego, czyli sortowania cyfr od najmniej znaczącej do najbardziej znaczącej (lub odwrotnie, w zależności od implementacji). Dzięki temu możliwe jest osiągnięcie bardzo dobrych wyników czasowych w przypadku dużych zbiorów danych. Złożoność obliczeniowa w przypadku sortowania pozycyjnego wynosi $O(nk)$, gdzie $n$ to liczba elementów do posortowania, a $k$ to liczba cyfr w największym elemencie zbioru.
 
 Działanie algorytmu można określić w kilku krokach:
@@ -82,8 +75,7 @@ Działanie algorytmu można określić w kilku krokach:
 
 Dzięki swojej złożoności obliczeniowej sortowanie pozycyjne jest szybkie, jednakże posiada wadę w postaci konieczności alokowania dodatkowej pamięci, aby przechowywać tymczasowe wyniki sortowania. Jednakże w przypadku danych, które nie są danymi liczbowymi należy przekształcić je na dane liczbowe, co może wpłynąć na czas sortowania. W przypadku danych, które są liczbami, algorytm ten jest jednym z najszybszych algorytmów sortowania \cite{sorting}. W testach dla ujednolicenia danych, zostały zastosowane liczby całkowite.
 
-\section*{Algorytmy Kodowania}
-\addcontentsline{toc}{subsection}{Algorytmy Kodowania}
+\subsection{Algorytmy Kodowania}
 W testach został wykorzystany jeden algorytm kodowania, który jest najczęściej wykorzystywany do przesyłania danych. Wybrany algorytm kodowania jest Base64. Wykorzystywany jest on do kodowania obrazów, danych wykorzystywanych w formularzach, a także do przedstawiania plików pdf na stronach.
 
 Algorytm możemy podzielić na trzy etapy. Pierwszym etapem jest podział danych na segmenty składające się z 24 bit. Następnie każdy z segmentów jest dzielony na cztery grupy po 6 bitów. Każda grupa zostaje mapowana na z jeden ze znaków:
@@ -106,14 +98,14 @@ Algorytm ten jest przydatny do małych obrazów, jednakże w przypadku dużych o
 
 Test został zaimplementowany z wykorzystaniem obiektu \textit{Buffer} odpowiedzialnego za kodowanie oraz dekodowanie wartości zakodowanych wiadomości. Oryginalny test wykonany przez Kostya \cite{base64_benchmark}, został zmodyfikowany, aby dodać informacje o czasie wykonywania oraz użyciu pamięci przez dane środowisko. Test ten został przeprowadzony w celu sprawdzenia jak szybko dane środowisko jest w stanie zakodować oraz odkodować dane.
 
-\section*{Bazy danych}
-\addcontentsline{toc}{subsection}{Bazy danych}
+\subsection{Bazy danych}
 W testach została wykorzystana plikowa baza relacyjna Sqlite3. Wybór ten podyktowany jest faktem iż baza ta ma wsparcie dla wszystkich środowisk uruchomieniowych. Celem testu było zmierzenie czasu odpowiedzi bazy danych na zapytania SQL. 
 
 W celu dodania do bazy danych przykładowych danych została wykorzystany pakiet \textit{faker-js}. Pakiet ten pozwala na generowanie obiektów z danymi losowymi. W celu przetestowania możliwości bazy danych, została opracowany model, który odzwierciedla użytkownika. Model ten składa się z pól takich jak: imię, nazwisko, płeć, opis, typ wykonywanej pracy, tytuł oraz zakres pracy. Test pozwala na specyfikowania ilości rekordów, które mają zostać dodane do bazy danych.
 
 W przypadku NodeJs, wymagane jest aby zainstalować dodatkowy pakiet odpowiedzialny za komunikację z bazą danych. W odróżnieniu do pozostałych środowisk, które posiadają wbudowane wsparcie dla Sqlite3. Przez dodanie nowych pakietów, powiększa się rozmiar aplikacji, wpływa to na rozmiar oraz czas uruchamiania się aplikacji.
 
-\section*{Narzędzia pomiarowe}
-\addcontentsline{toc}{subsection}{Narzędzia pomiarowe}
+\subsection{Narzędzia pomiarowe}
+W celu zmierzenia czasów wykonania poszczególnych testów, zostały wykorzystane narzędzia dostępne w języku JavaScript. Do mierzenia czasu wykonania danego testu została wykorzystana moduł \textit{performance}. Moduł ten pozwala na zapisanie czasu w postaci milisekund, co pozwala na dokładne określenie czasu wykonania danego testu. Metoda wykorzystuje obiekt \textit{DOMHighResTimeStamp}, który pozwala na określenie czasu w milisekundach z dokładnością do 5 mikrosekund.
 
+W celu zmierzenia 
