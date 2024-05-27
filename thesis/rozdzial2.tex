@@ -108,4 +108,11 @@ W przypadku NodeJs, wymagane jest aby zainstalować dodatkowy pakiet odpowiedzia
 \subsection{Narzędzia pomiarowe}
 W celu zmierzenia czasów wykonania poszczególnych testów, zostały wykorzystane narzędzia dostępne w języku JavaScript. Do mierzenia czasu wykonania danego testu została wykorzystana moduł \textit{performance}. Moduł ten pozwala na zapisanie czasu w postaci milisekund, co pozwala na dokładne określenie czasu wykonania danego testu. Metoda wykorzystuje obiekt \textit{DOMHighResTimeStamp}, który pozwala na określenie czasu w milisekundach z dokładnością do 5 mikrosekund.
 
-W celu zmierzenia 
+W celu zmierzenia wykorzystywanej przez dany proces pamięci, został wykorzystany moduł \textit{process}. Moduł ten odpowiada za dostarczenie informacji o zmiennych środowiskowych, a także o wykorzystywanej przez proces pamięci operacyjnej. Za pomocą funkcji \textit{memoryUsage} \cite{memoryUsage} \cite{memoryUsageImage}, przekazuje informacji o wykorzystaniu pamięci operacyjnej przez dany proces. Funkcja ta zwraca obiekt, który zawiera trzy informacje: \textit{rss}, \textit{heapTotal}, \textit{heapUsed}. Pierwsza informacja \textit{rss} odpowiada za całkowitą ilość pamięci wykorzystaną przez proces. Druga informacja \textit{heapTotal} odpowiada za całkowitą ilość pamięci przydzieloną dla procesu. Ostatnia informacja \textit{heapUsed} odpowiada za ilość pamięci wykorzystaną przez proces. Na rysunku \ref{fig:memory} przedstawiono wykres, która pokazuje zawartość pamięci dla silnika uruchomieniowego NodeJs. 
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\textwidth]{Figures/memoryUsage.png}
+  \caption{Zawartość pamięci dla silnika uruchomieniowego NodeJs \cite{memoryUsageImage}}
+  \label{fig:memory}
+\end{figure}
