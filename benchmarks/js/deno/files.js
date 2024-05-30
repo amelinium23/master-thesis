@@ -23,7 +23,8 @@ const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 2
         createFile(fileName, numberOfParagraphs);
         const endTime = performance.now();
         const { rss } = Deno.memoryUsage();
-        fileNames.push({ fileName: fileName, time: endTime - startTime, rss });
+        const realRss = rss / 1024;
+        fileNames.push({ fileName: fileName, time: endTime - startTime, rss: realRss });
     }
     const endTime = performance.now();
     return {
@@ -45,7 +46,8 @@ const readFiles = (fileNames) => {
             const content = textDecoder.decode(data);
             const endTime = performance.now();
             const { rss } = Deno.memoryUsage();
-            resultOfWriting.push({ content: content, time: endTime - startTime, rss });
+            const realRss = rss / 1024;
+            resultOfWriting.push({ content: content, time: endTime - startTime, rss: realRss });
         } catch (err) {
             console.error(err);
         }

@@ -80,7 +80,7 @@ const performSqliteBenchmark = async (numOfIterations: number, numOfRecords: num
 		for (let j = 0; j < numOfRecords; j++) {
 			await insertUser(conn, createFakeUser());
 		}
-		const memory = process.memoryUsage().rss;
+		const memory = process.memoryUsage().rss / 1024;
 		const endTime = performance.now();
 		times.push(endTime - startTime);
 		memoryUsage.push(memory);

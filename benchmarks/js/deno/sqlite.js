@@ -87,7 +87,7 @@ const performSqliteBenchmark = (numOfIterations, numOfRecords) => {
         for (let j = 0; j < numOfRecords; j++) {
             insertUser(conn, createFakeUser());
         }
-        const memory = Deno.memoryUsage().rss;
+        const memory = Deno.memoryUsage().rss / 1024;
         const endTime = performance.now();
         times.push(endTime - startTime);
         memoryUsage.push(memory);

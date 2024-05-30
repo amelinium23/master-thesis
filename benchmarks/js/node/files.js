@@ -17,8 +17,9 @@ const createBatchOfFiles = (numberOfFiles, startFileName, numberOfParagraphs = 2
         const fileName = path.join(__dirname, directory, `${startFileName}-${i + 1}.txt`).toString();
         createFile(fileName, numberOfParagraphs);
         const { rss } = process.memoryUsage();
+        const realRss = rss / 1024;
         const endTime = performance.now();
-        fileNames.push({ fileName, time: endTime - startTime, rss });
+        fileNames.push({ fileName, time: endTime - startTime, rss: realRss });
     }
     const endTime = performance.now();
     return {
@@ -43,7 +44,8 @@ const readFiles = (fileNames) => {
             const content = lines.toString();
             const endTime = performance.now();
             const { rss } = process.memoryUsage();
-            resultOfReading.push({ content, time: endTime - startTime, memory: rss });
+            const realRss = rss / 1024;
+            resultOfReading.push({ content, time: endTime - startTime, memory: realRss });
         } catch (err) {
             console.error(err);
         }

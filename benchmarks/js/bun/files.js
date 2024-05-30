@@ -23,8 +23,9 @@ const createBatchOfBunFiles = async (numberOfFiles, startFileName, numberOfParag
         const fileName = path.join(import.meta.dir, directory, `${startFileName}-${i + 1}.txt`).toString();
         await createBunFile(fileName, numberOfParagraphs);
         const { rss } = process.memoryUsage();
+        const realRss = rss / 1024;
         const endTime = performance.now();
-        fileNames.push({ fileName, time: endTime - startTime, rss });
+        fileNames.push({ fileName, time: endTime - startTime, rss: realRss });
     }
     const endTime = performance.now();
     return {
@@ -78,7 +79,8 @@ const readFiles = (fileNames) => {
             const content = lines.toString();
             const endTime = performance.now();
             const { rss } = process.memoryUsage();
-            resultOfWriting.push({ content: content, time: endTime - startTime, rss });
+            const realRss = rss / 1024;
+            resultOfWriting.push({ content: content, time: endTime - startTime, rss: realRss });
         } catch (err) {
             console.error(err);
         }
@@ -103,7 +105,8 @@ const readBunFiles = async (fileNames) => {
             const lines = await file.text();
             const endTime = performance.now();
             const { rss } = process.memoryUsage();
-            resultOfWriting.push({ lines, time: endTime - startTime, rss });
+            const realRss = rss / 1024;
+            resultOfWriting.push({ lines, time: endTime - startTime, rss: realRss });
         } catch (err) {
             console.error(err);
         }

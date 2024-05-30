@@ -14,6 +14,7 @@ const startEncoding = (buffer, str2) => {
         encodedString += buffer.toString("base64").length;
     }
     const { rss } = process.memoryUsage();
+    const realRss = rss / 1024;
     const end = performance.now();
     const timeEncoding = end - start;
 
@@ -27,7 +28,7 @@ const startEncoding = (buffer, str2) => {
         )
     );
 
-    return { encodedString, timeEncoding, rss };
+    return { encodedString, timeEncoding, rss: realRss };
 };
 
 const startDecoding = (str2, str3) => {
@@ -37,6 +38,7 @@ const startDecoding = (str2, str3) => {
         decodedString += Buffer.from(str2, "base64").length;
     }
     const { rss } = process.memoryUsage();
+    const realRss = rss / 1024;
     const endDecoding = performance.now();
     const timeDecoded = endDecoding - startDecoded;
 
@@ -50,7 +52,7 @@ const startDecoding = (str2, str3) => {
         )
     );
 
-    return { timeDecoded, decodedString, rss };
+    return { timeDecoded, decodedString, rss: realRss };
 };
 
 const performBase64Benchmark = (numberOfIterations) => {
