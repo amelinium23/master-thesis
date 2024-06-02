@@ -20,7 +20,7 @@
 \usepackage[normalem]{ulem}
 \usepackage[nottoc]{tocbibind}
 \usepackage{tocloft}
-\usepackage{caption}
+\usepackage[tableposition=top]{caption}
 \usepackage[breaklinks]{hyperref}
 \usepackage{minted}
 \usepackage{listings}
@@ -36,7 +36,12 @@
     \addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par
 }
 
+\renewcommand\thefigure{\thesection.\arabic{figure}}
+\renewcommand\thetable{\thesection.\arabic{figure}}
+
 \captionsetup[figure]{name=Rys.}
+\captionsetup[table]{name=Tabela}
+
 
 \renewcommand*\familydefault{\sfdefault}
 
