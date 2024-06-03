@@ -34,6 +34,8 @@ const jsonData = {
 export const SortingResultChart = ({ req }: SortingResultChartProps) => {
   const { data, isLoading, isError } = useGetSortingResultsQuery(req satisfies SortingRequest);
 
+  if (isLoading) return <></>;
+
   if (isError) return <ErrorInformation />;
 
   const labels = generateLabels(req.number_of_iterations);
