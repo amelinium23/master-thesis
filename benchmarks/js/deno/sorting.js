@@ -21,7 +21,7 @@ const quickSort = (arr) => {
     const pivot = arr[0];
     const leftArr = [];
     const rightArr = [];
-    for (const i = 1; i < arr.length; i++) {
+    for (let i = 1; i < arr.length; i++) {
         arr[i] < pivot ? leftArr.push(arr[i]) : rightArr.push(arr[i]);
     }
     return [...quickSort(leftArr), pivot, ...quickSort(rightArr)];
