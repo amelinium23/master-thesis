@@ -140,20 +140,16 @@ def perform_server_all(options: ServerParameters):
 def perform_base64_all(options: Base64Parameters):
     result = {"ts": {}, "js": {}}
     result_bun = bun_js_perform_base64_benchmark(options)
-    wait()
     result_deno = deno_js_perform_base64_benchmark(options)
     wait()
     result_node = node_js_perform_base64_benchmark(options)
-    wait()
     result["js"]["result_bun"] = result_bun
     result["js"]["result_deno"] = result_deno
     result["js"]["result_node"] = result_node
     result_ts_bun = bun_ts_perform_base64_benchmark(options)
-    wait()
     result_ts_deno = deno_ts_perform_base64_benchmark(options)
     wait()
     result_ts_node = node_ts_perform_base64_benchmark(options)
-    wait()
     result["ts"]["result_bun"] = result_ts_bun
     result["ts"]["result_deno"] = result_ts_deno
     result["ts"]["result_node"] = result_ts_node

@@ -83,7 +83,7 @@ def bun_js_perform_files_benchmark(options: FilesParameters):
 
 def bun_ts_perform_files_benchmark(options: FilesParameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -96,18 +96,12 @@ def bun_ts_perform_files_benchmark(options: FilesParameters):
     )
     file = open("./bun/bunFilesResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-
     return result
 
 
 def bun_js_perform_base64_benchmark(options: Base64Parameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -117,18 +111,12 @@ def bun_js_perform_base64_benchmark(options: Base64Parameters):
     )
     file = open("./bun/bunBase64Result.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-
     return result
 
 
 def bun_ts_perform_base64_benchmark(options: Base64Parameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -138,18 +126,12 @@ def bun_ts_perform_base64_benchmark(options: Base64Parameters):
     )
     file = open("./bun/bunBase64Result.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-
     return result
 
 
 def bun_js_perform_sqlite_benchmark(options: SqliteParameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -160,17 +142,12 @@ def bun_js_perform_sqlite_benchmark(options: SqliteParameters):
     )
     file = open("./bun/bunSqlite.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     return result
 
 
 def bun_ts_perform_sqlite_benchmark(options: SqliteParameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -181,31 +158,20 @@ def bun_ts_perform_sqlite_benchmark(options: SqliteParameters):
     )
     file = open("./bun/bunSqlite.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     return result
 
 
 def bun_js_perform_server_benchmark(options: ServerParameters):
     os.chdir("../js")
     process_server = subprocess.Popen(["npm", "run", "bun:server"])
-    # subprocess.run(["touch", "./bun/bunServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3000/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
         ],
         shell=True,
     )
-    p_info = psutil.Process(process_server.pid)
     file = open("./bun/bunServerResult.json").read()
     result = json.loads(file)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     process_server.kill()
     process_oha.kill()
     return result
@@ -214,20 +180,14 @@ def bun_js_perform_server_benchmark(options: ServerParameters):
 def bun_ts_perform_server_benchmark(options: ServerParameters):
     os.chdir("../ts")
     process_server = subprocess.Popen(["npm", "run", "bun:server"])
-    # subprocess.run(["touch", "./bun/bunServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3003/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
         ],
         shell=True,
     )
-    p_info = psutil.Process(process_server.pid)
     file = open("./bun/bunServerResult.json").read()
     result = json.loads(file)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     process_server.kill()
     process_oha.kill()
     return result

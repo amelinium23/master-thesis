@@ -2,8 +2,8 @@ import { format } from "node:util";
 import path from "node:path";
 import fs from "node:fs";
 
-const STR_SIZE = 131072;
-const TRIES = 8192;
+const STR_SIZE = 65536;
+const TRIES = 256;
 
 const notify = (msg) => console.log(msg);
 

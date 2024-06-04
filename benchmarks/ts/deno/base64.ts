@@ -1,11 +1,13 @@
-const util = require("util");
-const fs = require("fs");
-const path = require("path");
+import { Buffer } from "https://deno.land/std@0.177.0/node/buffer.ts";
+import * as mod from "https://deno.land/std@0.110.0/node/util.ts";
+import { fromMeta } from "https://deno.land/x/dirname_deno@v0.3.0/src/file_info.ts";
+
+const { __dirname } = fromMeta(import.meta);
 
 const STR_SIZE = 65536;
 const TRIES = 256;
 
-const notify = (msg: string) => console.log(msg);
+const notify = (msg: unknown[]) => console.log(msg);
 
 const startEncoding = (buffer: Buffer, str2: string) => {
 	let encodedString = 0;
@@ -13,13 +15,13 @@ const startEncoding = (buffer: Buffer, str2: string) => {
 	for (let i = 0; i < TRIES; i++) {
 		encodedString += buffer.toString("base64").length;
 	}
-	const { rss } = process.memoryUsage();
+	const { rss } = Deno.memoryUsage();
 	const realRss = rss / 1024;
 	const end = performance.now();
 	const timeEncoding = end - start;
 
 	notify(
-		util.format(
+		mod.format(
 			"encode %s... to %s...: %d, %d",
 			buffer.toString("utf8", 0, 4),
 			str2.substring(0, 4),
@@ -37,13 +39,13 @@ const startDecoding = (str2: string, str3: Buffer) => {
 	for (let i = 0; i < TRIES; i++) {
 		decodedString += Buffer.from(str2, "base64").length;
 	}
-	const { rss } = process.memoryUsage();
+	const { rss } = Deno.memoryUsage();
 	const realRss = rss / 1024;
 	const endDecoding = performance.now();
 	const timeDecoded = endDecoding - startDecoded;
 
 	notify(
-		util.format(
+		mod.format(
 			"decode %s... to %s...: %d, %d",
 			str2.substring(0, 4),
 			str3.toString("utf8", 0, 4),
@@ -52,7 +54,7 @@ const startDecoding = (str2: string, str3: Buffer) => {
 		)
 	);
 
-	return { decodedString, timeDecoded, rss: realRss };
+	return { timeDecoded, decodedString, rss: realRss };
 };
 
 const performBase64Benchmark = (numberOfIterations: number) => {
@@ -61,8 +63,6 @@ const performBase64Benchmark = (numberOfIterations: number) => {
 	const buffer = Buffer.from("a".repeat(STR_SIZE));
 	const str2 = buffer.toString("base64");
 	const str3 = Buffer.from(str2, "base64");
-
-	notify(`Node.js\t\nPID: ${process.pid}`);
 
 	for (let i = 0; i < numberOfIterations; i++) {
 		const result = startEncoding(buffer, str2);
@@ -76,16 +76,23 @@ const performBase64Benchmark = (numberOfIterations: number) => {
 
 	return { resultOfDecoding, resultOfEncoding };
 };
+
 (() => {
-	if (process.argv.length < 3) {
-		process.exit(1);
+	if (Deno.args.length < 1) {
+		Deno.exit(1);
 	}
 
-	const numberOfIterations = Number(process.argv.at(2));
+	const numberOfIterations = Number(Deno.args.at(0));
+
+	if (!numberOfIterations) {
+		Deno.exit(1);
+	}
 
 	const result = performBase64Benchmark(numberOfIterations);
+	const encoderForResult = new TextEncoder();
+	const encodedResult = encoderForResult.encode(JSON.stringify(result));
 
-	fs.writeFileSync(path.join(__dirname, "nodeBase64Result.json"), JSON.stringify(result));
+	Deno.writeFileSync(`${__dirname}/denoBase64Result.json`, encodedResult);
 
-	process.exit(0);
+	Deno.exit(0);
 })();

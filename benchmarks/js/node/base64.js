@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const util = require("util");
 
-const STR_SIZE = 131072;
-const TRIES = 8192;
+const STR_SIZE = 65536;
+const TRIES = 256;
 
 const notify = (msg) => console.log(msg);
 

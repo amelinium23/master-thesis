@@ -10,7 +10,6 @@ import jsNodeResult from "../../../../js/node/nodeBase64Result.json";
 import tsBunResult from "../../../../ts/bun/bunBase64Result.json";
 import tsDenoResult from "../../../../ts/deno/denoBase64Result.json";
 import tsNodeResult from "../../../../ts/node/nodeBase64Result.json";
-import { ErrorInformation } from "../ErrorInformation";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardTitle } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
@@ -41,9 +40,7 @@ const jsonData = {
 };
 
 export const Base64Result = ({ req }: Base64ResultProps) => {
-  const { data, isLoading, isError } = useGetBase64ResultsQuery(req satisfies Base64Request);
-
-  if (isError) return <ErrorInformation />;
+  const { data, isLoading } = useGetBase64ResultsQuery(req satisfies Base64Request);
 
   const labels = generateLabels(req.number_of_iterations);
 
@@ -115,8 +112,8 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
       {
         label: "Bun result - JS",
         data: data
-          ? data?.js.result_bun?.resultOfEncoding.map((res) => res.rss)
-          : jsonData.js.result_bun?.resultOfEncoding.map((res) => res.rss),
+          ? data?.js.result_bun?.resultOfEncoding.map((res) => res.timeEncoding)
+          : jsonData.js.result_bun?.resultOfEncoding.map((res) => res.timeEncoding),
         borderColor: "#c8373e",
         backgroundColor: "#c8373e",
         pointRadius: 0
@@ -124,8 +121,8 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
       {
         label: "Deno result - JS",
         data: data
-          ? data?.js.result_deno?.resultOfEncoding.map((res) => res.rss)
-          : jsonData.js.result_deno?.resultOfEncoding.map((res) => res.rss),
+          ? data?.js.result_deno?.resultOfEncoding.map((res) => res.timeEncoding)
+          : jsonData.js.result_deno?.resultOfEncoding.map((res) => res.timeEncoding),
         borderColor: "#01C2FF",
         backgroundColor: "#01C2FF",
         pointRadius: 0
@@ -133,8 +130,8 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
       {
         label: "Node result - JS",
         data: data
-          ? data?.js.result_node?.resultOfEncoding.map((res) => res.rss)
-          : jsonData.js.result_node?.resultOfEncoding.map((res) => res.rss),
+          ? data?.js.result_node?.resultOfEncoding.map((res) => res.timeEncoding)
+          : jsonData.js.result_node?.resultOfEncoding.map((res) => res.timeEncoding),
         borderColor: "#417e38",
         backgroundColor: "#417e38",
         pointRadius: 0
@@ -175,7 +172,7 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
     ]
   };
 
-  const jsDecodingMemoryData = {
+  const jsDecodingChartData = {
     labels,
     datasets: [
       {
@@ -201,6 +198,72 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
         data: data
           ? data.js.result_node.resultOfDecoding.map((res) => res.timeDecoded)
           : jsonData.js.result_node.resultOfDecoding.map((res) => res.timeDecoded),
+        borderColor: "#417e38",
+        backgroundColor: "#417e38",
+        pointRadius: 0
+      }
+    ]
+  };
+
+  const tsDecodingChartData = {
+    labels,
+    datasets: [
+      {
+        label: "Bun result - TS",
+        data: data
+          ? data.ts.result_bun.resultOfDecoding.map((res) => res.timeDecoded)
+          : jsonData.ts.result_bun.resultOfDecoding.map((res) => res.timeDecoded),
+        borderColor: "#c8373e",
+        backgroundColor: "#c8373e",
+        pointRadius: 0
+      },
+      {
+        label: "Deno result - TS",
+        data: data
+          ? data.ts.result_deno.resultOfDecoding.map((res) => res.timeDecoded)
+          : jsonData.ts.result_deno.resultOfDecoding.map((res) => res.timeDecoded),
+        borderColor: "#01C2FF",
+        backgroundColor: "#01C2FF",
+        pointRadius: 0
+      },
+      {
+        label: "Node result - TS",
+        data: data
+          ? data.ts.result_node.resultOfDecoding.map((res) => res.timeDecoded)
+          : jsonData.ts.result_node.resultOfDecoding.map((res) => res.timeDecoded),
+        borderColor: "#417e38",
+        backgroundColor: "#417e38",
+        pointRadius: 0
+      }
+    ]
+  };
+
+  const jsDecodingMemoryData = {
+    labels,
+    datasets: [
+      {
+        label: "Bun result - JS",
+        data: data
+          ? data.js.result_bun.resultOfDecoding.map((res) => res.rss)
+          : jsonData.js.result_bun.resultOfDecoding.map((res) => res.rss),
+        borderColor: "#c8373e",
+        backgroundColor: "#c8373e",
+        pointRadius: 0
+      },
+      {
+        label: "Deno result - JS",
+        data: data
+          ? data.js.result_deno.resultOfDecoding.map((res) => res.rss)
+          : jsonData.js.result_deno.resultOfDecoding.map((res) => res.rss),
+        borderColor: "#01C2FF",
+        backgroundColor: "#01C2FF",
+        pointRadius: 0
+      },
+      {
+        label: "Node result - JS",
+        data: data
+          ? data.js.result_node.resultOfDecoding.map((res) => res.rss)
+          : jsonData.js.result_node.resultOfDecoding.map((res) => res.rss),
         borderColor: "#417e38",
         backgroundColor: "#417e38",
         pointRadius: 0
@@ -300,72 +363,6 @@ export const Base64Result = ({ req }: Base64ResultProps) => {
         data: data
           ? data.ts.result_bun.resultOfEncoding.map((res) => res.rss)
           : jsonData.ts.result_bun.resultOfEncoding.map((res) => res.rss),
-        borderColor: "#417e38",
-        backgroundColor: "#417e38",
-        pointRadius: 0
-      }
-    ]
-  };
-
-  const jsDecodingChartData = {
-    labels,
-    datasets: [
-      {
-        label: "Bun result - JS",
-        data: data
-          ? data.js.result_bun.resultOfDecoding.map((res) => res.timeDecoded)
-          : jsonData.js.result_bun.resultOfDecoding.map((res) => res.timeDecoded),
-        borderColor: "#c8373e",
-        backgroundColor: "#c8373e",
-        pointRadius: 0
-      },
-      {
-        label: "Deno result - JS",
-        data: data
-          ? data.js.result_deno.resultOfDecoding.map((res) => res.timeDecoded)
-          : jsonData.js.result_deno.resultOfDecoding.map((res) => res.timeDecoded),
-        borderColor: "#01C2FF",
-        backgroundColor: "#01C2FF",
-        pointRadius: 0
-      },
-      {
-        label: "Node result - JS",
-        data: data
-          ? data.js.result_node.resultOfDecoding.map((res) => res.timeDecoded)
-          : jsonData.js.result_node.resultOfDecoding.map((res) => res.timeDecoded),
-        borderColor: "#417e38",
-        backgroundColor: "#417e38",
-        pointRadius: 0
-      }
-    ]
-  };
-
-  const tsDecodingChartData = {
-    labels,
-    datasets: [
-      {
-        label: "Bun result - TS",
-        data: data
-          ? data.ts.result_bun.resultOfDecoding.map((res) => res.timeDecoded)
-          : jsonData.ts.result_bun.resultOfDecoding.map((res) => res.timeDecoded),
-        borderColor: "#c8373e",
-        backgroundColor: "#c8373e",
-        pointRadius: 0
-      },
-      {
-        label: "Deno result - TS",
-        data: data
-          ? data.ts.result_deno.resultOfDecoding.map((res) => res.timeDecoded)
-          : jsonData.ts.result_deno.resultOfDecoding.map((res) => res.timeDecoded),
-        borderColor: "#01C2FF",
-        backgroundColor: "#01C2FF",
-        pointRadius: 0
-      },
-      {
-        label: "Node result - TS",
-        data: data
-          ? data.ts.result_node.resultOfDecoding.map((res) => res.timeDecoded)
-          : jsonData.ts.result_node.resultOfDecoding.map((res) => res.timeDecoded),
         borderColor: "#417e38",
         backgroundColor: "#417e38",
         pointRadius: 0

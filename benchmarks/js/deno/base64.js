@@ -4,8 +4,8 @@ import { fromMeta } from "https://deno.land/x/dirname_deno@v0.3.0/src/file_info.
 
 const { __dirname } = fromMeta(import.meta);
 
-const STR_SIZE = 131072;
-const TRIES = 8192;
+const STR_SIZE = 65536;
+const TRIES = 256;
 
 const notify = (msg) => console.log(msg);
 
