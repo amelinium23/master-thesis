@@ -34,7 +34,7 @@ W celu zbadania wydajności danego środowiska uruchomieniowego, skonstruowana o
   \endminipage\hfill
 \end{figure}
 
-\subsection{Wyniki - sortowanie szybkie}
+\subsubsection{Wyniki - sortowanie szybkie}
 
 \subsubsection{Wyniki - sortowanie pozycyjne}
 
@@ -43,26 +43,68 @@ W celu zbadania wydajności możliwości kodowania dla środowisk, użyto algory
 
 \begin{table}[H]
   \centering
+  \caption{Parametry eksperymentów algorytmu kodowania Base64}
   \begin{tabular}{|c|c|}
     \hline
     \textbf{Liczba eksperymentów} & \textbf{Długość słowa}\\ \hline
     10 & 8192 \\ \hline
     100 & 32768 \\ \hline
   \end{tabular}
-  \caption{Parametry eksperymentów}
   \label{tab:encoding_experiments}
 \end{table}
 
 \subsubsection{Wyniki}
 
 \subsection{Testy wydajnościowe operacji zapisu i odczytu plików}
+W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono eksperymenty, które polegały na zapisie oraz odczycie plików o różnych rozmiarach. W przeprowadzonych testach wykorzystano pliki tekstowe. Do wypełnienia plików przykładowym tekstem. Zawartość plików została wygenerowana za pomocą modułu \textit{faker.js}. W tabeli \ref{tab:file_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz rozmiar pliku.
+
+\begin{table}[H]
+  \centering
+  \caption{Parametry eksperymentów zapisu i odczytu plików}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Liczba eksperymentów} & \textbf{Rozmiar pliku}\\ \hline
+    10 & 1MB \\ \hline
+    100 & 10MB \\ \hline
+    1000 & 100MB \\ \hline
+  \end{tabular}
+  \label{tab:file_experiments}
+\end{table}
 
 \subsubsection{Wyniki}
 
 \subsection{Testy wydajnościowe serwera HTTP}
+W celu zbadania wydajności serwera HTTP, przeprowadzono testy obciążeniowe. Do testów została wykorzystany program \textit{oha} \cite{oha}, który pozwala na połączenie się do serwera HTTP oraz wysyłanie żądań z kilku połączeń jednocześnie. W tabeli \ref{tab:http_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz ilość połączeń.
+
+\begin{table}[H]
+  \centering
+  \caption{Parametry eksperymentów serwera HTTP}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Liczba eksperymentów} & \textbf{Ilość połączeń}\\ \hline
+    10 & 100 \\ \hline
+    100 & 1000 \\ \hline
+    1000 & 10000 \\ \hline
+  \end{tabular}
+  \label{tab:http_experiments}
+\end{table}
 
 \subsubsection{Wyniki}
 
 \subsection{Testy wydajnościowe zapisu i odczytu danych z bazy danych}
+W celu zbadania wydajności operacji zapisu oraz odczytu danych z bazy danych, przeprowadzono testy wydajnościowe z wykorzystaniem bazy danych SQLite. W celu wygenerowania danych do bazy danych, wykorzystano moduł \textit{faker.js}. W tabeli \ref{tab:database_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz ilość rekordów.
+
+\begin{table}
+  \centering
+  \caption{Parametry eksperymentów zapisu i odczytu danych z bazy danych}
+  \begin{tabular}{|c|c|}
+    \hline
+    \textbf{Liczba eksperymentów} & \textbf{Ilość rekordów}\\ \hline
+    10 & 1000 \\ \hline
+    100 & 10000 \\ \hline
+    1000 & 100000 \\ \hline
+  \end{tabular}
+  \label{tab:database_experiments}
+\end{table}
 
 \subsubsection{Wyniki}
