@@ -2,7 +2,7 @@ import { format } from "node:util";
 import path from "node:path";
 import fs from "node:fs";
 
-const STR_SIZE = 65536;
+const STR_SIZE = 8192;
 const TRIES = 256;
 
 const notify = (msg) => console.log(msg);

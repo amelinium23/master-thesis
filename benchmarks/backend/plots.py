@@ -12,7 +12,7 @@ def save_sorting_results(
     result_ts_node,
 ) -> None:
     x = [i for i in range(0, options.number_of_iterations)]
-    _, ax = plt.subplots(1, 2)
+    f, ax = plt.subplots(1, 2, figsize=(12, 6))
     ax[0].plot(
         x,
         [np.float64(result.get("time")) for result in result_bun["result"]],
@@ -32,7 +32,8 @@ def save_sorting_results(
     ax[0].set_ylabel("Execution Time (ms)")
     ax[0].set_title("Sorting Execution Time - JS")
     ax[0].legend()
-    ax[0].figure.set_size_inches(10, 7)
+    ax[0].figure.set_size_inches(8, 6)
+    f.subplots_adjust(wspace=0.4)
 
     ax[1].plot(
         x,
@@ -53,13 +54,13 @@ def save_sorting_results(
     ax[1].set_ylabel("RSS (kB)")
     ax[1].set_title("Memory usage - JS")
     ax[1].legend()
-    ax[1].figure.set_size_inches(10, 7)
+    ax[1].figure.set_size_inches(8, 6)
     plt.savefig(
-        f"../backend/sorting_{options.sorting_type}_{options.number_of_iterations}_js.png",
+        f"../backend/sorting_{options.sorting_type}_{options.number_of_iterations}_{options.number_of_samples}_js.png",
         dpi=300,
     )
 
-    __, ax_2 = plt.subplots(1, 2)
+    f_2, ax_2 = plt.subplots(1, 2, figsize=(12, 6))
     ax_2[0].plot(
         x,
         [np.float64(result.get("time")) for result in result_ts_bun["result"]],
@@ -79,7 +80,7 @@ def save_sorting_results(
     ax_2[0].set_ylabel("Execution Time (ms)")
     ax_2[0].set_title("Sorting Execution Time - TS")
     ax_2[0].legend()
-    ax_2[0].figure.set_size_inches(10, 7)
+    ax_2[0].figure.set_size_inches(8, 6)
 
     ax_2[1].plot(
         x,
@@ -100,8 +101,21 @@ def save_sorting_results(
     ax_2[1].set_ylabel("RSS (kB)")
     ax_2[1].set_title("Memory usage - TS")
     ax_2[1].legend()
-    ax_2[1].figure.set_size_inches(10, 7)
+    ax_2[1].figure.set_size_inches(8, 6)
+    f_2.subplots_adjust(wspace=0.4)
+
     plt.savefig(
-        f"../backend/sorting_{options.sorting_type}_{options.number_of_iterations}_ts.png",
+        f"../backend/sorting_{options.sorting_type}_{options.number_of_iterations}_{options.number_of_samples}_ts.png",
         dpi=300,
     )
+
+
+def save_coding_results(
+    options,
+    result_bun,
+    result_deno,
+    result_node,
+    result_ts_bun,
+    result_ts_deno,
+    result_ts_node,
+) -> None: ...

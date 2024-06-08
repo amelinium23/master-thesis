@@ -14,7 +14,7 @@ from options import (
 
 def node_js_perform_sorting_benchmark(options: SortingParameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -26,13 +26,12 @@ def node_js_perform_sorting_benchmark(options: SortingParameters):
     )
     file = open("./node/nodeSortingResult.json").read()
     result = json.loads(file)
-    process.kill()
     return result
 
 
 def node_ts_perform_sorting_benchmark(options: SortingParameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -44,13 +43,12 @@ def node_ts_perform_sorting_benchmark(options: SortingParameters):
     )
     file = open("./node/nodeSortingResult.json").read()
     result = json.loads(file)
-    process.kill()
     return result
 
 
 def node_js_perform_files_benchmark(options: FilesParameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -62,18 +60,12 @@ def node_js_perform_files_benchmark(options: FilesParameters):
     )
     file = open("./node/nodeFilesResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-    process.kill()
     return result
 
 
 def node_ts_perform_files_benchmark(options: FilesParameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -85,18 +77,12 @@ def node_ts_perform_files_benchmark(options: FilesParameters):
     )
     file = open("./node/nodeFilesResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-    process.kill()
     return result
 
 
 def node_js_perform_base64_benchmark(options: Base64Parameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -106,12 +92,6 @@ def node_js_perform_base64_benchmark(options: Base64Parameters):
     )
     file = open("./node/nodeBase64Result.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-    process.kill()
     return result
 
 
