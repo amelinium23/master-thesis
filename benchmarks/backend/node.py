@@ -1,4 +1,3 @@
-import signal
 import subprocess
 import os
 import json
@@ -27,11 +26,6 @@ def node_js_perform_sorting_benchmark(options: SortingParameters):
     )
     file = open("./node/nodeSortingResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     process.kill()
     return result
 
@@ -50,11 +44,6 @@ def node_ts_perform_sorting_benchmark(options: SortingParameters):
     )
     file = open("./node/nodeSortingResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     process.kill()
     return result
 
