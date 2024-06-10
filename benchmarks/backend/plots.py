@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from options import SortingParameters, Base64Parameters
+from options import SortingParameters, Base64Parameters, FilesParameters
 
 
 def save_sorting_results(
@@ -317,3 +317,15 @@ def save_coding_results(
         f"../backend/base64_{options.number_of_iterations}_encoding_ts.png",
         dpi=300,
     )
+
+
+def save_files_results(
+    options: FilesParameters,
+    result_bun,
+    result_deno,
+    result_node,
+    result_ts_bun,
+    result_ts_deno,
+    result_ts_node,
+) -> None:
+    x = [i for i in range(0, options.number_of_iterations)]
