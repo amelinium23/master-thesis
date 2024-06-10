@@ -2,7 +2,7 @@ const util = require("util");
 const fs = require("fs");
 const path = require("path");
 
-const STR_SIZE = 8192;
+const STR_SIZE = 32768;
 const TRIES = 256;
 
 const notify = (msg: string) => console.log(msg);

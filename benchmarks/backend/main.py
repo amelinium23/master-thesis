@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from plots import save_sorting_results
+from plots import save_sorting_results, save_coding_results
 from os import wait
 from options import (
     SortingParameters,
@@ -163,4 +163,13 @@ def perform_base64_all(options: Base64Parameters):
     result["ts"]["result_bun"] = result_ts_bun
     result["ts"]["result_deno"] = result_ts_deno
     result["ts"]["result_node"] = result_ts_node
+    save_coding_results(
+        options,
+        result_bun,
+        result_deno,
+        result_node,
+        result_ts_bun,
+        result_ts_deno,
+        result_ts_node,
+    )
     return JSONResponse(content=result)
