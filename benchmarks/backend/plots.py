@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
+from options import SortingParameters, Base64Parameters
+
 
 def save_sorting_results(
-    options,
+    options: SortingParameters,
     result_bun,
     result_deno,
     result_node,
@@ -111,7 +113,7 @@ def save_sorting_results(
 
 
 def save_coding_results(
-    options,
+    options: Base64Parameters,
     result_bun,
     result_deno,
     result_node,

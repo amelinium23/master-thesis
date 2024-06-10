@@ -1,11 +1,16 @@
 \section{Eksperymenty}
-W tym rozdziale opisane zostaną eksperymenty przeprowadzone w celu zbadania testów wydajnościowych środowisk uruchomieniowych. Testy zostały przeprowadzone na jednym komputerze wyposażonym w system operacyjny Linux, co pozwoliło na zminimalizowanie wpływu innych czynników na wyniki testów. 
+W tym rozdziale opisane zostaną eksperymenty przeprowadzone w celu zbadania testów wydajnościowych środowisk uruchomieniowych. Testy zostały przeprowadzone na jednym komputerze wyposażonym w system operacyjny Linux, co pozwoliło na zminimalizowanie wpływu innych czynników na wyniki testów.
+
+Testy wykorzystują wszystkie możliwe funkcjonalności, które są zaimplementowane w danych środowiskach. Dzięki czemu, testy te są odzwierciedleniem rzeczywistego zastosowania danego środowiska. Testy zostały wykonane w dwóch językach programowania: JavaScript oraz TypeScript. Zastosowanie tych języków pozwala na przetestowanie czasu potrzebnego do transpilacji kodu źródłowego do kodu maszynowego. 
 
 \subsection{Algorytmy sortowania}
-W celu zbadania wydajności danego środowiska uruchomieniowego, skonstruowana odpowiednie eksperymenty, które sprawdzają wydajność algorytmu sortowania. Wszystkie algorytmu sortowania zostały przetestowane dla każdego środowiska. W tabeli \ref{tab:sorting_experiments} przedstawiono ilość iteracji oraz ilość eksperymentów dla przeprowadzonych eksperymenty.
+W celu zbadania wydajności danego środowiska uruchomieniowego, skonstruowana odpowiednie eksperymenty, które sprawdzają wydajność algorytmu sortowania. Wszystkie algorytmu sortowania zostały przetestowane dla każdego środowiska.
+
+W tabeli \ref{tab:sorting_experiments} przedstawiono ilość iteracji oraz ilość eksperymentów dla przeprowadzonych eksperymenty.
 
 \begin{table}[H]
   \centering
+  \caption{Parametry eksperymentów - algorytmy sortowania}
   \begin{tabular}{|c|c|}
     \hline
     \textbf{Liczba eksperymentów} & \textbf{Liczba elementów} \\ \hline
@@ -14,27 +19,227 @@ W celu zbadania wydajności danego środowiska uruchomieniowego, skonstruowana o
     100 & 10000 \\ \hline
     1000 & 10000 \\ \hline
   \end{tabular}
-  \caption{Parametry eksperymentów}
   \label{tab:sorting_experiments}
 \end{table}
 
 \subsubsection{Wyniki - sortowanie bąbelkowe}
+Na rysunku \ref{fig:bubble_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
 \begin{figure}[H]
-  \minipage{0.49\textwidth}
-    \includegraphics[width=\linewidth]{Figures/sorting/bubble/e1_js.png}
-    \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 10 iteracji i 1000 elementów}
-    \label{fig:bubble_sorting_e1}
-  \endminipage\hfill
-  \minipage{0.49\textwidth}
-  \includegraphics[width=\linewidth]{Figures/sorting/bubble/e1_memory_js.png}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 10 iteracji i 1000 elementów}
-  \label{fig:bubble_sorting_e1_memory_js}
-  \endminipage\hfill
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_bubble_100_1000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:bubble_sorting_e1}
+\end{figure}
+
+Na rysunku \ref{fig:bubble_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_bubble_100_1000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:bubble_sorting_e1_ts}
+\end{figure}
+
+Na rysunku \ref{fig:bubble_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_bubble_100_10000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:bubble_sorting_e2}
+\end{figure}
+
+Na rysunku \ref{fig:bubble_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_bubble_100_10000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:bubble_sorting_e2_ts}
+\end{figure}
+
+Na rysunku \ref{fig:bubble_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_bubble_1000_1000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:bubble_sorting_e3}
+\end{figure}
+
+Na rysunku \ref{fig:bubble_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_bubble_1000_1000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:bubble_sorting_e3_ts}
+\end{figure}
+
+Na rysunku \ref{fig:bubble_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_bubble_1000_10000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:bubble_sorting_e4}
+\end{figure}
+
+Na rysunku \ref{fig:bubble_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_bubble_1000_10000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:bubble_sorting_e4_ts}
 \end{figure}
 
 \subsubsection{Wyniki - sortowanie szybkie}
+Na rysunku \ref{fig:quick_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_quick_100_1000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:quick_sorting_e1}
+\end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_quick_100_1000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:quick_sorting_e1_ts}
+\end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_quick_100_10000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:quick_sorting_e2}
+\end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_quick_100_10000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:quick_sorting_e2_ts}
+\end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_quick_1000_1000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:quick_sorting_e3}
+\end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_quick_1000_1000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:quick_sorting_e3_ts}
+\end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_quick_1000_10000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:quick_sorting_e4}
+\end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_quick_1000_10000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:quick_sorting_e4_ts}
+\end{figure}
 
 \subsubsection{Wyniki - sortowanie pozycyjne}
+Na rysunku \ref{fig:radix_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_radix_100_1000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:radix_sorting_e1}
+\end{figure}
+
+Na rysunku \ref{fig:radix_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_radix_100_1000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:radix_sorting_e1_ts}
+\end{figure}
+
+Na rysunku \ref{fig:radix_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_radix_100_10000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:radix_sorting_e2}
+\end{figure}
+
+Na rysunku \ref{fig:radix_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_radix_100_10000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:radix_sorting_e2_ts}
+\end{figure}
+
+Na rysunku \ref{fig:radix_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania  dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_radix_1000_1000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania  dla 1000 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:radix_sorting_e3}
+\end{figure}
+
+Na rysunku \ref{fig:radix_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania  dla 1000 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_radix_1000_1000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania  dla 1000 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:radix_sorting_e3_ts}
+\end{figure}
+
+Na rysunku \ref{fig:radix_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_radix_1000_10000_js.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania  dla 1000 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:radix_sorting_e4}
+\end{figure}
+
+Na rysunku \ref{fig:radix_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/sorting/sorting_radix_1000_10000_ts.png}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania  dla 100 iteracji i 10000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:radix_sorting_e4_ts}
+\end{figure}
 
 \subsection{Algorytmy kodowania}
 W celu zbadania wydajności możliwości kodowania dla środowisk, użyto algorytmu kodowania Base64, który jest najpopularniejszym algorytmem kodowania wykorzystywanym w aplikacjach webowych. W tabeli \ref{tab:encoding_experiments} przedstawiono liczbę przeprowadzonych eksperymentów, długość kodowanego słowa.
