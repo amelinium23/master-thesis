@@ -30,6 +30,7 @@ const createBatchOfFiles = (
 	return {
 		fileNames: fileNames.map(({ fileName }) => fileName),
 		times: fileNames.map(({ time }) => time),
+		memory: fileNames.map(({ rss }) => rss),
 		timeOfCreating: endTime - startTime,
 	};
 };

@@ -163,7 +163,6 @@ def bun_ts_perform_sqlite_benchmark(options: SqliteParameters):
 
 def bun_js_perform_server_benchmark(options: ServerParameters):
     os.chdir("../js")
-    process_server = subprocess.Popen(["npm", "run", "bun:server"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3000/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
@@ -172,22 +171,19 @@ def bun_js_perform_server_benchmark(options: ServerParameters):
     )
     file = open("./bun/bunServerResult.json").read()
     result = json.loads(file)
-    process_server.kill()
     process_oha.kill()
     return result
 
 
 def bun_ts_perform_server_benchmark(options: ServerParameters):
     os.chdir("../ts")
-    process_server = subprocess.Popen(["npm", "run", "bun:server"])
     process_oha = subprocess.Popen(
         [
-            f"oha http://localhost:3003/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
+            f"oha http://localhost:3003/users -n {str(options.number_of_requests)} -c {str(options.number_of_connections)} -j > ./bun/bunServerResult.json",
         ],
         shell=True,
     )
     file = open("./bun/bunServerResult.json").read()
     result = json.loads(file)
-    process_server.kill()
     process_oha.kill()
     return result

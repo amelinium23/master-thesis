@@ -264,12 +264,12 @@ W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono
 \begin{table}[H]
   \centering
   \caption{Parametry eksperymentów zapisu i odczytu plików}
-  \begin{tabular}{|c|c|}
+  \begin{tabular}{|c|c|c|}
     \hline
-    \textbf{Liczba eksperymentów} & \textbf{Rozmiar pliku}\\ \hline
-    10 & 1MB \\ \hline
-    100 & 10MB \\ \hline
-    1000 & 100MB \\ \hline
+    \textbf{Ilość eksperymentów} & \textbf{Rozmiar pliku} & \textbf{Liczba plików} \\ \hline
+    10 & 1MB & 10 \\ \hline
+    100 & 10MB & 100 \\ \hline
+    1000 & 100MB & 1000 \\ \hline
   \end{tabular}
   \label{tab:file_experiments}
 \end{table}
@@ -284,10 +284,10 @@ W celu zbadania wydajności serwera HTTP, przeprowadzono testy obciążeniowe. D
   \caption{Parametry eksperymentów serwera HTTP}
   \begin{tabular}{|c|c|}
     \hline
-    \textbf{Liczba eksperymentów} & \textbf{Ilość połączeń}\\ \hline
-    10 & 100 \\ \hline
-    100 & 1000 \\ \hline
-    1000 & 10000 \\ \hline
+    \textbf{Liczba żądań} & \textbf{Ilość połączeń}\\ \hline
+    10000 & 100 \\ \hline
+    10000 & 1000 \\ \hline
+    10000 & 10000 \\ \hline
   \end{tabular}
   \label{tab:http_experiments}
 \end{table}
@@ -297,15 +297,14 @@ W celu zbadania wydajności serwera HTTP, przeprowadzono testy obciążeniowe. D
 \subsection{Testy wydajnościowe zapisu i odczytu danych z bazy danych}
 W celu zbadania wydajności operacji zapisu oraz odczytu danych z bazy danych, przeprowadzono testy wydajnościowe z wykorzystaniem bazy danych SQLite. W celu wygenerowania danych do bazy danych, wykorzystano moduł \textit{faker.js}. W tabeli \ref{tab:database_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz ilość rekordów.
 
-\begin{table}
+\begin{table}[H]
   \centering
   \caption{Parametry eksperymentów zapisu i odczytu danych z bazy danych}
   \begin{tabular}{|c|c|}
     \hline
     \textbf{Liczba eksperymentów} & \textbf{Ilość rekordów}\\ \hline
     10 & 1000 \\ \hline
-    100 & 10000 \\ \hline
-    1000 & 100000 \\ \hline
+    100 & 1000 \\ \hline
   \end{tabular}
   \label{tab:database_experiments}
 \end{table}

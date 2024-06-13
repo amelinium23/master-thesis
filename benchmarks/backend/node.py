@@ -162,43 +162,27 @@ def node_ts_perform_sqlite_benchmark(options: SqliteParameters):
 
 def node_js_perform_server_benchmark(options: ServerParameters):
     os.chdir("../js")
-    process_server = subprocess.Popen(["npm", "run", "node:server"])
-    # subprocess.run(["touch", "./node/nodeServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3002/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./node/nodeServerResult.json",
         ],
         shell=True,
     )
-    p_info = psutil.Process(process_server.pid)
     file = open("./node/nodeServerResult.json").read()
     result = json.loads(file)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-    process_server.kill()
     process_oha.kill()
     return result
 
 
 def node_ts_perform_server_benchmark(options: ServerParameters):
     os.chdir("../ts")
-    process_server = subprocess.Popen(["npm", "run", "node:server"])
-    # subprocess.run(["touch", "./node/nodeServerResult.json"])
     process_oha = subprocess.Popen(
         [
             f"oha http://localhost:3005/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./node/nodeServerResult.json",
         ],
         shell=True,
     )
-    p_info = psutil.Process(process_server.pid)
     file = open("./node/nodeServerResult.json").read()
     result = json.loads(file)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-    process_server.kill()
     process_oha.kill()
     return result
