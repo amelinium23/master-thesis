@@ -397,7 +397,7 @@ def save_files_results(
     f.subplots_adjust(wspace=0.4)
 
     plt.savefig(
-        f"../backend/files_reading_{options.number_of_iterations}_{options.number_of_files}_js.png",
+        f"../backend/files_reading_{options.number_of_iterations}_{options.number_of_paragraphs}_{options.number_of_files}_js.png",
         dpi=300,
     )
 
@@ -462,7 +462,7 @@ def save_files_results(
     f_2.subplots_adjust(wspace=0.4)
 
     plt.savefig(
-        f"../backend/files_writing_{options.number_of_iterations}_{options.number_of_files}_js.png",
+        f"../backend/files_writing_{options.number_of_iterations}_{options.number_of_paragraphs}_{options.number_of_files}_js.png",
         dpi=300,
     )
 
@@ -527,7 +527,7 @@ def save_files_results(
     f_3.subplots_adjust(wspace=0.4)
 
     plt.savefig(
-        f"../backend/files_reading_{options.number_of_iterations}_{options.number_of_files}_ts.png",
+        f"../backend/files_reading_{options.number_of_iterations}_{options.number_of_paragraphs}_{options.number_of_files}_ts.png",
         dpi=300,
     )
 
@@ -558,7 +558,7 @@ def save_files_results(
     )
     ax_4[0].set_xlabel("Number of Iterations")
     ax_4[0].set_ylabel("Execution Time (ms)")
-    ax_4[0].set_title("Reading Execution Time - JS")
+    ax_4[0].set_title("Reading Execution Time - TS")
     ax_4[0].legend()
 
     ax_4[1].plot(
@@ -592,7 +592,7 @@ def save_files_results(
     f_4.subplots_adjust(wspace=0.4)
 
     plt.savefig(
-        f"../backend/files_writing_{options.number_of_iterations}_{options.number_of_files}_ts.png",
+        f"../backend/files_writing_{options.number_of_iterations}_{options.number_of_paragraphs}_{options.number_of_files}_ts.png",
         dpi=300,
     )
 

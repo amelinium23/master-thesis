@@ -267,8 +267,8 @@ W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono
   \begin{tabular}{|c|c|c|}
     \hline
     \textbf{Ilość eksperymentów} & \textbf{Rozmiar pliku} & \textbf{Ilość plików} \\ \hline
-    100 & 1MB & 100 \\ \hline
-    100 & 5MB & 100 \\ \hline
+    50 & 512kB & 50 \\ \hline
+    50 & 1MB & 50 \\ \hline
   \end{tabular}
   \label{tab:file_experiments}
 \end{table}
@@ -309,3 +309,31 @@ W celu zbadania wydajności operacji zapisu oraz odczytu danych z bazy danych, p
 \end{table}
 
 \subsubsection{Wyniki}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/database/sqlite_10_1000_js.png}
+  \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:database_e1_js}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/database/sqlite_10_1000_ts.png}
+  \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:database_e1_ts}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/database/sqlite_100_1000_js.png}
+  \caption{Wyniki eksperymentów dla testu bazy danych 100 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:database_e2_js}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{Figures/database/sqlite_100_1000_ts.png}
+  \caption{Wyniki eksperymentów dla testu bazy danych 100 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \label{fig:database_e2_ts}
+\end{figure}
