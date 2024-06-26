@@ -1,7 +1,6 @@
 import subprocess
 import os
 import json
-import psutil
 from options import (
     ServerParameters,
     SortingParameters,

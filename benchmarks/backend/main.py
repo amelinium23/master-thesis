@@ -1,3 +1,5 @@
+import matplotlib
+
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
@@ -64,6 +66,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+matplotlib.pyplot.switch_backend("Agg")
 
 
 @app.get("/")
