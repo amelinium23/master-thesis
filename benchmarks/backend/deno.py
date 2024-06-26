@@ -13,7 +13,7 @@ from options import (
 
 def deno_js_perform_sorting_benchmark(options: SortingParameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -25,18 +25,12 @@ def deno_js_perform_sorting_benchmark(options: SortingParameters):
     )
     file = open("./deno/denoSortingResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-    process.kill()
     return result
 
 
 def deno_ts_perform_sorting_benchmark(options: SortingParameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -46,20 +40,14 @@ def deno_ts_perform_sorting_benchmark(options: SortingParameters):
             str(options.number_of_iterations),
         ]
     )
-    p_info = psutil.Process(process.pid)
-    used_memory = p_info.memory_full_info().rss
-    used_cpu = p_info.cpu_percent(interval=1)
     file = open("./deno/denoSortingResult.json").read()
     result = json.loads(file)
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-    process.kill()
     return result
 
 
 def deno_js_perform_files_benchmark(options: FilesParameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -69,19 +57,14 @@ def deno_js_perform_files_benchmark(options: FilesParameters):
             str(options.number_of_paragraphs),
         ]
     )
-    p_info = psutil.Process(process.pid)
-    used_memory = p_info.memory_full_info().rss
-    used_cpu = p_info.cpu_percent(interval=1)
     file = open("./deno/denoFilesResult.json").read()
     result = json.loads(file)
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     return result
 
 
 def deno_ts_perform_files_benchmark(options: FilesParameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -93,18 +76,12 @@ def deno_ts_perform_files_benchmark(options: FilesParameters):
     )
     file = open("./deno/denoFilesResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = p_info.memory_full_info().rss
-    used_cpu = p_info.cpu_percent(interval=0.001)
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-    process.kill()
     return result
 
 
 def deno_js_perform_base64_benchmark(options: Base64Parameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -112,20 +89,14 @@ def deno_js_perform_base64_benchmark(options: Base64Parameters):
             str(options.number_of_iterations),
         ]
     )
-    p_info = psutil.Process(process.pid)
-    used_memory = p_info.memory_full_info().rss
-    used_cpu = p_info.cpu_percent(interval=1)
-    process.kill()
     file = open("./deno/denoBase64Result.json").read()
     result = json.loads(file)
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     return result
 
 
 def deno_ts_perform_base64_benchmark(options: Base64Parameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -133,20 +104,14 @@ def deno_ts_perform_base64_benchmark(options: Base64Parameters):
             str(options.number_of_iterations),
         ]
     )
-    p_info = psutil.Process(process.pid)
-    used_memory = p_info.memory_full_info().rss
-    used_cpu = p_info.cpu_percent(interval=1)
-    process.kill()
     file = open("./deno/denoBase64Result.json").read()
     result = json.loads(file)
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     return result
 
 
 def deno_js_perform_sqlite_benchmark(options: SqliteParameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -155,20 +120,14 @@ def deno_js_perform_sqlite_benchmark(options: SqliteParameters):
             str(options.number_of_records),
         ]
     )
-    p_info = psutil.Process(process.pid)
-    used_memory = p_info.memory_full_info().rss
-    used_cpu = p_info.cpu_percent(interval=1)
     file = open("./deno/denoSqlite.json").read()
     result = json.loads(file)
-    process.kill()
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     return result
 
 
 def deno_ts_perform_sqlite_benchmark(options: SqliteParameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -177,21 +136,14 @@ def deno_ts_perform_sqlite_benchmark(options: SqliteParameters):
             str(options.number_of_records),
         ]
     )
-    p_info = psutil.Process(process.pid)
-    used_memory = p_info.memory_full_info().rss
-    used_cpu = p_info.cpu_percent(interval=1)
     file = open("./deno/denoSqlite.json").read()
     result = json.loads(file)
-    process.kill()
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     return result
 
 
 def deno_js_perform_server_benchmark(options: ServerParameters):
     os.chdir("../js")
-    # process_server = subprocess.Popen(["npm", "run", "deno:server"])
-    process_oha = subprocess.Popen(
+    subprocess.Popen(
         [
             f"oha http://localhost:3001/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
         ],
@@ -199,15 +151,12 @@ def deno_js_perform_server_benchmark(options: ServerParameters):
     )
     file = open("./deno/denoServerResult.json").read()
     result = json.loads(file)
-    # process_server.kill()
-    process_oha.kill()
     return result
 
 
 def deno_ts_perform_server_benchmark(options: ServerParameters):
     os.chdir("../ts")
-    # process_server = subprocess.Popen(["npm", "run", "deno:server"])
-    process_oha = subprocess.Popen(
+    subprocess.Popen(
         [
             f"oha http://localhost:3004/users -n {str(options.number_of_requests)} -c { str(options.number_of_connections)} -j > ./deno/denoServerResult.json",
         ],
@@ -215,6 +164,4 @@ def deno_ts_perform_server_benchmark(options: ServerParameters):
     )
     file = open("./deno/denoServerResult.json").read()
     result = json.loads(file)
-    # process_server.kill()
-    process_oha.kill()
     return result

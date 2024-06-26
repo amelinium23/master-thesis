@@ -13,7 +13,7 @@ from options import (
 
 def bun_js_perform_sorting_benchmark(options: SortingParameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -25,17 +25,12 @@ def bun_js_perform_sorting_benchmark(options: SortingParameters):
     )
     file = open("./bun/bunSortingResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
     return result
 
 
 def bun_ts_perform_sorting_benchmark(options: SortingParameters):
     os.chdir("../ts")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -47,19 +42,12 @@ def bun_ts_perform_sorting_benchmark(options: SortingParameters):
     )
     file = open("./bun/bunSortingResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-
-    p_info.kill()
     return result
 
 
 def bun_js_perform_files_benchmark(options: FilesParameters):
     os.chdir("../js")
-    process = subprocess.Popen(
+    subprocess.Popen(
         [
             "npm",
             "run",
@@ -72,12 +60,6 @@ def bun_js_perform_files_benchmark(options: FilesParameters):
     )
     file = open("./bun/bunFilesResult.json").read()
     result = json.loads(file)
-    p_info = psutil.Process(process.pid)
-    used_memory = float(p_info.memory_full_info().rss)
-    used_cpu = float(p_info.cpu_percent(interval=1))
-    result["used_cpu"] = used_cpu
-    result["used_memory"] = used_memory
-
     return result
 
 
