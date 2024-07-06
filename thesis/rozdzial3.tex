@@ -1,12 +1,12 @@
 \section{Eksperymenty}\label{sec:experiments}
-W tym rozdziale opisane zostaną eksperymenty przeprowadzone w celu zbadania testów wydajnościowych środowisk uruchomieniowych. Testy zostały przeprowadzone na jednym komputerze wyposażonym w system operacyjny Linux, co pozwoliło na zminimalizowanie wpływu innych czynników na wyniki testów.
+W tym rozdziale opisane zostały eksperymenty przeprowadzone w celu zbadania testów wydajnościowych środowisk uruchomieniowych. Testy zostały przeprowadzone na jednym komputerze wyposażonym w system operacyjny Linux, co pozwoliło na zminimalizowanie wpływu innych czynników na wyniki testów.
 
-Testy wykorzystują wszystkie możliwe funkcjonalności, które są zaimplementowane w danych środowiskach. Dzięki czemu, testy te są odzwierciedleniem rzeczywistego zastosowania danego środowiska. Testy zostały wykonane w dwóch językach programowania: JavaScript oraz TypeScript. Zastosowanie tych języków pozwala na przetestowanie czasu potrzebnego do transpilacji kodu źródłowego do kodu maszynowego. 
+Testy wykorzystują wszystkie możliwe funkcjonalności, które są zaimplementowane w danych środowiskach, dzięki czemu, testy te są odzwierciedleniem rzeczywistego zastosowania danego środowiska. Testy zostały wykonane w dwóch językach programowania: JavaScript oraz TypeScript. Zastosowanie tych języków pozwala na przetestowanie czasu potrzebnego do transpilacji kodu źródłowego do kodu maszynowego. 
 
 \subsection{Algorytmy sortowania}
-W celu zbadania wydajności danego środowiska uruchomieniowego, skonstruowana odpowiednie eksperymenty, które sprawdzają wydajność algorytmu sortowania. Wszystkie algorytmu sortowania zostały przetestowane dla każdego środowiska.
+W celu zbadania wydajności danego środowiska uruchomieniowego, skonstruowana odpowiednie eksperymenty, które sprawdzają wydajność algorytmu sortowania. Wszystkie algorytmy sortowania zostały przetestowane dla każdego środowiska.
 
-W tabeli \ref{tab:sorting_experiments} przedstawiono ilość iteracji oraz ilość eksperymentów dla przeprowadzonych eksperymenty.
+W tabeli \ref{tab:sorting_experiments} przedstawiono ilość iteracji oraz ilość elementów dla przeprowadzonych eksperymentów.
 
 \begin{table}[H]
   \centering
@@ -242,11 +242,11 @@ Na rysunku \ref{fig:radix_sorting_e4_ts} przedstawiono wyniki eksperymentów dla
 \end{figure}
 
 \subsection{Algorytmy kodowania}
-W celu zbadania wydajności możliwości kodowania dla środowisk, użyto algorytmu kodowania Base64, który jest najpopularniejszym algorytmem kodowania wykorzystywanym w aplikacjach webowych. W tabeli \ref{tab:encoding_experiments} przedstawiono liczbę przeprowadzonych eksperymentów, długość kodowanego słowa.
+W celu zbadania wydajności możliwości kodowania dla środowisk, użyto algorytmu kodowania \textit{Base64}, który jest najpopularniejszym algorytmem kodowania wykorzystywanym w aplikacjach webowych. W tabeli \ref{tab:encoding_experiments} przedstawiono liczbę przeprowadzonych eksperymentów, długość kodowanego słowa.
 
 \begin{table}[H]
   \centering
-  \caption{Parametry eksperymentów algorytmu kodowania Base64}
+  \caption{Parametry eksperymentów algorytmu kodowania \textit{Base64}}
   \begin{tabular}{|c|c|}
     \hline
     \textbf{Liczba eksperymentów} & \textbf{Długość słowa}\\ \hline
@@ -257,80 +257,80 @@ W celu zbadania wydajności możliwości kodowania dla środowisk, użyto algory
 \end{table}
 
 \subsubsection{Wyniki}
-Na rysunku \ref{fig:encoding_e1_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania Base64 dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:encoding_e1_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.68\textwidth]{Figures/coding/base64_100_encoding_js.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu Base64 dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e1_js}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e1_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania Base64 dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:decoding_e1_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.68\textwidth]{Figures/coding/base64_100_encoding_js.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu Base64 dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:decoding_e1_js}
 \end{figure}
 
-Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania Base64 dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.68\textwidth]{Figures/coding/base64_100_encoding_ts.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu Base64 dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania Base64 dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.68\textwidth]{Figures/coding/base64_100_encoding_ts.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu Base64 dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:decoding_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania Base64 dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.68\textwidth]{Figures/coding/base64_1000_encoding_js.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu Base64 dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e2_js}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania Base64 dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.68\textwidth]{Figures/coding/base64_1000_encoding_js.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu Base64 dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:decoding_e2_js}
 \end{figure}
 
-Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania Base64 dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.68\textwidth]{Figures/coding/base64_1000_encoding_ts.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu Base64 dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e2_ts}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania Base64 dla 100 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:decoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.68\textwidth]{Figures/coding/base64_1000_encoding_ts.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu Base64 dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:decoding_e2_ts}
 \end{figure}
 
 \subsection{Testy wydajnościowe operacji zapisu i odczytu plików}
-W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono eksperymenty, które polegały na zapisie oraz odczycie plików o różnych rozmiarach. W przeprowadzonych testach wykorzystano pliki tekstowe. Do wypełnienia plików przykładowym tekstem. Zawartość plików została wygenerowana za pomocą modułu \textit{faker.js}. W tabeli \ref{tab:file_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz rozmiar pliku.
+W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono eksperymenty, które polegały na zapisie oraz odczycie plików o różnych rozmiarach. W przeprowadzonych testach wykorzystano pliki tekstowe, natomiast zawartość plików została wygenerowana za pomocą modułu \textit{faker.js}. W tym celu generowano paragrafy tekstu. W tabeli \ref{tab:file_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz rozmiar pliku.
 
 \begin{table}[H]
   \centering
