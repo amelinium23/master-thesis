@@ -1,16 +1,18 @@
 \section{Eksperymenty}\label{sec:experiments}
 W tym rozdziale opisane zostały eksperymenty przeprowadzone w celu zbadania testów wydajnościowych środowisk uruchomieniowych. Testy zostały przeprowadzone na jednym komputerze wyposażonym w system operacyjny Linux, co pozwoliło na zminimalizowanie wpływu innych czynników na wyniki testów.
 
-Testy wykorzystują wszystkie możliwe funkcjonalności, które są zaimplementowane w danych środowiskach, dzięki czemu, testy te są odzwierciedleniem rzeczywistego zastosowania danego środowiska. Testy zostały wykonane w dwóch językach programowania: JavaScript oraz TypeScript. Zastosowanie tych języków pozwala na przetestowanie czasu potrzebnego do transpilacji kodu źródłowego do kodu maszynowego. 
+Testy wykorzystują wszystkie możliwe funkcjonalności, które są zaimplementowane w danych środowiskach, dzięki temu, testy te są odzwierciedleniem rzeczywistego zastosowania danego środowiska. Testy zostały wykonane w dwóch językach programowania: JavaScript oraz TypeScript. Zastosowanie tych języków pozwala na przetestowanie czasu potrzebnego do transpilacji kodu źródłowego do kodu maszynowego. 
 
 \subsection{Algorytmy sortowania}
 W celu zbadania wydajności danego środowiska uruchomieniowego, skonstruowana odpowiednie eksperymenty, które sprawdzają wydajność algorytmu sortowania. Wszystkie algorytmy sortowania zostały przetestowane dla każdego środowiska.
+
+Testy zostały zbudowane w oparciu o generowanie losowych liczb całkowitych z wykorzystaniem funkcjonalności pakietu \textit{Math}. Generowanie całkowicie nowych tablic liczb dla każdego testu, pozwala na uzyskanie bardziej wiarygodnych wyników, ze względu na brak powtarzalności danych wejściowych.
 
 W tabeli \ref{tab:sorting_experiments} przedstawiono ilość iteracji oraz ilość elementów dla przeprowadzonych eksperymentów.
 
 \begin{table}[H]
   \centering
-  \caption{Parametry eksperymentów - algorytmy sortowania}
+  \caption{Parametry eksperymentów - algorytmy sortowania \cite{sorting}}
   \begin{tabular}{|c|c|}
     \hline
     \textbf{Liczba eksperymentów} & \textbf{Liczba elementów} \\ \hline
