@@ -29,8 +29,19 @@ Na rysunku \ref{fig:bubble_sorting_e1} przedstawiono wyniki eksperymentów dla a
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/sorting/sorting_bubble_100_1000_js.png}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_100_1000_js_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:bubble_sorting_e1_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_100_1000_js_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:bubble_sorting_e1_memory}
+  \end{subfigure}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:bubble_sorting_e1}
 \end{figure}
 
