@@ -25,37 +25,40 @@ W tabeli \ref{tab:sorting_experiments} przedstawiono ilość iteracji oraz iloś
 \end{table}
 
 \subsubsection{Wyniki - sortowanie bąbelkowe}
-Na rysunku \ref{fig:bubble_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:bubble_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_100_1000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:bubble_sorting_e1_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_100_1000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e1_memory}
   \end{subfigure}
+  \hfill
   \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:bubble_sorting_e1}
 \end{figure}
 
-Na rysunku \ref{fig:bubble_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na wykresach \ref{fig:bubble_sorting_e1_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Najprawdopodobniej jest to spowodowane tzw. rozgrzewaniem się środowiska, jest to zauważalne w przypadku środowiska NodeJS. Natomiast, z wykresu \ref{fig:bubble_sorting_e1_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych. 
+
+Na rysunku \ref{fig:bubble_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_100_1000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:bubble_sorting_e1_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_100_1000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -65,138 +68,152 @@ Na rysunku \ref{fig:bubble_sorting_e1_ts} przedstawiono wyniki eksperymentów dl
   \label{fig:bubble_sorting_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:bubble_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+W porównaniu do wyników dla języka JavaScript, wyniki dla języka TypeScript są zbliżone. Na wykresach \ref{fig:bubble_sorting_e1_ts_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:bubble_sorting_e1_ts_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+
+Na rysunku \ref{fig:bubble_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_1000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:bubble_sorting_e2_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_1000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e2_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów dla języka JavaScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:bubble_sorting_e2}
 \end{figure}
 
-Na rysunku \ref{fig:bubble_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Przy zwiększonej ilości próbek możemy zauważyć na wykresach \ref{fig:bubble_sorting_e2_time}, że czas wykonania jest podobny względem wszystkich środowiska uruchomieniowych, Bun charakteryzuje się niższym czasem wykonania w porównaniu do pozostałych środowisk. Natomiast, z wykresu \ref{fig:bubble_sorting_e2_memory}, możemy także zauważyć, że Bun charakteryzuje się dużym zużyciem pamięci operacyjnej w porównaniu do pozostałych środowisk.
+
+Na rysunku \ref{fig:bubble_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_10000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:bubble_sorting_e2_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_1000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e2_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów dla języka TypeScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:bubble_sorting_e2_ts}
 \end{figure}
 
-Na rysunku \ref{fig:bubble_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+W przypadku zwiększonej ilości próbek, na wykresach \ref{fig:bubble_sorting_e2_ts_time} możemy zauważyć, że czas wykonania wzrósł w porównaniu do poprzednich próbek. Wraz z zwiększeniem ilości próbek zwiększyło się zapotrzebowanie na pamięć operacyjną, co jest zauważalne na wykresach \ref{fig:bubble_sorting_e2_ts_memory}. Takie zachowanie środowisk może być spowodowane nieodpowiednim zarządzaniem przez środowiska pamięcią operacyjną.
+
+Na rysunku \ref{fig:bubble_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_10000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:bubble_sorting_e3_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_10000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e3_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka JavaScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:bubble_sorting_e3}
 \end{figure}
 
-Na rysunku \ref{fig:bubble_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na wykresach \ref{fig:bubble_sorting_e3_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:bubble_sorting_e3_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych. Momenty, w których zużycie pamięci spada może być spowodowane zwolnieniem pamięci operacyjnej przez środowisko za pomocą mechanizmu Garbage Collector.
+
+Na rysunku \ref{fig:bubble_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_100_10000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:bubble_sorting_e3_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_100_10000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e3_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka TypeScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:bubble_sorting_e3_ts}
 \end{figure}
 
-Na rysunku \ref{fig:bubble_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na wykresach \ref{fig:bubble_sorting_e3_ts_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:bubble_sorting_e3_ts_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+
+Na rysunku \ref{fig:bubble_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_10000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:bubble_sorting_e4_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_10000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e4_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka JavaScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:bubble_sorting_e4}
 \end{figure}
 
-Na rysunku \ref{fig:bubble_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na wykresach \ref{fig:bubble_sorting_e4_time} możemy zauważyć, że czas wykonania w przypadku pierwszych iteracji jest zwiększony w porównaniu do pozostałych próbek. Możemy także zauważyć, że środowisko NodeJS ma najdłuższy czas wykonania algorytmu w pierwszych iteracjach. Natomiast, z wykresu \ref{fig:bubble_sorting_e4_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+
+Na rysunku \ref{fig:bubble_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_10000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:bubble_sorting_e4_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_bubble_1000_10000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e4_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka TypeScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:bubble_sorting_e4_ts}
 \end{figure}
 
+Na rysunku \ref{fig:bubble_sorting_e4_ts_time} możemy zauważyć, że czas wykonania w przypadku pierwszych iteracji jest zwiększony w porównaniu do pozostałych próbek. Możemy także zauważyć, że środowisko NodeJS ma najdłuższy czas wykonania algorytmu w pierwszych iteracjach. Natomiast, z wykresu \ref{fig:bubble_sorting_e4_ts_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+
 \subsubsection{Wyniki - sortowanie szybkie}
-Na rysunku \ref{fig:quick_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:quick_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_100_1000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:quick_sorting_e1_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_100_1000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -206,17 +223,18 @@ Na rysunku \ref{fig:quick_sorting_e1} przedstawiono wyniki eksperymentów dla al
   \label{fig:quick_sorting_e1}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+
+Na rysunku \ref{fig:quick_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_100_1000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:quick_sorting_e1_tsquick_sorting_e1_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_100_1000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -226,17 +244,17 @@ Na rysunku \ref{fig:quick_sorting_e1_ts} przedstawiono wyniki eksperymentów dla
   \label{fig:quick_sorting_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:quick_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_1000_1000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:quick_sorting_e2_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_1000_1000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -246,17 +264,17 @@ Na rysunku \ref{fig:quick_sorting_e2} przedstawiono wyniki eksperymentów dla al
   \label{fig:quick_sorting_e2}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:quick_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_1000_1000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:quick_sorting_e2_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_1000_1000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -266,17 +284,17 @@ Na rysunku \ref{fig:quick_sorting_e2_ts} przedstawiono wyniki eksperymentów dla
   \label{fig:quick_sorting_e2_ts}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:quick_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_100_10000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:quick_sorting_e3_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_100_10000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -286,17 +304,17 @@ Na rysunku \ref{fig:quick_sorting_e3} przedstawiono wyniki eksperymentów dla al
   \label{fig:quick_sorting_e3}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:quick_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_100_10000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:quick_sorting_e3_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_100_10000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -306,17 +324,17 @@ Na rysunku \ref{fig:quick_sorting_e3_ts} przedstawiono wyniki eksperymentów dla
   \label{fig:quick_sorting_e3_ts}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:quick_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_1000_10000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:quick_sorting_e4_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_1000_10000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -325,17 +343,17 @@ Na rysunku \ref{fig:quick_sorting_e4} przedstawiono wyniki eksperymentów dla al
   \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:quick_sorting_e4}
 \end{figure}
-Na rysunku \ref{fig:quick_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:quick_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_1000_10000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:quick_sorting_e4_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_quick_1000_10000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -346,17 +364,17 @@ Na rysunku \ref{fig:quick_sorting_e4_ts} przedstawiono wyniki eksperymentów dla
 \end{figure}
 
 \subsubsection{Wyniki - sortowanie pozycyjne}
-Na rysunku \ref{fig:radix_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:radix_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_1000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:radix_sorting_e1_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_1000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -366,17 +384,17 @@ Na rysunku \ref{fig:radix_sorting_e1} przedstawiono wyniki eksperymentów dla al
   \label{fig:radix_sorting_e1}
 \end{figure}
 
-Na rysunku \ref{fig:radix_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:radix_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_1000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:radix_sorting_e1_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_1000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -386,17 +404,17 @@ Na rysunku \ref{fig:radix_sorting_e1_ts} przedstawiono wyniki eksperymentów dla
   \label{fig:radix_sorting_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:radix_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:radix_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_1000_1000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:radix_sorting_e2_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_1000_1000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -406,17 +424,17 @@ Na rysunku \ref{fig:radix_sorting_e2} przedstawiono wyniki eksperymentów dla al
   \label{fig:radix_sorting_e2}
 \end{figure}
 
-Na rysunku \ref{fig:radix_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:radix_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_1000_1000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:radix_sorting_e2_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_1000_1000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -426,17 +444,17 @@ Na rysunku \ref{fig:radix_sorting_e2_ts} przedstawiono wyniki eksperymentów dla
   \label{fig:radix_sorting_e2_ts}
 \end{figure}
 
-Na rysunku \ref{fig:radix_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania dla 100 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:radix_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania dla 100 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_10000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:radix_sorting_e3_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_10000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -446,17 +464,17 @@ Na rysunku \ref{fig:radix_sorting_e3} przedstawiono wyniki eksperymentów dla al
   \label{fig:radix_sorting_e3}
 \end{figure}
 
-Na rysunku \ref{fig:radix_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:radix_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_10000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:radix_sorting_e3_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_10000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -467,17 +485,17 @@ Na rysunku \ref{fig:radix_sorting_e3_ts} przedstawiono wyniki eksperymentów dla
   \label{fig:radix_sorting_e3_ts}
 \end{figure}
 
-Na rysunku \ref{fig:radix_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:radix_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_1000_10000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:radix_sorting_e4_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_1000_10000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -488,17 +506,17 @@ Na rysunku \ref{fig:radix_sorting_e4} przedstawiono wyniki eksperymentów dla al
   \label{fig:radix_sorting_e4}
 \end{figure}
 
-Na rysunku \ref{fig:radix_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:radix_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_1000_10000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:radix_sorting_e4_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_1000_10000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -525,17 +543,17 @@ W celu zbadania wydajności możliwości kodowania dla środowisk, użyto algory
 \end{table}
 
 \subsubsection{Wyniki}
-Na rysunku \ref{fig:encoding_e1_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:encoding_e1_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_100_encoding_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:encoding_e1_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_100_encoding_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -546,17 +564,17 @@ Na rysunku \ref{fig:encoding_e1_js} przedstawiono wyniki eksperymentów dla oper
   \label{fig:encoding_e1_js}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e1_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:decoding_e1_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:decoding_e1_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -567,17 +585,17 @@ Na rysunku \ref{fig:decoding_e1_js} przedstawiono wyniki eksperymentów dla oper
   \label{fig:decoding_e1_js}
 \end{figure}
 
-Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:encoding_e1_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -588,17 +606,17 @@ Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla oper
   \label{fig:encoding_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:decoding_e1_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -609,17 +627,17 @@ Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla oper
   \label{fig:decoding_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_1000_encoding_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:encoding_e2_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_1000_encoding_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -630,17 +648,17 @@ Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla oper
   \label{fig:encoding_e2_js}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_1000_decoding_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:decoding_e2_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_1000_decoding_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -651,17 +669,17 @@ Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla oper
   \label{fig:decoding_e2_js}
 \end{figure}
 
-Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_1000_encoding_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:encoding_e2_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_1000_encoding_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -672,17 +690,17 @@ Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla oper
   \label{fig:encoding_e2_ts}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:decoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_1000_decoding_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:decoding_e2_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/coding/base64_1000_decoding_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -709,17 +727,17 @@ W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono
 \end{table}
 
 \subsubsection{Wyniki}
-Na rysunku \ref{fig:file_e1_reading_js} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:file_e1_reading_js} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_reading_50_500_50_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:file_e1_reading_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_reading_50_500_50_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -729,17 +747,17 @@ Na rysunku \ref{fig:file_e1_reading_js} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e1_reading_js}
 \end{figure}
 
-Na rysunku \ref{fig:file_e1_writing_js} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:file_e1_writing_js} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_writing_50_500_50_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:file_e1_writing_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_writing_50_500_50_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -749,17 +767,17 @@ Na rysunku \ref{fig:file_e1_writing_js} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e1_writing_js}
 \end{figure}
 
-Na rysunku \ref{fig:file_e1_reading_ts} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:file_e1_reading_ts} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_reading_50_500_50_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:file_e1_reading_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_reading_50_500_50_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -769,17 +787,17 @@ Na rysunku \ref{fig:file_e1_reading_ts} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e1_reading_ts}
 \end{figure}
 
-Na rysunku \ref{fig:file_e1_writing_ts} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:file_e1_writing_ts} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_writing_50_500_50_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:file_e1_writing_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_writing_50_500_50_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -789,17 +807,17 @@ Na rysunku \ref{fig:file_e1_writing_ts} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e1_writing_ts}
 \end{figure}
 
-Na rysunku \ref{fig:file_e2_reading_js} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:file_e2_reading_js} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_reading_50_2000_50_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:file_e2_reading_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_reading_50_2000_50_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -809,17 +827,17 @@ Na rysunku \ref{fig:file_e2_reading_js} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e2_reading_js}
 \end{figure}
 
-Na rysunku \ref{fig:file_e2_writing_js} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:file_e2_writing_js} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_writing_50_2000_50_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:file_e2_writing_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_writing_50_2000_50_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -829,17 +847,17 @@ Na rysunku \ref{fig:file_e2_writing_js} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e2_writing_js}
 \end{figure}
 
-Na rysunku \ref{fig:file_e2_reading_ts} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:file_e2_reading_ts} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_reading_50_2000_50_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:file_e2_reading_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_reading_50_2000_50_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -849,17 +867,17 @@ Na rysunku \ref{fig:file_e2_reading_ts} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e2_reading_ts}
 \end{figure}
 
-Na rysunku \ref{fig:file_e2_writing_ts} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:file_e2_writing_ts} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_writing_50_2000_50_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:file_e2_writing_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/files/files_writing_50_2000_50_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -886,17 +904,17 @@ W celu zbadania wydajności serwera HTTP, przeprowadzono testy obciążeniowe. D
 \end{table}
 
 \subsubsection{Wyniki}
-Na rysunku \ref{fig:server_e1} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 100 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresie przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
+Na rysunku \ref{fig:server_e1} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 100 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresach przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/server/server_100_10000_js.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:server_e1_js}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/server/server_100_10000_ts.png}
     \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}}
@@ -906,17 +924,17 @@ Na rysunku \ref{fig:server_e1} przedstawiono wyniki eksperymentów dla testu wyd
   \label{fig:server_e1}
 \end{figure}
 
-Na rysunku \ref{fig:server_e2} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 1000 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresie przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
+Na rysunku \ref{fig:server_e2} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 1000 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresach przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/server/server_1000_10000_js.png}
     \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}) dla języka JavaScript}
     \label{fig:server_e2_js}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/server/server_1000_10000_ts.png}
     \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}) dla języka TypeScript}
@@ -926,17 +944,17 @@ Na rysunku \ref{fig:server_e2} przedstawiono wyniki eksperymentów dla testu wyd
   \label{fig:server_e2}
 \end{figure}
 
-Na rysunku \ref{fig:server_e3} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 10000 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresie przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
+Na rysunku \ref{fig:server_e3} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 10000 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresach przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/server/server_10000_10000_js.png}
     \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}) dla języka JavaScript}
     \label{fig:server_e3_js}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/server/server_10000_10000_ts.png}
     \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}) dla języka TypeScript}
@@ -962,17 +980,17 @@ W celu zbadania wydajności operacji zapisu oraz odczytu danych z bazy danych, p
 \end{table}
 
 \subsubsection{Wyniki}
-Na rysunku \ref{fig:database_e1_js} przedstawiono wyniki eksperymentów dla testu bazy danych dla 10 iteracji oraz 1000 rekordów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:database_e1_js} przedstawiono wyniki eksperymentów dla testu bazy danych dla 10 iteracji oraz 1000 rekordów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/database/sqlite_10_1000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:database_e1_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/database/sqlite_10_1000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -982,17 +1000,17 @@ Na rysunku \ref{fig:database_e1_js} przedstawiono wyniki eksperymentów dla test
   \label{fig:database_e1_js}
 \end{figure}
 
-Na rysunku \ref{fig:database_e1_ts} przedstawiono wyniki eksperymentów dla testu bazy danych dla 10 iteracji oraz 1000 rekordów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:database_e1_ts} przedstawiono wyniki eksperymentów dla testu bazy danych dla 10 iteracji oraz 1000 rekordów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/database/sqlite_10_1000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:database_e1_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/database/sqlite_10_1000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -1002,17 +1020,17 @@ Na rysunku \ref{fig:database_e1_ts} przedstawiono wyniki eksperymentów dla test
   \label{fig:database_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:database_e2_js} przedstawiono wyniki eksperymentów dla testu bazy danych dla 100 iteracji oraz 1000 rekordów napisanego w języku JavaScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:database_e2_js} przedstawiono wyniki eksperymentów dla testu bazy danych dla 100 iteracji oraz 1000 rekordów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/database/sqlite_100_1000_js_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:database_e2_js_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/database/sqlite_100_1000_js_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
@@ -1022,17 +1040,17 @@ Na rysunku \ref{fig:database_e2_js} przedstawiono wyniki eksperymentów dla test
   \label{fig:database_e2_js}
 \end{figure}
 
-Na rysunku \ref{fig:database_e2_ts} przedstawiono wyniki eksperymentów dla testu bazy danych dla 100 iteracji oraz 1000 rekordów napisanego w języku TypeScript. Na wykresie przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
+Na rysunku \ref{fig:database_e2_ts} przedstawiono wyniki eksperymentów dla testu bazy danych dla 100 iteracji oraz 1000 rekordów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/database/sqlite_100_1000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:database_e2_ts_time}
   \end{subfigure}
-  \begin{subfigure}[b]{0.4\textwidth}
+  \begin{subfigure}[b]{0.42\textwidth}
     \centering
     \includegraphics[width=\textwidth]{Figures/database/sqlite_100_1000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
