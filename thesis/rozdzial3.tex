@@ -462,6 +462,7 @@ Na rysunku \ref{fig:radix_sorting_e3_ts} przedstawiono wyniki eksperymentów dla
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:radix_sorting_e3_ts_memory}
   \end{subfigure}
+  \hfill
   \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:radix_sorting_e3_ts}
 \end{figure}
@@ -482,6 +483,7 @@ Na rysunku \ref{fig:radix_sorting_e4} przedstawiono wyniki eksperymentów dla al
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:radix_sorting_e4_memory}
   \end{subfigure}
+  \hfill
   \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:radix_sorting_e4}
 \end{figure}
@@ -502,6 +504,7 @@ Na rysunku \ref{fig:radix_sorting_e4_ts} przedstawiono wyniki eksperymentów dla
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:radix_sorting_e4_ts_memory}
   \end{subfigure}
+  \hfill
   \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:radix_sorting_e4_ts}
 \end{figure}
@@ -538,7 +541,8 @@ Na rysunku \ref{fig:encoding_e1_js} przedstawiono wyniki eksperymentów dla oper
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:encoding_e1_js_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \hfill
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e1_js}
 \end{figure}
 
@@ -558,7 +562,8 @@ Na rysunku \ref{fig:decoding_e1_js} przedstawiono wyniki eksperymentów dla oper
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:decoding_e1_js_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \hfill
+  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:decoding_e1_js}
 \end{figure}
 
@@ -568,7 +573,7 @@ Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla oper
   \centering
   \begin{subfigure}[b]{0.4\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_ts.png}
+    \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:encoding_e1_ts_time}
   \end{subfigure}
@@ -578,7 +583,8 @@ Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla oper
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:encoding_e1_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \hfill
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e1_ts}
 \end{figure}
 
@@ -598,7 +604,8 @@ Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla oper
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:decoding_e1_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \hfill
+  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:decoding_e1_ts}
 \end{figure}
 
@@ -606,8 +613,20 @@ Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla oper
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/coding/base64_1000_encoding_js.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/coding/base64_1000_encoding_js_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:encoding_e2_js_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/coding/base64_1000_encoding_js_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:encoding_e2_js_memory}
+  \end{subfigure}
+  \hfill
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e2_js}
 \end{figure}
 
@@ -615,8 +634,20 @@ Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla oper
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/coding/base64_1000_encoding_js.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/coding/base64_1000_decoding_js_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:decoding_e2_js_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/coding/base64_1000_decoding_js_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:decoding_e2_js_memory}
+  \end{subfigure}
+  \hfill
+  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:decoding_e2_js}
 \end{figure}
 
@@ -624,8 +655,20 @@ Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla oper
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/coding/base64_1000_encoding_ts.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/coding/base64_1000_encoding_ts_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:encoding_e2_ts_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/coding/base64_1000_encoding_ts_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:encoding_e2_ts_memory}
+  \end{subfigure}
+  \hfill
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e2_ts}
 \end{figure}
 
@@ -633,8 +676,20 @@ Na rysunku \ref{fig:decoding_e2_ts} przedstawiono wyniki eksperymentów dla oper
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/coding/base64_1000_encoding_ts.png}
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/coding/base64_1000_decoding_ts_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:decoding_e2_ts_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/coding/base64_1000_decoding_ts_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:decoding_e2_ts_memory}
+  \end{subfigure}
+  \hfill
+  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:decoding_e2_ts}
 \end{figure}
 
@@ -658,8 +713,19 @@ Na rysunku \ref{fig:file_e1_reading_js} przedstawiono wyniki eksperymentów dla 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/files/files_reading_50_500_50_js.png}
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_reading_50_500_50_js_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:file_e1_reading_js_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_reading_50_500_50_js_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:file_e1_reading_js_memory}
+  \end{subfigure}
+  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e1_reading_js}
 \end{figure}
 
@@ -667,8 +733,19 @@ Na rysunku \ref{fig:file_e1_writing_js} przedstawiono wyniki eksperymentów dla 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/files/files_writing_50_500_50_ts.png}
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_writing_50_500_50_js_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:file_e1_writing_js_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_writing_50_500_50_js_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:file_e1_writing_js_memory}
+  \end{subfigure}
+  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e1_writing_js}
 \end{figure}
 
@@ -676,8 +753,19 @@ Na rysunku \ref{fig:file_e1_reading_ts} przedstawiono wyniki eksperymentów dla 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/files/files_reading_50_500_50_ts.png}
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_reading_50_500_50_ts_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:file_e1_reading_ts_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_reading_50_500_50_ts_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:file_e1_reading_ts_memory}
+  \end{subfigure}
+  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e1_reading_ts}
 \end{figure}
 
@@ -685,8 +773,19 @@ Na rysunku \ref{fig:file_e1_writing_ts} przedstawiono wyniki eksperymentów dla 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/files/files_writing_50_500_50_ts.png}
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_writing_50_500_50_ts_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:file_e1_writing_ts_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_writing_50_500_50_ts_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:file_e1_writing_ts_memory}
+  \end{subfigure}
+  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e1_writing_ts}
 \end{figure}
 
@@ -694,8 +793,19 @@ Na rysunku \ref{fig:file_e2_reading_js} przedstawiono wyniki eksperymentów dla 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/files/files_writing_50_2000_50_js.png}
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_reading_50_2000_50_js_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:file_e2_reading_js_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_reading_50_2000_50_js_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:file_e2_reading_js_memory}
+  \end{subfigure}
+  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e2_reading_js}
 \end{figure}
 
@@ -703,8 +813,19 @@ Na rysunku \ref{fig:file_e2_writing_js} przedstawiono wyniki eksperymentów dla 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/files/files_reading_50_2000_50_js.png}
-  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_writing_50_2000_50_js_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:file_e2_writing_js_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_writing_50_2000_50_js_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:file_e2_writing_js_memory}
+  \end{subfigure}
+  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e2_writing_js}
 \end{figure}
 
@@ -712,8 +833,19 @@ Na rysunku \ref{fig:file_e2_reading_ts} przedstawiono wyniki eksperymentów dla 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/files/files_reading_50_2000_50_ts.png}
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_reading_50_2000_50_ts_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:file_e2_reading_ts_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_reading_50_2000_50_ts_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:file_e2_reading_ts_memory}
+  \end{subfigure}
+  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e2_reading_ts}
 \end{figure}
 
@@ -721,8 +853,19 @@ Na rysunku \ref{fig:file_e2_writing_ts} przedstawiono wyniki eksperymentów dla 
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/files/files_writing_50_2000_50_ts.png}
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_writing_50_2000_50_ts_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:file_e2_writing_ts_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/files/files_writing_50_2000_50_ts_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:file_e2_writing_ts_memory}
+  \end{subfigure}
+  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e2_writing_ts}
 \end{figure}
 
@@ -747,8 +890,19 @@ Na rysunku \ref{fig:server_e1} przedstawiono wyniki eksperymentów dla testu wyd
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/server/server_100_10000.png}
-  \caption{Wynik eksperymentów dla testu serwera HTTP 100 równoczesnych połączeń oraz 10000 żądań HTTP - wykres przedstawia wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second})}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/server/server_100_10000_js.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:server_e1_js}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/server/server_100_10000_ts.png}
+    \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}}
+    \label{fig:server_e1_ts}
+  \end{subfigure}
+  \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 100 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript}
   \label{fig:server_e1}
 \end{figure}
 
@@ -756,8 +910,19 @@ Na rysunku \ref{fig:server_e2} przedstawiono wyniki eksperymentów dla testu wyd
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/server/server_1000_10000.png}
-  \caption{Wynik eksperymentów dla testu serwera HTTP 1000 równoczesnych połączeń oraz 10000 żądań HTTP - wykres przedstawia wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second})}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/server/server_1000_10000_js.png}
+    \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}) dla języka JavaScript}
+    \label{fig:server_e2_js}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/server/server_1000_10000_ts.png}
+    \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}) dla języka TypeScript}
+    \label{fig:server_e2_ts}
+  \end{subfigure}
+  \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 1000 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript}
   \label{fig:server_e2}
 \end{figure}
 
@@ -765,8 +930,19 @@ Na rysunku \ref{fig:server_e3} przedstawiono wyniki eksperymentów dla testu wyd
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/server/server_1000_10000.png}
-  \caption{Wynik eksperymentów dla testu serwera HTTP 10000 równoczesnych połączeń oraz 10000 żądań HTTP - wykres przedstawia wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second})}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/server/server_10000_10000_js.png}
+    \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}) dla języka JavaScript}
+    \label{fig:server_e3_js}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/server/server_10000_10000_ts.png}
+    \caption{Wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}) dla języka TypeScript}
+    \label{fig:server_e3_ts}
+  \end{subfigure}
+  \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 10000 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript}
   \label{fig:server_e3}
 \end{figure}
 
@@ -790,7 +966,18 @@ Na rysunku \ref{fig:database_e1_js} przedstawiono wyniki eksperymentów dla test
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/database/sqlite_10_1000_js.png}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/database/sqlite_10_1000_js_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:database_e1_js_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/database/sqlite_10_1000_js_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:database_e1_js_memory}
+  \end{subfigure}
   \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:database_e1_js}
 \end{figure}
@@ -799,7 +986,18 @@ Na rysunku \ref{fig:database_e1_ts} przedstawiono wyniki eksperymentów dla test
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/database/sqlite_10_1000_ts.png}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/database/sqlite_10_1000_ts_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:database_e1_ts_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/database/sqlite_10_1000_ts_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:database_e1_ts_memory}
+  \end{subfigure}
   \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:database_e1_ts}
 \end{figure}
@@ -808,8 +1006,19 @@ Na rysunku \ref{fig:database_e2_js} przedstawiono wyniki eksperymentów dla test
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/database/sqlite_100_1000_js.png}
-  \caption{Wyniki eksperymentów dla testu bazy danych 100 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/database/sqlite_100_1000_js_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:database_e2_js_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/database/sqlite_100_1000_js_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:database_e2_js_memory}
+  \end{subfigure}
+  \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:database_e2_js}
 \end{figure}
 
@@ -817,7 +1026,18 @@ Na rysunku \ref{fig:database_e2_ts} przedstawiono wyniki eksperymentów dla test
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.68\textwidth]{Figures/database/sqlite_100_1000_ts.png}
-  \caption{Wyniki eksperymentów dla testu bazy danych 100 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/database/sqlite_100_1000_ts_time.png}
+    \caption{Czas wykonania testu w milisekundach (ms)}
+    \label{fig:database_e2_ts_time}
+  \end{subfigure}
+  \begin{subfigure}[b]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{Figures/database/sqlite_100_1000_ts_memory.png}
+    \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
+    \label{fig:database_e2_ts_memory}
+  \end{subfigure}
+  \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:database_e2_ts}
 \end{figure}
