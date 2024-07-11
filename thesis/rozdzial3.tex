@@ -267,6 +267,8 @@ Na rysunku \ref{fig:quick_sorting_e2} przedstawiono wyniki eksperymentów dla al
   \label{fig:quick_sorting_e2}
 \end{figure}
 
+Na rysunku \ref{fig:quick_sorting_e2_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:quick_sorting_e2_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+
 Na rysunku \ref{fig:quick_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -286,6 +288,8 @@ Na rysunku \ref{fig:quick_sorting_e2_ts} przedstawiono wyniki eksperymentów dla
   \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:quick_sorting_e2_ts}
 \end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e2_ts} przedstawiono czas wykonania testu jak i zużycie pamięci. Na rysunku \ref{fig:quick_sorting_e2_time} zauważono iż, Bun posiadał nierówne czasy wykonania samych eksperymentów, dodatkowo zużycie pamięci operacyjnej w przypadku środowiska Bun było największe ze wszystkich środowisk uruchomieniowych. Najbardziej ustabilizowane czasy wykonania uzyskało środowisko NodeJS, natomiast najmniej pamięci operacyjnej zużyło Deno.
 
 Na rysunku \ref{fig:quick_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -307,6 +311,8 @@ Na rysunku \ref{fig:quick_sorting_e3} przedstawiono wyniki eksperymentów dla al
   \label{fig:quick_sorting_e3}
 \end{figure}
 
+Na rysunku \ref{fig:quick_sorting_e3_time} zauważono, że NodeJS posiadał najdłuższe czasy wykonywania sortowania w pierwszych iteracjach, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Z wykresu \ref{fig:quick_sorting_e3_memory} zauważono, że środowisko Bun zużywało najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywało najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:quick_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -327,6 +333,8 @@ Na rysunku \ref{fig:quick_sorting_e3_ts} przedstawiono wyniki eksperymentów dla
   \label{fig:quick_sorting_e3_ts}
 \end{figure}
 
+Na rysunku \ref{fig:quick_sorting_e3_ts_time} zauważono, że Deno posiadał najdłuższe czasy wykonywania sortowania w pierwszych iteracjach, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Z wykresu \ref{fig:quick_sorting_e3_ts_memory} zauważono, że środowisko Bun zużywało najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywało najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:quick_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -346,6 +354,9 @@ Na rysunku \ref{fig:quick_sorting_e4} przedstawiono wyniki eksperymentów dla al
   \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:quick_sorting_e4}
 \end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e4_time} zauważono, że NodeJS posiadał najdłuższe czasy wykonywania sortowania w pierwszych iteracjach, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. W przypadku zwiększonej liczby elementów, zauważono na wykresie \ref{fig:quick_sorting_e4_memory} podobną ilość pamięci zajmują środowiska NodeJS oraz Deno.
+
 Na rysunku \ref{fig:quick_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -365,6 +376,8 @@ Na rysunku \ref{fig:quick_sorting_e4_ts} przedstawiono wyniki eksperymentów dla
   \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:quick_sorting_e4_ts}
 \end{figure}
+
+Na rysunku \ref{fig:quick_sorting_e4_ts_time} zauważono, że NodeJS posiadał najdłuższe czasy wykonywania sortowania w pierwszych iteracjach, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Na rysunku \ref{fig:quick_sorting_e4_ts_memory} podczas jednej z ostatnich iteracji możemy zauważyć zwolnienie pamięci przez środowisko Deno, co może być spowodowane działaniem mechanizmu Garbage Collector. Natomiast największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
 
 \subsubsection{Wyniki - sortowanie pozycyjne}
 Na rysunku \ref{fig:radix_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
