@@ -496,20 +496,22 @@ Na rysunku \ref{fig:radix_sorting_e3_ts} przedstawiono wyniki eksperymentów dla
   \centering
   \begin{subfigure}[b]{0.42\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_10000_js_time.png}
+    \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_10000_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:radix_sorting_e3_ts_time}
   \end{subfigure}
   \begin{subfigure}[b]{0.42\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_10000_js_memory.png}
+    \includegraphics[width=\textwidth]{Figures/sorting/sorting_radix_100_10000_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:radix_sorting_e3_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:radix_sorting_e3_ts}
 \end{figure}
+
+Na wykresie \ref{fig:radix_sorting_e3_ts_time} zaobserwowano najdłuższe czasy wykonania sortowania dla pierwszych iteracji dla środowiska NodeJS, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Na rysunku \ref{fig:radix_sorting_e3_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:radix_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -532,6 +534,8 @@ Na rysunku \ref{fig:radix_sorting_e4} przedstawiono wyniki eksperymentów dla al
   \label{fig:radix_sorting_e4}
 \end{figure}
 
+Na rysunku \ref{fig:radix_sorting_e4_time} zaobserwowano, że w pierwszych iteracjach środowisko NodeJS posiada najdłuższe czasy wykonania sortowania, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun, dodatkowo środowisko wykonywało sortowanie dłużej niż pozostałe środowiska. Na rysunku \ref{fig:radix_sorting_e4_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywa najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:radix_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -553,8 +557,12 @@ Na rysunku \ref{fig:radix_sorting_e4_ts} przedstawiono wyniki eksperymentów dla
   \label{fig:radix_sorting_e4_ts}
 \end{figure}
 
+Na rysunku \ref{fig:radix_sorting_e4_ts_time} zaobserwowano, że w pierwszych iteracjach środowisko NodeJS posiada najdłuższe czasy wykonania sortowania, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Na rysunku \ref{fig:radix_sorting_e4_ts_memory} zaobserwowano, że środowisko Bun wraz z NodeJS zużywa najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywa najmniej pamięci operacyjnej.
+
 \subsection{Algorytmy kodowania}
 W celu zbadania wydajności możliwości kodowania dla środowisk, użyto algorytmu kodowania \textit{Base64}, który jest najpopularniejszym algorytmem kodowania wykorzystywanym w aplikacjach webowych. W tabeli \ref{tab:encoding_experiments} przedstawiono liczbę przeprowadzonych eksperymentów, długość kodowanego słowa.
+
+Eksperymenty zapisywały ciąg znaków o zadanej wielkości, następnie kodowały dany ciąg znaków w celu jego dekodowania. W testach wykorzystano biblioteki standardową \textit{Buffer}, które udostępniają funkcje do kodowania i dekodowania ciągów znaków w zadanym algorytmie kodowania. Ciąg znaków został wybierany losowo z wykorzystaniem funkcji generującej losowe znaki.
 
 \begin{table}[H]
   \centering
@@ -590,6 +598,8 @@ Na rysunku \ref{fig:encoding_e1_js} przedstawiono wyniki eksperymentów dla oper
   \label{fig:encoding_e1_js}
 \end{figure}
 
+Na rysunku \ref{fig:encoding_e1_js_time} zaobserwowano, że środowisko NodeJS oraz Bun posiadają podobne czasy wykonania kodowania ciągu znaków natomiast najdłuższe czasy wykonywania kodowania posiada środowisko Deno. Na rysunku \ref{fig:encoding_e1_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:decoding_e1_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -611,19 +621,21 @@ Na rysunku \ref{fig:decoding_e1_js} przedstawiono wyniki eksperymentów dla oper
   \label{fig:decoding_e1_js}
 \end{figure}
 
+Na rysunku \ref{fig:decoding_e1_js_time} zaobserwowano, że środowisko NodeJs posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:decoding_e1_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
   \centering
   \begin{subfigure}[b]{0.42\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_ts_time.png}
+    \includegraphics[width=\textwidth]{Figures/coding/base64_100_encoding_ts_time.png}
     \caption{Czas wykonania testu w milisekundach (ms)}
     \label{fig:encoding_e1_ts_time}
   \end{subfigure}
   \begin{subfigure}[b]{0.42\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{Figures/coding/base64_100_decoding_ts_memory.png}
+    \includegraphics[width=\textwidth]{Figures/coding/base64_100_encoding_ts_memory.png}
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:encoding_e1_ts_memory}
   \end{subfigure}
@@ -631,6 +643,8 @@ Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla oper
   \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e1_ts}
 \end{figure}
+
+Na rysunku \ref{fig:encoding_e1_ts_time} zaobserwowano, że środowisko NodeJS oraz Bun posiadają zbliżone czasy wykonania operacji kodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:encoding_e1_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -653,6 +667,8 @@ Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla oper
   \label{fig:decoding_e1_ts}
 \end{figure}
 
+Na rysunku \ref{fig:decoding_e1_ts_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:decoding_e1_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -673,6 +689,8 @@ Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla oper
   \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e2_js}
 \end{figure}
+
+Na rysunku \ref{fig:encoding_e2_js_time} zaobserwowano, że środowiska NodeJS oraz Bun posiadają podobne czasy kodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:encoding_e2_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -695,6 +713,8 @@ Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla oper
   \label{fig:decoding_e2_js}
 \end{figure}
 
+Na rysunku \ref{fig:decoding_e2_js_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:decoding_e2_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -715,6 +735,8 @@ Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla oper
   \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:encoding_e2_ts}
 \end{figure}
+
+Na rysunku \ref{fig:encoding_e2_ts_time} zaobserwowano, że środowiska NodeJS oraz Bun posiadają podobne czasy wykonania operacji kodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:encoding_e2_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:decoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -737,8 +759,10 @@ Na rysunku \ref{fig:decoding_e2_ts} przedstawiono wyniki eksperymentów dla oper
   \label{fig:decoding_e2_ts}
 \end{figure}
 
+Na rysunku \ref{fig:decoding_e2_ts_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:decoding_e2_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+
 \subsection{Testy wydajnościowe operacji zapisu i odczytu plików}
-W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono eksperymenty, które polegały na zapisie oraz odczycie plików o różnych rozmiarach. W przeprowadzonych testach wykorzystano pliki tekstowe, natomiast zawartość plików została wygenerowana za pomocą modułu \textit{faker.js}. W tym celu generowano paragrafy tekstu. W tabeli \ref{tab:file_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz rozmiar pliku.
+W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono eksperymenty, które polegały na zapisie oraz odczycie plików o różnych rozmiarach. W przeprowadzonych testach wykorzystano pliki tekstowe, natomiast zawartość plików została wygenerowana za pomocą modułu \textit{faker.js}. W tym celu generowano paragrafy tekstu, które gwarantowały zadany rozmiar plików. W tabeli \ref{tab:file_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz rozmiar pliku.
 
 \begin{table}[H]
   \centering
@@ -773,6 +797,8 @@ Na rysunku \ref{fig:file_e1_reading_js} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e1_reading_js}
 \end{figure}
 
+Na rysunku \ref{fig:file_e1_reading_js_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji odczytu pliku, natomiast najdłuższe czasy wykonania posiada środowisko Bun. Na rysunku \ref{fig:file_e1_reading_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:file_e1_writing_js} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -792,6 +818,8 @@ Na rysunku \ref{fig:file_e1_writing_js} przedstawiono wyniki eksperymentów dla 
   \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e1_writing_js}
 \end{figure}
+
+Na rysunku \ref{fig:file_e1_writing_js_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji zapisu pliku, natomiast najdłuższe czasy wykonania posiada środowisko Bun. Na rysunku \ref{fig:file_e1_writing_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:file_e1_reading_ts} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -813,6 +841,8 @@ Na rysunku \ref{fig:file_e1_reading_ts} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e1_reading_ts}
 \end{figure}
 
+Na rysunku \ref{fig:file_e1_reading_ts_time} zaobserwowano, że środowisko Deno posiada najkrótsze czasy wykonania operacji odczytu pliku, natomiast najdłuższe czasy wykonania posiada środowisko Bun. Na rysunku \ref{fig:file_e1_reading_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:file_e1_writing_ts} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 512kB napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -832,6 +862,8 @@ Na rysunku \ref{fig:file_e1_writing_ts} przedstawiono wyniki eksperymentów dla 
   \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e1_writing_ts}
 \end{figure}
+
+Na rysunku \ref{fig:file_e1_writing_ts_time} zaobserwowano, że środowisko Deno posiada najkrótsze czasy wykonania operacji zapisu pliku, natomiast najdłuższe czasy wykonania posiada środowisko Bun. Na rysunku \ref{fig:file_e1_writing_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:file_e2_reading_js} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -853,6 +885,8 @@ Na rysunku \ref{fig:file_e2_reading_js} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e2_reading_js}
 \end{figure}
 
+Na rysunku \ref{fig:file_e2_reading_js_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji odczytu pliku, natomiast najdłuższe czasy wykonania posiada środowisko Bun. Na rysunku \ref{fig:file_e2_reading_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:file_e2_writing_js} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -872,6 +906,8 @@ Na rysunku \ref{fig:file_e2_writing_js} przedstawiono wyniki eksperymentów dla 
   \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e2_writing_js}
 \end{figure}
+
+Na rysunku \ref{fig:file_e2_writing_js_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji zapisu pliku, natomiast najdłuższe czasy wykonania posiada środowisko Bun. Na rysunku \ref{fig:file_e2_writing_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:file_e2_reading_ts} przedstawiono wyniki eksperymentów dla operacji zapisu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -893,6 +929,8 @@ Na rysunku \ref{fig:file_e2_reading_ts} przedstawiono wyniki eksperymentów dla 
   \label{fig:file_e2_reading_ts}
 \end{figure}
 
+Na rysunku \ref{fig:file_e2_reading_ts_time} zaobserwowano, że środowisko Deno posiada najkrótsze czasy wykonania operacji odczytu pliku, natomiast najdłuższe czasy wykonania posiada środowisko Bun. Na rysunku \ref{fig:file_e2_reading_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+
 Na rysunku \ref{fig:file_e2_writing_ts} przedstawiono wyniki eksperymentów dla operacji odczytu dla 50 iteracji oraz 50 plików o rozmiarze 1MB napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
 \begin{figure}[H]
@@ -912,6 +950,8 @@ Na rysunku \ref{fig:file_e2_writing_ts} przedstawiono wyniki eksperymentów dla 
   \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
   \label{fig:file_e2_writing_ts}
 \end{figure}
+
+Na rysunku \ref{fig:file_e2_writing_ts_time} zaobserwowano, że środowisko Deno posiada najkrótsze czasy wykonania operacji zapisu pliku, natomiast najdłuższe czasy wykonania posiada środowisko Bun. Na rysunku \ref{fig:file_e2_writing_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 \subsection{Testy wydajnościowe serwera HTTP}
 W celu zbadania wydajności serwera HTTP, przeprowadzono testy obciążeniowe. Do testów została wykorzystany program \textit{oha} \cite{oha}, który pozwala na połączenie się do serwera HTTP oraz wysyłanie żądań z kilku połączeń jednocześnie. W tabeli \ref{tab:http_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz ilość połączeń.
@@ -950,6 +990,8 @@ Na rysunku \ref{fig:server_e1} przedstawiono wyniki eksperymentów dla testu wyd
   \label{fig:server_e1}
 \end{figure}
 
+Zarówno jak w przypadku języka JavaScript oraz TypeScript, na rysunku \ref{fig:server_e1} zaobserwowano, że środowisko Deno posiada najwyższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}), natomiast środowisko Bun posiada najniższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
+
 Na rysunku \ref{fig:server_e2} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 1000 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresach przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
 \begin{figure}[H]
@@ -970,6 +1012,8 @@ Na rysunku \ref{fig:server_e2} przedstawiono wyniki eksperymentów dla testu wyd
   \label{fig:server_e2}
 \end{figure}
 
+Zarówno jak w przypadku języka JavaScript oraz TypeScript, na rysunku \ref{fig:server_e2} zaobserwowano, że środowisko Deno posiada najwyższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}), natomiast środowisko Bun posiada najniższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
+
 Na rysunku \ref{fig:server_e3} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 10000 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresach przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
 \begin{figure}[H]
@@ -989,6 +1033,8 @@ Na rysunku \ref{fig:server_e3} przedstawiono wyniki eksperymentów dla testu wyd
   \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 10000 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript}
   \label{fig:server_e3}
 \end{figure}
+
+Zarówno jak w przypadku języka JavaScript oraz TypeScript, na rysunku \ref{fig:server_e3} zaobserwowano, że środowisko Deno posiada najwyższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}), natomiast środowisko Bun posiada najniższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
 \subsection{Testy wydajnościowe zapisu i odczytu danych z bazy danych}
 W celu zbadania wydajności operacji zapisu oraz odczytu danych z bazy danych, przeprowadzono testy wydajnościowe z wykorzystaniem bazy danych SQLite. W celu wygenerowania danych do bazy danych, wykorzystano moduł \textit{faker.js}. W tabeli \ref{tab:database_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz ilość rekordów.
