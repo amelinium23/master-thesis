@@ -9,6 +9,7 @@ out/**
 **/node_modules/**
 
 benchmarks/js/**/**.json
+benchmarks/ts/**/**.json
 
 # Latex Garbage
 **.log
