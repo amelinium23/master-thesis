@@ -1,11 +1,14 @@
 \section{Dyskusja wyników}
-
 \subsection{Algorytmy sortowania}
-\subsubsection{Sortowanie bąbelkowe}
+Testowanie algorytmów sortowania pokazało iż testy zostały przeprowadzone poprawnie, zaobserwowano zachowania środowisk, które prowadzą do wniosku, że algorytmy sortowania zachowują się zgodnie z przewidywaniami. Algorytmy sortowania szybkiego i bąbelkowego są algorytmami o złożoności obliczeniowej $O(n^2)$, co potwierdzają wyniki testów. Algorytm sortowania pozycyjnego jest algorytmem o złożoności obliczeniowej $O(nk)$, gdzie $k$ jest ilością możliwych wartości w tablicy, co potwierdzają wyniki testów.
 
-\subsection{Sortowanie szybkie}
+Algorytm sortowania szybkiego jest zdecydowanie szybszy od algorytmu bąbelkowego, co jest zgodne z przewidywaniami. Algorytm sortowania szybkiego jest zdecydowanie szybszy od algorytmu bąbelkowego, co jest zgodne z przewidywaniami. Sortowanie szybkie zaobserwowano pesymistyczny wykonanie algorytmu, w której pamięć w sposób rekurencyjny, powoduje to dość szybkie zapełnienie pamięci. Zjawisko zostało zaobserwowano w szczególności przy środowisku Bun, w którym zużycie pamięci wzrasta liniowo. Środowisko zostało napisane w języku Zig, które nie posiada zaimplementowanych przez język możliwości zwalniania pamięci, co powoduje, że pamięć nie jest zwalniana w sposób optymalny. 
 
-\subsection{Sortowanie pozycyjne}
+W przypadku pozostałych środowisk zaobserwowano mniejsze zużycie pamięci operacyjnej, pozwala to na wysnucie wniosku o lepiej zoptymalizowanym przez twórców środowiska. Zaobserwowano również zjawisko rozgrzewania się silnika JavaScript, polega ono na rozpoczęciu buforowanie zawartości stosu wywołań, co pozwala na szybsze wykonanie kodu. Zjawisko to jest zauważalne w przypadku środowiska Node.js, w którym pierwsze wykonanie algorytmu sortowania szybkiego jest wolniejsze od kolejnych.
+
+Przy wykonywaniu testów na algorytmie sortowania szybkiego zaobserwowano zjawisko, w który środowisko Bun jest zdecydowanie wolniejsze od pozostałych oraz daje nieregularne wyniki. Tym zjawiskiem jest rekurencja, możemy zauważyć, że Bun posiada rygorystyczny algorytm Garbage Collector, który zwalnia dużo pamięci usuwając obiekty, które nie są już używane. W wynikach widzimy spadki używanej pamięci przez proces, co przekłada się na ponowne alokowanie pamięci, co spowodowało wydłużenie wykonania algorytmu sortowania. W porównaniu do innych środowisk, które nie posiadają tak rygorystycznego algorytmu Garbage Collector, co pozwala na szybsze wykonanie algorytmu sortowania oraz mniejsze zużycie pamięci. 
+
+Na samym repozytorium środowiska Bun możemy zauważyć dużo zgłoszonych przez użytkowników środowiska błędów dotyczący zużycia pamięci, co potwierdza nasze obserwacje \cite{bun_memory}. Pozostałe środowiska poprzez bazowanie na silniku V8, posiadają mniejszą liczbę związanych z pamięcią błędów, co pozwala na szybsze wykonanie algorytmu sortowania oraz mniejsze zużycie pamięci.
 
 \subsection{Algorytmy kodowania}
 
