@@ -559,7 +559,7 @@ Na rysunku \ref{fig:radix_sorting_e4_ts} przedstawiono wyniki eksperymentów dla
 
 Na rysunku \ref{fig:radix_sorting_e4_ts_time} zaobserwowano, że w pierwszych iteracjach środowisko NodeJS posiada najdłuższe czasy wykonania sortowania, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Na rysunku \ref{fig:radix_sorting_e4_ts_memory} zaobserwowano, że środowisko Bun wraz z NodeJS zużywa najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywa najmniej pamięci operacyjnej.
 
-\subsection{Algorytmy kodowania}
+\subsection{Algorytm kodowania \textit{Base64}}
 W celu zbadania wydajności możliwości kodowania dla środowisk, użyto algorytmu kodowania \textit{Base64}, który jest najpopularniejszym algorytmem kodowania wykorzystywanym w aplikacjach webowych. W tabeli \ref{tab:encoding_experiments} przedstawiono liczbę przeprowadzonych eksperymentów, długość kodowanego słowa.
 
 Eksperymenty zapisywały ciąg znaków o zadanej wielkości, następnie kodowały dany ciąg znaków w celu jego dekodowania. W testach wykorzystano biblioteki standardową \textit{Buffer}, które udostępniają funkcje do kodowania i dekodowania ciągów znaków w zadanym algorytmie kodowania. Ciąg znaków został wybierany losowo z wykorzystaniem funkcji generującej losowe znaki.

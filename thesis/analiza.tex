@@ -10,7 +10,10 @@ Przy wykonywaniu testów na algorytmie sortowania szybkiego zaobserwowano zjawis
 
 Na samym repozytorium środowiska Bun możemy zauważyć dużo zgłoszonych przez użytkowników środowiska błędów dotyczący zużycia pamięci, co potwierdza nasze obserwacje \cite{bun_memory}. Pozostałe środowiska poprzez bazowanie na silniku V8, posiadają mniejszą liczbę związanych z pamięcią błędów, co pozwala na szybsze wykonanie algorytmu sortowania oraz mniejsze zużycie pamięci.
 
-\subsection{Algorytmy kodowania}
+\subsection{Algorytm kodowania \textit{Base64}}
+Testy przeprowadzone na kodowaniu za pomocą algorytmu Base64 zostały przeprowadzone poprawnie, zaobserwowano zachowania środowisk, które prowadzą do wniosku, że algorytmy kodowania zachowują się zgodnie z przewidywaniami. Algorytm kodowania \textit{Base64} jest algorytmem o złożoności obliczeniowej $O(n)$, co potwierdzają wyniki testów. W porównaniu do operacji dekodowania wykonuje się dłużej, ze względu na zwiększenie rozmiaru danych, co przekłada się na dłuższy czas wykonywania operacji. Operacja dekodowania jest zdecydowanie wolniejsza od operacji kodowania, co jest zgodne z przewidywaniami, ze względu na zwiększenie rozmiaru.
+
+Testy pokazały zbliżone wyniki, kodowanie w środowiskach NodeJS oraz Bun były zdecydowanie szybsze niż Deno. Wynika to z faktu implementacji operacji kodowania w środowisku Deno, w przeciwieństwie do środowisk NodeJS oraz Bun, które posiadają szybszą implementację operacji kodowania z wykorzystaniem biblioteki standardowej \textit{Buffer}. 
 
 \subsection{Testy wydajnościowe operacji zapisu i odczytu pliku}
 
