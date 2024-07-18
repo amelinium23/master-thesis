@@ -1,4 +1,4 @@
-\section{Metodologia badań}
+\section{Metodologia badań}\label{sec:methodology}
 W tym rozdziale przedstawiono metodologię przeprowadzonych badań, środowisko testowe oraz wybrane algorytmy do badań środowisk uruchomieniowych.
 
 \subsection{Środowisko testowe}
@@ -13,7 +13,7 @@ Wymienione środowiska posługują się swoimi implementacjami programów umożl
 \subsection{Wybrane narzędzia i algorytmy}
 W tym rozdziale znajdują się algorytmy wykorzystane w testach wydajnościowych dla każdego środowiska uruchomieniowego. Wraz z podaniem opisu algorytmu, znajduje się także opis zastosowania algorytmu w praktyce.
 
-\subsection{Algorytmy sortowania}
+\subsubsection{Algorytmy sortowania}
 W testach zostały wykorzystane trzy algorytmy sortowania, które są najczęściej wykorzystywane w praktyce. Sortowanie jako metoda jest używana w wielu zastosowaniach, takich jak sortowanie danych w bazach danych, sortowanie danych w aplikacjach webowych, a także w algorytmach wyszukiwania. Testy dotyczące wydajności sortowania zostały przeprowadzone na losowych liczbach całkowitych.
 
 Liczby całkowite zostały wylosowane za pomocą generatora liczb całkowitych. Do samej implementacji generatora liczb całkowitych posłużył pakiet \textit{Math}, który jest dostępny w języku JavaScript. Generator został zaimplementowany tak, aby losował liczby w zależności od zadanego rozmiaru tablicy.
@@ -102,7 +102,7 @@ W celu ukazania działania algorytmu sortowania szybkiego został on zilustrowan
 
 Dzięki swojej złożoności obliczeniowej sortowanie pozycyjne jest szybkie, jednakże posiada wadę w postaci konieczności alokowania dodatkowej pamięci, aby przechowywać tymczasowe wyniki sortowania. Jednakże w przypadku danych, które nie są danymi liczbowymi należy przekształcić je na dane liczbowe, co może wpłynąć na czas sortowania. W przypadku danych, które są liczbami, algorytm ten jest jednym z najszybszych algorytmów sortowania \cite{sorting}. W testach dla ujednolicenia danych, zostały zastosowane liczby całkowite.
 
-\subsection{Algorytmy Kodowania}
+\subsubsection{Algorytmy Kodowania}
 W testach został wykorzystany jeden algorytm kodowania, który jest najczęściej wykorzystywany do przesyłania danych. Wybrany algorytm kodowania jest \textit{Base64}. Wykorzystywany jest on do kodowania obrazów, danych wykorzystywanych w formularzach, a także do przedstawiania plików pdf na stronach.
 
 Algorytm możemy podzielić na trzy etapy. Pierwszym etapem jest podział danych na segmenty składające się z 24 bit. Następnie każdy z segmentów jest dzielony na cztery grupy po 6 bitów. Każda grupa zostaje mapowana na z jeden ze znaków:
@@ -125,14 +125,14 @@ Algorytm ten jest przydatny do małych obrazów, jednakże w przypadku dużych o
 
 Test został zaimplementowany z wykorzystaniem obiektu \textit{Buffer} odpowiedzialnego za kodowanie oraz dekodowanie wartości zakodowanych wiadomości. Oryginalny test wykonany przez Kostya \cite{base64_benchmark}, został zmodyfikowany, aby dodać informacje o czasie wykonywania oraz użyciu pamięci przez dane środowisko. Test ten został przeprowadzony w celu sprawdzenia, jak szybko dane środowisko jest w stanie zakodować oraz odkodować dane.
 
-\subsection{Bazy danych}
+\subsubsection{Bazy danych}
 W testach została wykorzystana plikowa baza relacyjna Sqlite3. Wybór ten podyktowany jest faktem, iż baza ta ma wsparcie dla wszystkich środowisk uruchomieniowych \cite{sqlite}. Celem testu było zmierzenie czasu odpowiedzi bazy danych na zapytania SQL. 
 
 W celu dodania do bazy danych przykładowych danych została wykorzystany pakiet \textit{faker-js}. Pakiet ten pozwala na generowanie obiektów z danymi losowymi. W celu przetestowania możliwości bazy danych, został opracowany model, który odzwierciedla użytkownika. Model ten składa się z pól takich jak: imię, nazwisko, płeć, opis, typ wykonywanej pracy, tytuł oraz zakres pracy. Test pozwala na specyfikowanie liczby rekordów, które mają zostać dodane do bazy danych.
 
 W przypadku NodeJs, wymagane jest aby zainstalować dodatkowy pakiet odpowiedzialny za komunikację z bazą danych. W odróżnieniu do pozostałych środowisk, które posiadają wbudowane wsparcie dla Sqlite3. Przez dodanie nowych pakietów, powiększa się rozmiar aplikacji, wpływa to na rozmiar oraz czas uruchamiania się aplikacji.
 
-\subsection{Narzędzia pomiarowe}
+\subsubsection{Narzędzia pomiarowe}
 W celu zmierzenia czasów wykonania poszczególnych testów, zostały wykorzystane narzędzia dostępne w języku JavaScript. Do mierzenia czasu wykonania danego testu został wykorzystany moduł \textit{performance}. Moduł ten pozwala na zapisanie czasu w postaci milisekund, co pozwala na dokładne określenie czasu wykonania danego testu. Metoda wykorzystuje obiekt \textit{DOMHighResTimeStamp}, który pozwala na określenie czasu w milisekundach z dokładnością do 5 mikrosekund.
 
 W celu zmierzenia wykorzystywanej przez dany proces pamięci, został wykorzystany moduł \textit{process}. Moduł ten odpowiada za dostarczenie informacji o zmiennych środowiskowych, a także o wykorzystywanej przez proces pamięci operacyjnej. Za pomocą funkcji \textit{memoryUsage} \cite{memoryUsage} \cite{memoryUsageImage}, przekazuje informacji o wykorzystaniu pamięci operacyjnej przez dany proces. Funkcja ta zwraca obiekt, który zawiera trzy informacje: \textit{rss}, \textit{heapTotal}, \textit{heapUsed}. Pierwsza informacja \textit{rss} odpowiada za całkowitą ilość pamięci wykorzystaną przez proces. Druga informacja \textit{heapTotal} odpowiada za całkowitą ilość pamięci przydzieloną dla procesu. Ostatnia informacja \textit{heapUsed} odpowiada za ilość pamięci wykorzystaną przez proces. Na rysunku \ref{fig:memory} przedstawiono wykres, która pokazuje zawartość pamięci dla silnika uruchomieniowego NodeJS.

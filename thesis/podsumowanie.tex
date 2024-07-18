@@ -1,1 +1,26 @@
 \section{Podsumowanie}
+Cel pracy został osiągnięty przeprowadzone badania pokazały zachowania środowisk uruchomieniowych w zastosowania przedstawionych w rozdziale \ref{sec:methodology}. Po stworzeniu środowisk testowych oraz przeprowadzeniu badań zostały sformułowane wnioski na podstawie wyników badań znajdujących się w rozdziale \ref{sec:experiments} oraz problemy pozwalające na dalsze prace w tej dziedzinie.
+
+\subsection{Wnioski}
+Uzyskane wyniki badań pozwalają na stwierdzić, że:
+\begin{enumerate}
+  \item Środowiska uruchomieniowe różnią się pod względem wydajności oraz zużycia zasobów. 
+  \item W przypadku środowiska NodeJS zaobserwowano najmniejsze zużycie pamięci operacyjnej w przypadku wszystkich testów.
+  \item Testy zostały zaimplementowane w dwóch językach programowania JavaScript oraz TypeScript. W przypadku testów zaimplementowanych w języku TypeScript, nie zaobserwowano różnic w wydajności w porównaniu do testów zaimplementowanych w języku JavaScript.
+  \item W badaniu możemy zauważyć, że proces transpilacji kodu źródłowego z języka TypeScript do języka JavaScript nie wpływa na wydajność testów.
+  \item W przypadku środowisk opartych na silniku V8, możemy zauważyć zjawisko rozgrzewaniem się silnika. W przypadku środowiska NodeJS, po kilku uruchomieniach testów, czas wykonania testów zmniejszał się.
+  \item Środowiska oparte na silniku JavaScript V8, pokazały większą wydajność oraz charakteryzują się mniejszym zużyciem pamięci operacyjnej.
+  \item Środowisko Bun, które oparte jest na silniku WebKit, nie posiadało problemów z rozgrzewaniem się silnika. Natomiast posiada duże provizje w postaci zarządzania pamięcią.
+  \item W przypadku środowiska Bun możemy zauważyć zdecydowanie mniejsze wartości RPS w przypadku testów obciążeniowych z dużą ilością zapytań. Najbardziej zoptymalizowane środowisko pod względem wydajności jest Deno.
+\end{enumerate}
+
+\subsection{Dalszy rozwój}
+W celu dalszego rozwoju badań, należy przeprowadzić badania na zewnętrznym sewerze. Pozwala to na zniwelowanie możliwego dodatkowego obciążenia systemu operacyjnego. W celu zwiększenia wiarygodności wyniki powinny być przeprowadzone na kilku różnych maszynach oraz systemach operacyjnych. Użycie zewnętrznego serwera pozwoliłoby na zniwelowanie problemów z sprzętem, które mogą wpływać na wyniki badań.
+
+W przypadku przeprowadzonych testów zostały ustalone dane wersje środowisk, które posiadały pewne problemy z wydajnością. Zwiększenie wersji do najnowszej dla danego środowiska, pozwoliło to na zniwelowanie problemów z wydajnością każdych ze środowisk. Pozwala to także na zwiększenie wiarygodności wyników samego badania.
+
+W celu archiwizowania wyników badań, należy stworzyć system do zapisywania wyników badania, które pozwoliłby na zapisanie wyników w małej bazie danych. Pozwoli to na przeprowadzenie analizy wyników oraz na zapisanie wyników w celu porównania z innymi wynikami. Dodatkowo powstałaby w ten sposób niezależna baza danych wyników, która pozwoliłaby na porównanie wyników z innych badań.
+
+W celu zbadania wydajności na różnych systemach operacyjnych oraz maszynach, należy dostosować skrypty uruchamiające testy do różnych systemów operacyjnych. Pozwoli to na zbadanie wydajności na różnych systemach operacyjnych oraz maszynach. Dodatkowo wykonanie testów można wzbogacić o różne architektury procesorów, co pozwoli na zbadanie wydajności na różnych architekturach procesorów.
+
+W testach nie udało się zebrać wyników dotyczących zużycia procesora w danym momencie wykonywania testów. Dane odpowiedzialne za zużycie procesora w danym momencie wykonywania testów mogłyby pozwolić na zbadanie wydajności w zależności od zużycia procesora. Dodatkowo pozwoliłoby to na zbadanie wydajności w zależności od zużycia procesora.
