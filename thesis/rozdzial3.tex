@@ -4,15 +4,15 @@ W tym rozdziale opisane zostały eksperymenty przeprowadzone w celu zbadania tes
 Testy wykorzystują wszystkie możliwe funkcjonalności, które są zaimplementowane w danych środowiskach, dzięki temu, testy te są odzwierciedleniem rzeczywistego zastosowania danego środowiska. Testy zostały wykonane w dwóch językach programowania: JavaScript oraz TypeScript. Zastosowanie tych języków pozwala na przetestowanie czasu potrzebnego do transpilacji kodu źródłowego do kodu maszynowego. 
 
 \subsection{Algorytmy sortowania}
-W celu zbadania wydajności danego środowiska uruchomieniowego, skonstruowana odpowiednie eksperymenty, które sprawdzają wydajność algorytmu sortowania. Wszystkie algorytmy sortowania zostały przetestowane dla każdego środowiska.
+W celu zbadania wydajności danego środowiska uruchomieniowego, skonstruowano odpowiednie eksperymenty, które sprawdzają wydajność algorytmu sortowania. Wszystkie algorytmy sortowania zostały przetestowane dla każdego środowiska.
 
 Testy zostały zbudowane w oparciu o generowanie losowych liczb całkowitych z wykorzystaniem funkcjonalności pakietu \textit{Math}. Generowanie całkowicie nowych tablic liczb dla każdego testu, pozwala na uzyskanie bardziej wiarygodnych wyników, ze względu na brak powtarzalności danych wejściowych.
 
-W tabeli \ref{tab:sorting_experiments} przedstawiono ilość iteracji oraz ilość elementów dla przeprowadzonych eksperymentów.
+W tabeli \ref{tab:sorting_experiments} przedstawiono liczbę iteracji oraz liczbę elementów dla przeprowadzonych eksperymentów.
 
 \begin{table}[H]
   \centering
-  \caption{Parametry eksperymentów - algorytmy sortowania \cite{sorting}}
+  \caption{Parametry eksperymentów - algorytmy sortowania}
   \begin{tabular}{|c|c|}
     \hline
     \textbf{Liczba eksperymentów} & \textbf{Liczba elementów} \\ \hline
@@ -21,6 +21,10 @@ W tabeli \ref{tab:sorting_experiments} przedstawiono ilość iteracji oraz iloś
     100 & 10000 \\ \hline
     1000 & 10000 \\ \hline
   \end{tabular}
+  \par\vspace{0.3cm} 
+  \parbox{0.9\linewidth}{
+    \centering Źródło: \cite{sorting}
+  }
   \label{tab:sorting_experiments}
 \end{table}
 
@@ -42,11 +46,11 @@ Na rysunku \ref{fig:bubble_sorting_e1} przedstawiono wyniki eksperymentów dla a
     \label{fig:bubble_sorting_e1_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:bubble_sorting_e1}
 \end{figure}
 
-Na wykresach \ref{fig:bubble_sorting_e1_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Najprawdopodobniej jest to spowodowane tzw. rozgrzewaniem się środowiska, jest to zauważalne w przypadku środowiska NodeJS. Natomiast, z wykresu \ref{fig:bubble_sorting_e1_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych. 
+Na wykresie \ref{fig:bubble_sorting_e1_time} zauważono, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Najprawdopodobniej jest to spowodowane tzw. rozgrzewaniem się środowiska, jest to zauważalne w przypadku środowiska NodeJS. Natomiast, z wykresu \ref{fig:bubble_sorting_e1_memory} zaobserwowano tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych. 
 
 Na rysunku \ref{fig:bubble_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -64,11 +68,11 @@ Na rysunku \ref{fig:bubble_sorting_e1_ts} przedstawiono wyniki eksperymentów dl
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e1_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:bubble_sorting_e1_ts}
 \end{figure}
 
-W porównaniu do wyników dla języka JavaScript, wyniki dla języka TypeScript są zbliżone. Na wykresach \ref{fig:bubble_sorting_e1_ts_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:bubble_sorting_e1_ts_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+W porównaniu do wyników dla języka JavaScript, wyniki dla języka TypeScript są zbliżone. Na wykresie \ref{fig:bubble_sorting_e1_ts_time} zauważono, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast z wykresu \ref{fig:bubble_sorting_e1_ts_memory} zaobserwowano tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
 
 Na rysunku \ref{fig:bubble_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -86,11 +90,11 @@ Na rysunku \ref{fig:bubble_sorting_e2} przedstawiono wyniki eksperymentów dla a
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e2_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów dla języka JavaScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów dla języka JavaScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:bubble_sorting_e2}
 \end{figure}
 
-Przy zwiększonej ilości próbek możemy zauważyć na wykresach \ref{fig:bubble_sorting_e2_time}, że czas wykonania jest podobny względem wszystkich środowiska uruchomieniowych, Bun charakteryzuje się niższym czasem wykonania w porównaniu do pozostałych środowisk. Natomiast, z wykresu \ref{fig:bubble_sorting_e2_memory}, możemy także zauważyć, że Bun charakteryzuje się dużym zużyciem pamięci operacyjnej w porównaniu do pozostałych środowisk.
+Przy zwiększonej liczbie próbek zauważono na wykresie \ref{fig:bubble_sorting_e2_time}, że czas wykonania jest podobny względem wszystkich środowiska uruchomieniowych, Bun charakteryzuje się niższym czasem wykonania w porównaniu do pozostałych środowisk. Natomiast z wykresu \ref{fig:bubble_sorting_e2_memory} zaobserwowano, że Bun charakteryzuje się dużym zużyciem pamięci operacyjnej w porównaniu do pozostałych środowisk.
 
 Na rysunku \ref{fig:bubble_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -108,11 +112,11 @@ Na rysunku \ref{fig:bubble_sorting_e2_ts} przedstawiono wyniki eksperymentów dl
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e2_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów dla języka TypeScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów dla języka TypeScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:bubble_sorting_e2_ts}
 \end{figure}
 
-W przypadku zwiększonej ilości próbek, na wykresach \ref{fig:bubble_sorting_e2_ts_time} możemy zauważyć, że czas wykonania wzrósł w porównaniu do poprzednich próbek. Wraz z zwiększeniem ilości próbek zwiększyło się zapotrzebowanie na pamięć operacyjną, co jest zauważalne na wykresach \ref{fig:bubble_sorting_e2_ts_memory}. Takie zachowanie środowisk może być spowodowane nieodpowiednim zarządzaniem przez środowiska pamięcią operacyjną.
+W przypadku zwiększonej liczbie próbek, na wykresie \ref{fig:bubble_sorting_e2_ts_time} zaobserwowano, że czas wykonania wzrósł w porównaniu do poprzednich próbek. Wraz z zwiększeniem liczbie próbek zwiększyło się zapotrzebowanie na pamięć operacyjną, co jest zauważalne na wykresach \ref{fig:bubble_sorting_e2_ts_memory}. Takie zachowanie środowisk może być spowodowane nieodpowiednim zarządzaniem przez środowiska pamięcią operacyjną.
 
 Na rysunku \ref{fig:bubble_sorting_e3} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -130,11 +134,11 @@ Na rysunku \ref{fig:bubble_sorting_e3} przedstawiono wyniki eksperymentów dla a
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e3_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka JavaScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka JavaScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:bubble_sorting_e3}
 \end{figure}
 
-Na wykresach \ref{fig:bubble_sorting_e3_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:bubble_sorting_e3_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych. Momenty, w których zużycie pamięci spada może być spowodowane zwolnieniem pamięci operacyjnej przez środowisko za pomocą mechanizmu Garbage Collector.
+Na wykresie \ref{fig:bubble_sorting_e3_time} zauważono, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast z wykresu \ref{fig:bubble_sorting_e3_memory} zaobserwowano tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych. Momenty, w których zużycie pamięci spada może być spowodowane zwolnieniem pamięci operacyjnej przez środowisko za pomocą mechanizmu Garbage Collector.
 
 Na rysunku \ref{fig:bubble_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -152,11 +156,11 @@ Na rysunku \ref{fig:bubble_sorting_e3_ts} przedstawiono wyniki eksperymentów dl
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e3_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka TypeScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka TypeScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:bubble_sorting_e3_ts}
 \end{figure}
 
-Na wykresach \ref{fig:bubble_sorting_e3_ts_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:bubble_sorting_e3_ts_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+Na wykresie \ref{fig:bubble_sorting_e3_ts_time} zauważono, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:bubble_sorting_e3_ts_memory} zaobserwowano tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
 
 Na rysunku \ref{fig:bubble_sorting_e4} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -174,11 +178,11 @@ Na rysunku \ref{fig:bubble_sorting_e4} przedstawiono wyniki eksperymentów dla a
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e4_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka JavaScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka JavaScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:bubble_sorting_e4}
 \end{figure}
 
-Na wykresach \ref{fig:bubble_sorting_e4_time} możemy zauważyć, że czas wykonania w przypadku pierwszych iteracji jest zwiększony w porównaniu do pozostałych próbek. Możemy także zauważyć, że środowisko NodeJS ma najdłuższy czas wykonania algorytmu w pierwszych iteracjach. Natomiast, z wykresu \ref{fig:bubble_sorting_e4_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+Na wykresie \ref{fig:bubble_sorting_e4_time} zauważono, że czas wykonania w przypadku pierwszych iteracji jest zwiększony w porównaniu do pozostałych próbek. Zauważono także, że środowisko NodeJS ma najdłuższy czas wykonania algorytmu w pierwszych iteracjach. Natomiast z wykresu \ref{fig:bubble_sorting_e4_memory} zaobserwowano tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
 
 Na rysunku \ref{fig:bubble_sorting_e4_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -196,11 +200,11 @@ Na rysunku \ref{fig:bubble_sorting_e4_ts} przedstawiono wyniki eksperymentów dl
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:bubble_sorting_e4_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka TypeScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania bąbelkowego dla 1000 iteracji i 10000 elementów dla języka TypeScript - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:bubble_sorting_e4_ts}
 \end{figure}
 
-Na rysunku \ref{fig:bubble_sorting_e4_ts_time} możemy zauważyć, że czas wykonania w przypadku pierwszych iteracji jest zwiększony w porównaniu do pozostałych próbek. Możemy także zauważyć, że środowisko NodeJS ma najdłuższy czas wykonania algorytmu w pierwszych iteracjach. Natomiast, z wykresu \ref{fig:bubble_sorting_e4_ts_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+Na wykresie \ref{fig:bubble_sorting_e4_ts_time} zauważono, że czas wykonania w przypadku pierwszych iteracji jest zwiększony w porównaniu do pozostałych próbek. Zauważono także, że środowisko NodeJS ma najdłuższy czas wykonania algorytmu w pierwszych iteracjach. Natomiast z wykresu \ref{fig:bubble_sorting_e4_ts_memory} zaobserwowano tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
 
 \subsubsection{Wyniki - sortowanie szybkie}
 Na rysunku \ref{fig:quick_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
@@ -219,11 +223,11 @@ Na rysunku \ref{fig:quick_sorting_e1} przedstawiono wyniki eksperymentów dla al
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:quick_sorting_e1_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:quick_sorting_e1}
 \end{figure}
 
-Na wykresie \ref{fig:quick_sorting_e1_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:quick_sorting_e1_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+Na wykresie \ref{fig:quick_sorting_e1_time} zaobserwowano, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:quick_sorting_e1_memory} zauważono tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
 
 Na rysunku \ref{fig:quick_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -241,11 +245,11 @@ Na rysunku \ref{fig:quick_sorting_e1_ts} przedstawiono wyniki eksperymentów dla
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:quick_sorting_e1_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:quick_sorting_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e1_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:quick_sorting_e1_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+Na rysunku \ref{fig:quick_sorting_e1_time} zauważono, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:quick_sorting_e1_memory} zaobserwowano tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
 
 Na rysunku \ref{fig:quick_sorting_e2} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -263,11 +267,11 @@ Na rysunku \ref{fig:quick_sorting_e2} przedstawiono wyniki eksperymentów dla al
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:quick_sorting_e2_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:quick_sorting_e2}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e2_time} możemy zauważyć, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:quick_sorting_e2_memory} możemy zauważyć tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+Na rysunku \ref{fig:quick_sorting_e2_time} zauważono, że czas wykonania w przypadku pierwszych 10 iteracji jest zwiększony w porównaniu do pozostałych próbek. Natomiast, z wykresu \ref{fig:quick_sorting_e2_memory} zaobserwowano tendencję wzrostową zużycia pamięci operacyjnej, największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
 
 Na rysunku \ref{fig:quick_sorting_e2_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -285,7 +289,7 @@ Na rysunku \ref{fig:quick_sorting_e2_ts} przedstawiono wyniki eksperymentów dla
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:quick_sorting_e2_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:quick_sorting_e2_ts}
 \end{figure}
 
@@ -307,11 +311,11 @@ Na rysunku \ref{fig:quick_sorting_e3} przedstawiono wyniki eksperymentów dla al
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:quick_sorting_e3_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:quick_sorting_e3}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e3_time} zauważono, że NodeJS posiadał najdłuższe czasy wykonywania sortowania w pierwszych iteracjach, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Z wykresu \ref{fig:quick_sorting_e3_memory} zauważono, że środowisko Bun zużywało najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywało najmniej pamięci operacyjnej.
+Na rysunku \ref{fig:quick_sorting_e3_time} zauważono, iż NodeJS posiadał najdłuższe czasy wykonywania sortowania w pierwszych iteracjach, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Z wykresu \ref{fig:quick_sorting_e3_memory} zauważono, że środowisko Bun zużywało najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywało najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:quick_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -329,7 +333,7 @@ Na rysunku \ref{fig:quick_sorting_e3_ts} przedstawiono wyniki eksperymentów dla
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:quick_sorting_e3_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 100 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:quick_sorting_e3_ts}
 \end{figure}
 
@@ -351,7 +355,7 @@ Na rysunku \ref{fig:quick_sorting_e4} przedstawiono wyniki eksperymentów dla al
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:quick_sorting_e4_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:quick_sorting_e4}
 \end{figure}
 
@@ -373,11 +377,11 @@ Na rysunku \ref{fig:quick_sorting_e4_ts} przedstawiono wyniki eksperymentów dla
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:quick_sorting_e4_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania szybkiego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:quick_sorting_e4_ts}
 \end{figure}
 
-Na rysunku \ref{fig:quick_sorting_e4_ts_time} zauważono, że NodeJS posiadał najdłuższe czasy wykonywania sortowania w pierwszych iteracjach, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Na rysunku \ref{fig:quick_sorting_e4_ts_memory} podczas jednej z ostatnich iteracji możemy zauważyć zwolnienie pamięci przez środowisko Deno, co może być spowodowane działaniem mechanizmu Garbage Collector. Natomiast największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
+Na rysunku \ref{fig:quick_sorting_e4_ts_time} zauważono, że NodeJS posiadał najdłuższe czasy wykonywania sortowania w pierwszych iteracjach, natomiast największe rozbieżności w czasach wykonania posiadało środowisko Bun. Na rysunku \ref{fig:quick_sorting_e4_ts_memory} podczas jednej z ostatnich iteracji zaobserwowano zwolnienie pamięci przez środowisko Deno, co może być spowodowane działaniem mechanizmu Garbage Collector. Natomiast największym zużyciem pamięci operacyjnej deklaruje środowisko Bun, które w ostatniej iteracji zużywa najwięcej ze wszystkich środowisk uruchomieniowych.
 
 \subsubsection{Wyniki - sortowanie pozycyjne}
 Na rysunku \ref{fig:radix_sorting_e1} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
@@ -396,11 +400,11 @@ Na rysunku \ref{fig:radix_sorting_e1} przedstawiono wyniki eksperymentów dla al
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:radix_sorting_e1_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:radix_sorting_e1}
 \end{figure}
 
-Na wykresie \ref{fig:radix_sorting_e1_time} możemy zauważyć, że w pierwszych iteracjach środowisko NodeJs wykonuje najdłużej sortowanie, natomiast Bun posiada duże zróżnicowanie czasu wykonania testu, w pozostałych iteracjach możemy zobaczyć zbliżone czasy wykonania dla NodeJS oraz Deno. Z wykresu \ref{fig:radix_sorting_e1_memory} możemy zauważyć, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywa najmniej pamięci operacyjnej.
+Na wykresie \ref{fig:radix_sorting_e1_time} zauważono, że w pierwszych iteracjach środowisko NodeJs wykonuje najdłużej sortowanie, natomiast Bun posiada duże zróżnicowanie czasu wykonania testu, w pozostałych iteracjach możemy zobaczyć zbliżone czasy wykonania dla NodeJS oraz Deno. Z wykresu \ref{fig:radix_sorting_e1_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko Deno zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:radix_sorting_e1_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -418,7 +422,7 @@ Na rysunku \ref{fig:radix_sorting_e1_ts} przedstawiono wyniki eksperymentów dla
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:radix_sorting_e1_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:radix_sorting_e1_ts}
 \end{figure}
 
@@ -440,7 +444,7 @@ Na rysunku \ref{fig:radix_sorting_e2} przedstawiono wyniki eksperymentów dla al
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:radix_sorting_e2_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:radix_sorting_e2}
 \end{figure}
 
@@ -462,7 +466,7 @@ Na rysunku \ref{fig:radix_sorting_e2_ts} przedstawiono wyniki eksperymentów dla
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:radix_sorting_e2_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 1000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:radix_sorting_e2_ts}
 \end{figure}
 
@@ -484,11 +488,11 @@ Na rysunku \ref{fig:radix_sorting_e3} przedstawiono wyniki eksperymentów dla al
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:radix_sorting_e3_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:radix_sorting_e3}
 \end{figure}
 
-Dla zwiększonej ilości elementów w tablicy na rysunku \ref{fig:radix_sorting_e3_time} zaobserwowano, że środowisko NodeJS w pierwszych iteracjach posiada najdłuższe czasy wykonania sortowania. Na rysunku \ref{fig:radix_sorting_e3_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+Dla zwiększonej liczby elementów w tablicy na rysunku \ref{fig:radix_sorting_e3_time} zaobserwowano, że środowisko NodeJS w pierwszych iteracjach posiada najdłuższe czasy wykonania sortowania. Na rysunku \ref{fig:radix_sorting_e3_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:radix_sorting_e3_ts} przedstawiono wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 10000 elementów napisanego w języku TypeScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -507,7 +511,7 @@ Na rysunku \ref{fig:radix_sorting_e3_ts} przedstawiono wyniki eksperymentów dla
     \label{fig:radix_sorting_e3_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 100 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:radix_sorting_e3_ts}
 \end{figure}
 
@@ -530,7 +534,7 @@ Na rysunku \ref{fig:radix_sorting_e4} przedstawiono wyniki eksperymentów dla al
     \label{fig:radix_sorting_e4_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:radix_sorting_e4}
 \end{figure}
 
@@ -553,7 +557,7 @@ Na rysunku \ref{fig:radix_sorting_e4_ts} przedstawiono wyniki eksperymentów dla
     \label{fig:radix_sorting_e4_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla algorytmu sortowania pozycyjnego dla 1000 iteracji i 10000 elementów - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:radix_sorting_e4_ts}
 \end{figure}
 
@@ -566,13 +570,17 @@ Eksperymenty zapisywały ciąg znaków o zadanej wielkości, następnie kodował
 
 \begin{table}[H]
   \centering
-  \caption{Parametry eksperymentów algorytmu kodowania \textit{Base64} \cite{cryptoeprint:2022/361}}
+  \caption{Parametry eksperymentów algorytmu kodowania \textit{Base64}}
   \begin{tabular}{|c|c|}
     \hline
     \textbf{Liczba eksperymentów} & \textbf{Długość słowa}\\ \hline
     1000 & 8192 \\ \hline
     100 & 32768 \\ \hline
   \end{tabular}
+  \par\vspace{0.3cm} 
+  \parbox{0.9\linewidth}{
+    \centering Źródło: \cite{cryptoeprint:2022/361}
+  }
   \label{tab:encoding_experiments}
 \end{table}
 
@@ -617,11 +625,11 @@ Na rysunku \ref{fig:decoding_e1_js} przedstawiono wyniki eksperymentów dla oper
     \label{fig:decoding_e1_js_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:decoding_e1_js}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e1_js_time} zaobserwowano, że środowisko NodeJs posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:decoding_e1_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+Na rysunku \ref{fig:decoding_e1_js_time} zaobserwowano, że środowisko NodeJs posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższe czasy posiada środowisko Deno. Na rysunku \ref{fig:decoding_e1_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -640,11 +648,11 @@ Na rysunku \ref{fig:encoding_e1_ts} przedstawiono wyniki eksperymentów dla oper
     \label{fig:encoding_e1_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:encoding_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:encoding_e1_ts_time} zaobserwowano, że środowisko NodeJS oraz Bun posiadają zbliżone czasy wykonania operacji kodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:encoding_e1_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+Na rysunku \ref{fig:encoding_e1_ts_time} zaobserwowano, że środowisko NodeJS oraz Bun posiadają zbliżone czasy wykonania operacji kodowania, natomiast najdłuższe czasy posiada środowisko Deno. Na rysunku \ref{fig:encoding_e1_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 32768 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -663,11 +671,11 @@ Na rysunku \ref{fig:decoding_e1_ts} przedstawiono wyniki eksperymentów dla oper
     \label{fig:decoding_e1_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 100 iteracji oraz 32768 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:decoding_e1_ts}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e1_ts_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:decoding_e1_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+Na rysunku \ref{fig:decoding_e1_ts_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższe czasy posiada środowisko Deno. Na rysunku \ref{fig:decoding_e1_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -686,11 +694,11 @@ Na rysunku \ref{fig:encoding_e2_js} przedstawiono wyniki eksperymentów dla oper
     \label{fig:encoding_e2_js_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:encoding_e2_js}
 \end{figure}
 
-Na rysunku \ref{fig:encoding_e2_js_time} zaobserwowano, że środowiska NodeJS oraz Bun posiadają podobne czasy kodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:encoding_e2_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+Na rysunku \ref{fig:encoding_e2_js_time} zaobserwowano, że środowiska NodeJS oraz Bun posiadają podobne czasy kodowania, natomiast najdłuższe czasy posiada środowisko Deno. Na rysunku \ref{fig:encoding_e2_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -709,11 +717,11 @@ Na rysunku \ref{fig:decoding_e2_js} przedstawiono wyniki eksperymentów dla oper
     \label{fig:decoding_e2_js_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:decoding_e2_js}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e2_js_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:decoding_e2_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+Na rysunku \ref{fig:decoding_e2_js_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższe czasy posiada środowisko Deno. Na rysunku \ref{fig:decoding_e2_js_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu kodowania \textit{Base64} dla 1000 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -732,11 +740,11 @@ Na rysunku \ref{fig:encoding_e2_ts} przedstawiono wyniki eksperymentów dla oper
     \label{fig:encoding_e2_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji kodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:encoding_e2_ts}
 \end{figure}
 
-Na rysunku \ref{fig:encoding_e2_ts_time} zaobserwowano, że środowiska NodeJS oraz Bun posiadają podobne czasy wykonania operacji kodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:encoding_e2_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+Na rysunku \ref{fig:encoding_e2_ts_time} zaobserwowano, że środowiska NodeJS oraz Bun posiadają podobne czasy wykonania operacji kodowania, natomiast najdłuższe czasy posiada środowisko Deno. Na rysunku \ref{fig:encoding_e2_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 Na rysunku \ref{fig:decoding_e2_ts} przedstawiono wyniki eksperymentów dla operacji dekodowania z wykorzystaniem kodowania \textit{Base64} dla 100 iteracji i 8192 znaków napisanego w języku JavaScript. Na wykresach przedstawiono czas wykonania jednorazowego testu w milisekundach oraz ilość zajmowanej pamięci w kilobajtach (kB).
 
@@ -755,11 +763,11 @@ Na rysunku \ref{fig:decoding_e2_ts} przedstawiono wyniki eksperymentów dla oper
     \label{fig:decoding_e2_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla operacji dekodowania z wykorzystaniem algorytmu \textit{Base64} dla 1000 iteracji oraz 8192 znaków - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:decoding_e2_ts}
 \end{figure}
 
-Na rysunku \ref{fig:decoding_e2_ts_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższymi czasami posiada środowisko Deno. Na rysunku \ref{fig:decoding_e2_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
+Na rysunku \ref{fig:decoding_e2_ts_time} zaobserwowano, że środowisko NodeJS posiada najkrótsze czasy wykonania operacji dekodowania, natomiast najdłuższe czasy posiada środowisko Deno. Na rysunku \ref{fig:decoding_e2_ts_memory} zaobserwowano, że środowisko Bun zużywa najwięcej pamięci operacyjnej, natomiast środowisko NodeJS zużywa najmniej pamięci operacyjnej.
 
 \subsection{Testy wydajnościowe operacji zapisu i odczytu plików}
 W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono eksperymenty, które polegały na zapisie oraz odczycie plików o różnych rozmiarach. W przeprowadzonych testach wykorzystano pliki tekstowe, natomiast zawartość plików została wygenerowana za pomocą modułu \textit{faker.js}. W tym celu generowano paragrafy tekstu, które gwarantowały zadany rozmiar plików. W tabeli \ref{tab:file_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz rozmiar pliku.
@@ -769,10 +777,14 @@ W celu zbadania wydajności operacji zapisu oraz odczytu plików, przeprowadzono
   \caption{Parametry eksperymentów zapisu i odczytu plików}
   \begin{tabular}{|c|c|c|}
     \hline
-    \textbf{Ilość eksperymentów} & \textbf{Rozmiar pliku} & \textbf{Ilość plików} \\ \hline
+    \textbf{Liczba eksperymentów} & \textbf{Rozmiar pliku} & \textbf{Liczba plików} \\ \hline
     50 & 512kB & 50 \\ \hline
     50 & 1MB & 50 \\ \hline
   \end{tabular}
+  \par\vspace{0.3cm} 
+  \parbox{0.9\linewidth}{
+    \centering Źródło: opracowanie własne
+  }
   \label{tab:file_experiments}
 \end{table}
 
@@ -794,7 +806,7 @@ Na rysunku \ref{fig:file_e1_reading_js} przedstawiono wyniki eksperymentów dla 
     \label{fig:file_e1_reading_js_memory}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:file_e1_reading_js}
 \end{figure}
 
@@ -817,7 +829,7 @@ Na rysunku \ref{fig:file_e1_writing_js} przedstawiono wyniki eksperymentów dla 
     \label{fig:file_e1_writing_js_memory}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:file_e1_writing_js}
 \end{figure}
 
@@ -840,7 +852,7 @@ Na rysunku \ref{fig:file_e1_reading_ts} przedstawiono wyniki eksperymentów dla 
     \label{fig:file_e1_reading_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:file_e1_reading_ts}
 \end{figure}
 
@@ -863,7 +875,7 @@ Na rysunku \ref{fig:file_e1_writing_ts} przedstawiono wyniki eksperymentów dla 
     \label{fig:file_e1_writing_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 512kB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:file_e1_writing_ts}
 \end{figure}
 
@@ -886,7 +898,7 @@ Na rysunku \ref{fig:file_e2_reading_js} przedstawiono wyniki eksperymentów dla 
     \label{fig:file_e2_reading_js_memory}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:file_e2_reading_js}
 \end{figure}
 
@@ -909,7 +921,7 @@ Na rysunku \ref{fig:file_e2_writing_js} przedstawiono wyniki eksperymentów dla 
     \label{fig:file_e2_writing_js_memory}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:file_e2_writing_js}
 \end{figure}
 
@@ -932,7 +944,7 @@ Na rysunku \ref{fig:file_e2_reading_ts} przedstawiono wyniki eksperymentów dla 
     \label{fig:file_e2_reading_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wynik eksperymentów odczytu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:file_e2_reading_ts}
 \end{figure}
 
@@ -955,7 +967,7 @@ Na rysunku \ref{fig:file_e2_writing_ts} przedstawiono wyniki eksperymentów dla 
     \label{fig:file_e2_writing_ts_memory}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wynik eksperymentów zapisu pliku dla 50 iteracji oraz 50 plików o rozmiarze 1MB - a) czas wykonania jednorazowego testu w milisekundach, b) ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:file_e2_writing_ts}
 \end{figure}
 
@@ -974,6 +986,10 @@ W celu zbadania wydajności serwera HTTP, przeprowadzono testy obciążeniowe. D
     10000 & 1000 \\ \hline
     10000 & 10000 \\ \hline
   \end{tabular}
+  \par\vspace{0.3cm} 
+  \parbox{0.9\linewidth}{
+    \centering Źródło: \cite{NodeAndBun}
+  }
   \label{tab:http_experiments}
 \end{table}
 
@@ -995,11 +1011,11 @@ Na rysunku \ref{fig:server_e1} przedstawiono wyniki eksperymentów dla testu wyd
     \label{fig:server_e1_ts}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 100 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript}
+  \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 100 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript Źródło: opracowanie własne}
   \label{fig:server_e1}
 \end{figure}
 
-Zarówno jak w przypadku języka JavaScript oraz TypeScript, na rysunku \ref{fig:server_e1} zaobserwowano, że środowisko Deno posiada najwyższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}), natomiast środowisko Bun posiada najniższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
+Zarówno dla języka JavaScript jak i języka TypeScript, rysunek \ref{fig:server_e1} zaobserwowano, że środowisko Deno posiada najwyższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}), natomiast środowisko Bun posiada najniższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
 Na rysunku \ref{fig:server_e2} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 1000 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresach przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
@@ -1018,11 +1034,11 @@ Na rysunku \ref{fig:server_e2} przedstawiono wyniki eksperymentów dla testu wyd
     \label{fig:server_e2_ts}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 1000 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript}
+  \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 1000 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript Źródło: opracowanie własne}
   \label{fig:server_e2}
 \end{figure}
 
-Zarówno jak w przypadku języka JavaScript oraz TypeScript, na rysunku \ref{fig:server_e2} zaobserwowano, że środowisko Deno posiada najwyższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}), natomiast środowisko Bun posiada najniższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
+Zarówno dla języka JavaScript jak i języka TypeScript, rysunek \ref{fig:server_e2} zaobserwowano, że środowisko Deno posiada najwyższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}), natomiast środowisko Bun posiada najniższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
 Na rysunku \ref{fig:server_e3} przedstawiono wyniki eksperymentów dla testu wydajnościowego serwera HTTP dla 10000 równoczesnych połączeń oraz 10000 żądań HTTP. Wyniki zostały przedstawione zarówno dla języka JavaScript oraz TypeScript. Na wykresach przedstawiono wynik testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
@@ -1041,24 +1057,28 @@ Na rysunku \ref{fig:server_e3} przedstawiono wyniki eksperymentów dla testu wyd
     \label{fig:server_e3_ts}
   \end{subfigure}
   \hfill
-  \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 10000 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript}
+  \caption{Wynik eksperymentów dla testu obciążeniowego serwera HTTP 10000 równoczesnych połączeń oraz 10000 żądań HTTP, wyrażonego w RPS (\textit{Request per second}) - a) dla języka JavaScript, b) dla języka TypeScript Źródło: opracowanie własne}
   \label{fig:server_e3}
 \end{figure}
 
-Zarówno jak w przypadku języka JavaScript oraz TypeScript, na rysunku \ref{fig:server_e3} zaobserwowano, że środowisko Deno posiada najwyższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}), natomiast środowisko Bun posiada najniższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
+Zarówno dla języka JavaScript jak i języka TypeScript, rysunek \ref{fig:server_e3} zaobserwowano, że środowisko Deno posiada najwyższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}), natomiast środowisko Bun posiada najniższe wyniki testu obciążeniowego wyrażonego w RPS (\textit{Request per second}).
 
 \subsection{Testy wydajnościowe zapisu i odczytu danych z bazy danych}
 W celu zbadania wydajności operacji zapisu oraz odczytu danych z bazy danych, przeprowadzono testy wydajnościowe z wykorzystaniem bazy danych SQLite. W celu wygenerowania danych do bazy danych, wykorzystano moduł \textit{faker.js}. W tabeli \ref{tab:database_experiments} przedstawiono liczbę przeprowadzonych eksperymentów oraz ilość rekordów.
 
 \begin{table}[H]
   \centering
-  \caption{Parametry eksperymentów zapisu i odczytu danych z bazy danych \cite{sqlite_performance}}
+  \caption{Parametry eksperymentów zapisu i odczytu danych z bazy danych }
   \begin{tabular}{|c|c|}
     \hline
     \textbf{Liczba eksperymentów} & \textbf{Liczba rekordów}\\ \hline
     10 & 1000 \\ \hline
     100 & 1000 \\ \hline
   \end{tabular}
+  \par\vspace{0.3cm} 
+  \parbox{0.9\linewidth}{
+    \centering Źródło: \cite{sqlite_performance}
+  }
   \label{tab:database_experiments}
 \end{table}
 
@@ -1079,7 +1099,7 @@ Na rysunku \ref{fig:database_e1_js} przedstawiono wyniki eksperymentów dla test
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:database_e1_js_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:database_e1_js}
 \end{figure}
 
@@ -1101,7 +1121,7 @@ Na rysunku \ref{fig:database_e1_ts} przedstawiono wyniki eksperymentów dla test
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:database_e1_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla testu bazy danych 10 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:database_e1_ts}
 \end{figure}
 
@@ -1123,7 +1143,7 @@ Na rysunku \ref{fig:database_e2_js} przedstawiono wyniki eksperymentów dla test
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:database_e2_js_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla testu bazy danych 100 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla testu bazy danych 100 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:database_e2_js}
 \end{figure}
 
@@ -1145,7 +1165,7 @@ Na rysunku \ref{fig:database_e2_ts} przedstawiono wyniki eksperymentów dla test
     \caption{Zużycie pamięci operacyjnej w kilobajtach (kB)}
     \label{fig:database_e2_ts_memory}
   \end{subfigure}
-  \caption{Wyniki eksperymentów dla testu bazy danych 100 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB)}
+  \caption{Wyniki eksperymentów dla testu bazy danych 100 iteracji oraz 1000 rekordów - po lewej czas wykonania jednorazowego testu w milisekundach, po prawej ilość zajmowanej pamięci w kilobajtach (kB) Źródło: opracowanie własne}
   \label{fig:database_e2_ts}
 \end{figure}
 
