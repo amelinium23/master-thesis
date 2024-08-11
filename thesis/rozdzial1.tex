@@ -9,14 +9,14 @@ W odpowiedzi na narastające problemy w związku wolnym działaniem środowiska 
 
 Środowiska zostały wybrane na podstawie corocznej ankiety \textit{State of JS} \cite{State_of_js:2022}, w której programiści wybierają narzędzia, które są przez nich najczęściej używane. Na liście z 2022 roku, można zauważyć, że nie zostało wymienione środowisko \textit{Bun}, spowodowane jest to wydaniem wersji 1.0 we wrześniu 2023 roku. Możemy jednakże zauważyć, że Bun pojawia się w pracach \cite{NodeAndBun}, które analizują wydajność NodeJS oraz Bun.
 
-Bun jako najmłodszy reprezentant środowisk wyróżnia się swoją szybkością, wbudowanym w sam silnik menadżer pakietów i bundler, co ułatwiło deweloperom kompresowanie samych aplikacji webowych. Środowisko to zostało napisane w języku Zig, dzięki czemu zawdzięcza swoją szybkość.
+Bun jako najmłodszy reprezentant środowisk wyróżnia się swoją szybkością, wbudowanym w sam silnik menadżer pakietów i \textit{bundler}, co ułatwiło deweloperom kompresowanie samych aplikacji webowych. Środowisko to zostało napisane w języku Zig, dzięki czemu zawdzięcza swoją szybkość.
 
 W tym rozdziale znajduje się opis wybranych do badań środowisk uruchomieniowych JavaScript.
 
 \subsection{NodeJS}
 NodeJs jest to powstałe w 2009 środowisko uruchomieniowe, które pozwoliło na znaczne rozwinięcie samego środowiska języka JavaScript o dodatkowe funkcjonalności. Środowisko zostało oparte o silnik V8 od Google, które pozwoliło na uruchamianie kodu poza przeglądarką, które było do powstania środowiska niemożliwe. Wprowadziło to także możliwość tworzenia dynamicznych stron, co spowodowało rozwój bibliotek związanych z tworzeniem widoków. Aktualnie środowisko jest rozwijane przez OpenJs Fundation, sama organizacja wprowadza zmiany do samego środowiska np. obsługa zmiennych środowiskowych pobieranych z pliku.
 
-Środowisko zostało zbudowane o paradygmat zdarzeniowy, stosuje się w nim pętle zdarzeniową, która nasłuchuje konkretnych zdarzeń, a następnie zdarzenia, które są umieszczone w stosie zdarzeń są wykonywane w kolejności FIFO. \cite{event_loop} Omówioną architekturę przedstawiono na Rysunku \ref{fig:eventLoop}.
+Środowisko zostało zbudowane o paradygmat zdarzeniowy, stosuje się w nim pętle zdarzeniową, która nasłuchuje konkretnych zdarzeń, a następnie zdarzenia, które są umieszczone w stosie zdarzeń są wykonywane w kolejności FIFO \cite{event_loop}. Omówioną architekturę przedstawiono na rysunku \ref{fig:eventLoop}.
 
 \begin{figure}[h]
   \centering
@@ -32,7 +32,7 @@ Zastosowanie powyższej architektury pozwoliło na wprowadzenie asynchronicznej 
 W środowisku można pisać w kilku językach programowania, niestety nie odbywa się to bez dodatkowej konfiguracji projektu. Sam NodeJs odczytuje tylko i wyłącznie programy transpilowane lub napisane w JavaScript. Na dzień dzisiejszy środowisko wspiera transpilowanie z kilku języków takich jak: CoffeeScript, Dart, TypeScript oraz ClojureScript.
 
 \subsection{Deno}
-Deno jest to środowisko uruchomieniowe, które zostało podobnie jak NodeJs zbudowane na podstawie silnika V8 od Google. Współautorem środowiska jest Ryan Dahl, który jest współtwórcą Deno. Środowisko spełnia także rolę menadżera paczek, który pozwala na pobieranie paczek z wykorzystaniem linków. W przeciwieństwie do NodeJS, które nie posiada tak szybkiego sposobu na wykorzystanie zewnętrznych bibliotek.
+Deno jest to środowisko uruchomieniowe, które zostało podobnie jak NodeJs zbudowane na podstawie silnika V8 od Google. Współautorem środowiska jest Ryan Dahl, który jest współtwórcą Deno. Środowisko spełnia także rolę menadżera paczek, który pozwala na ich pobieranie z wykorzystaniem linków, w przeciwieństwie do NodeJS, które nie posiada tak szybkiego sposobu na wykorzystanie zewnętrznych bibliotek.
 
 Bazowanie na silniku V8 oraz przepisaniu części funkcjonalności z wykorzystaniem języka Rust, pozwoliło na zwiększenie wydajności samego silnika. Wydajność samego Deno została zbadana w pracy \cite{deno_performance}, w której porównano wydajność samego środowiska z NodeJs. W pracy wykazano, że Deno jest szybsze od NodeJs, co pozwala na zwiększenie wydajności samego środowiska. W tej pracy sprawdzono wydajność wysyłanych żądań HTTP, w której wykazano, że Deno jest szybsze od NodeJs. Rysunek \ref{fig:deno_vs_node} przedstawia wyniki porównania wydajności Deno oraz NodeJs.
 
@@ -43,20 +43,20 @@ Bazowanie na silniku V8 oraz przepisaniu części funkcjonalności z wykorzystan
   \label{fig:deno_vs_node}
 \end{figure}
 
-Deno jako środowisko jest bezpieczniejsze od NodeJs, ze względu na ograniczenie dostępu do plików, skutkuje to zwiększeniem bezpieczeństwa samego środowiska. W NodeJs, dostęp do plików jest nieograniczony, co pozwala na dostęp do wszystkich plików na maszynie. Należy także wspomnieć, iż Deno także nie zezwala na ruch sieciowy bez wskazania właściwej flagi. W ten sposób stworzono środowisko, które zostało zabezpieczone przed atakami z zewnątrz.
+Deno jako środowisko jest bezpieczniejsze od NodeJs, ze względu na ograniczenie dostępu do plików, skutkuje zwiększeniem bezpieczeństwa samego środowiska. W NodeJs, dostęp do plików jest nieograniczony, co pozwala na dostęp do wszystkich plików na maszynie. Należy także wspomnieć, iż Deno także nie zezwala na ruch sieciowy bez wskazania właściwej flagi. W ten sposób stworzono środowisko, które zostało zabezpieczone przed atakami z zewnątrz.
 
 Deno jako środowisko posiada wbudowane wsparcie dla TypeScript, pozwala to na statyczne typowanie samych bibliotek oraz zewnętrznych pakietów. W przeciwieństwie do NodeJs, gdzie wymagane jest aby zainstalować dodatkowe pakiety, które pozwolą na statyczne typowanie. W Deno, nie musimy instalować dodatkowych pakietów, zwiększa to produktywność programistów oraz zmniejsza możliwość wystąpienia błędu.
 
-Deno jako środowisko posiada wbudowany bundler, umożliwia to kompresowanie aplikacji do małej liczby plików. W NodeJs, musimy zainstalować dodatkowe pakiety, które pozwolą na kompresowanie samej aplikacji. Same pakiety powoduje znaczne zwiększenie rozmiaru aplikacji.
+Deno jako środowisko posiada wbudowany \textit{bundler}, umożliwia to kompresowanie aplikacji do małej liczby plików. W NodeJs, musimy zainstalować dodatkowe pakiety, które pozwolą na kompresowanie samej aplikacji. Same pakiety powodują znaczne zwiększenie rozmiaru aplikacji.
 
-Samo środowisko udostępnia także wbudowane narzędzia pozwalające na tworzenie aplikacji webowych w oparciu o składnie JSX bądź TSX. Dzięki czemu środowisko jest rozszerzone, deweloperzy nie muszą tworzyć repozytoriów odpowiedzialnych tylko za widoki przedstawione na stronie. Pozwala to na tworzenie jednej wspólnej bazy kodowej, co pozwala na szybszy rozwój aplikacji.
+Samo środowisko udostępnia także wbudowane narzędzia pozwalające na tworzenie aplikacji webowych w oparciu o składnie JSX bądź TSX. Dzięki czemu środowisko jest rozszerzone, deweloperzy nie muszą tworzyć repozytoriów odpowiedzialnych tylko za widoki przedstawione na stronie. Pozwala to na tworzenie jednej wspólnej bazy kodowej, co przyczynia się do szybszego rozwoju aplikacji.
 
-Misją samego środowisko jest ujednolicanie bazy kodowej napisanych w tym środowisku. Z tego powodu Deno posiada swój własny \textit{formater} kodu, umożliwiający usunięcie pakietów tj. prettier z bazy kodowej danego projektu. 
+Misją samego środowisko jest ujednolicanie bazy kodowej napisanych w tym środowisku. Z tego powodu Deno posiada swój własny \textit{formater} kodu, umożliwiający usunięcie pakietów tj. \textit{Prettier} \cite{prettier} z bazy kodowej danego projektu. 
 
 \subsection{Bun}
 Bun \cite{bun} jest to najmłodsze środowisko uruchomieniowe, stworzone przez Jarreda Summera. Wersja 1.0 została zaprezentowana we wrześniu 2023 roku. Środowisko to zostało zbudowane na podstawie silnika JavaScript WebKit, jest to rozwiązanie od firmy Apple wykorzystywane w przeglądarce Safari.
 
-Sam autor środowiska twierdzi, że środowisko jest szybsze od NodeJs oraz Deno, co pozwala na zwiększenie wydajności samego środowiska. W pracy \cite{NodeAndBun} porównano wydajność samego środowiska z NodeJs oraz Bun. W pracy wykazano, że Bun jest szybsze od NodeJs, gdzie sprawdzono wydajność środowiska w kontekście aplikacji webowych. Praca wykorzystuje tylko metrykę liczby żądań na sekundę, nie przedstawia wykorzystanej pamięci. Rysunek \ref{fig:bun_vs_node} przedstawia wyniki porównania liczby żądań HTTP przy założonej liczby współbieżnych połączeń z serwerem połaczeniach Bun oraz NodeJs.
+Sam autor środowiska twierdzi, że środowisko jest szybsze od NodeJs oraz Deno, co pozwala na zwiększenie wydajności samego środowiska. W pracy \cite{NodeAndBun} porównano wydajność samego środowiska z NodeJs oraz Bun. Wykazano również, że Bun jest szybsze od NodeJs, gdzie sprawdzono wydajność środowiska w kontekście aplikacji webowych. Praca wykorzystuje tylko metrykę liczby żądań na sekundę, nie przedstawia wykorzystanej pamięci. Rysunek \ref{fig:bun_vs_node} przedstawia wyniki porównania liczby żądań HTTP przy założonej liczby współbieżnych połączeń z serwerem połaczeniach Bun oraz NodeJs.
 
 \begin{figure}[H]
   \centering
