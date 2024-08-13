@@ -9,7 +9,7 @@ I found out about Vite and I wanted to have a boilerplate for the technologies t
 Clone the repo and run
 
 ```bash
-npm install
+yarn install --frozen-lockfile
 ```
 
 or run command
@@ -23,7 +23,7 @@ npx degit amelinium23/vite-reactts-eslint-prettier project-name
 After the successful installation of the packages:
 
 ```sh
-npm run dev
+yarn dev
 ```
 
 ## Steps in Vscode
@@ -46,21 +46,6 @@ Just in `.vscode` directory create `settings.json` and paste below there:
     "source.fixAll": true
   },
   "files.eol": "\n"
-}
-```
-
-(Optional) You can create `launch.json` in `.vscode` directory to launch project for use run and debug tab in vscode:
-
-```json
-{
-  "configurations": [
-    {
-      "command": "npm run dev",
-      "name": "Run dev server",
-      "request": "launch",
-      "type": "node-terminal"
-    }
-  ]
 }
 ```
 
